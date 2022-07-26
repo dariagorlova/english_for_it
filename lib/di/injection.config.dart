@@ -9,7 +9,8 @@ import 'package:injectable/injectable.dart' as _i2;
 
 import '../core/service/daily_words_repository.dart' as _i4;
 import '../core/service/vocabulary.dart' as _i3;
-import 'seed_module.dart' as _i5; // ignore_for_file: unnecessary_lambdas
+import '../features/learning_screen/cubit/learning_cubit.dart' as _i5;
+import 'seed_module.dart' as _i6; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
@@ -22,7 +23,9 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
   gh.factory<int>(() => seedModule.randomSeed, instanceName: 'randomSeed');
   gh.factory<_i4.DailyWordsRepository>(() => _i4.DailyWordsRepository(
       get<_i3.Vocabulary>(), get<int>(instanceName: 'seed')));
+  gh.factory<_i5.LearningCubit>(
+      () => _i5.LearningCubit(get<_i4.DailyWordsRepository>()));
   return get;
 }
 
-class _$SeedModule extends _i5.SeedModule {}
+class _$SeedModule extends _i6.SeedModule {}
