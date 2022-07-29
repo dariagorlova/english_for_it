@@ -17,6 +17,7 @@ dependencies:
   go_router: ^4.0.0
   google_fonts: ^3.0.1  
   injectable: ^1.5.3
+  translator: ^0.1.7
 
 dev_dependencies:
   bdd_widget_test: ^1.4.1

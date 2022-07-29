@@ -29,6 +29,7 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     getIt.pushNewScope();
     //_initialization = widget.initialization ?? configureInjection();
+    configureInjection();
   }
 
   @override
@@ -43,6 +44,7 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
           primarySwatch: Colors.purple,
           textTheme: GoogleFonts.courgetteTextTheme(),
+          backgroundColor: const Color.fromARGB(255, 242, 211, 248),
         ),
         routeInformationProvider: _router.routeInformationProvider,
         routeInformationParser: _router.routeInformationParser,
