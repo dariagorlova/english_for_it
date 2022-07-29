@@ -7,6 +7,7 @@ class StartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -23,8 +24,12 @@ class StartScreen extends StatelessWidget {
               onPressed: () {
                 context.push('/learning');
               },
-              child: const Text(
+              child: Text(
                 "Let's start",
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineSmall
+                    ?.copyWith(color: Theme.of(context).cardColor),
               ),
             ),
           ],
