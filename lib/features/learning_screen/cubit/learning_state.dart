@@ -10,6 +10,14 @@ class LearningState with _$LearningState {
     @Default(0) int indexCurrentWord,
   }) = _LearningState;
 }
+// class LearningState with _$LearningState {
+//   const factory LearningState.initial() = InitialLearningState;
+//   const factory LearningState.loaded({
+//     @Default(0) int indexCurrentWord,
+//     required List<OneWord> dailyWords,
+//   }) = LoadedLearningState;
+//   const factory LearningState.loading() = LoadingLearningState;
+// }
 
 extension XLearningState on LearningState {
   int get currentIndex => indexCurrentWord;
@@ -19,4 +27,6 @@ extension XLearningState on LearningState {
   bool get isCurrentWordFirst => indexCurrentWord == 0;
 
   bool get isCurrentWordLast => indexCurrentWord == (dailyWords.length - 1);
+
+  bool get isLoading => dailyWords.isEmpty;
 }

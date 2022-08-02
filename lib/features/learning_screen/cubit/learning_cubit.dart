@@ -1,25 +1,30 @@
+import 'dart:async';
+
 import 'package:english_for_it/core/service/daily_words_repository.dart';
 import 'package:english_for_it/features/learning_screen/cubit/learning_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:translator/translator.dart';
 
 @injectable
 class LearningCubit extends Cubit<LearningState> {
   LearningCubit(
     this._currentWordRepository,
-  ) : super(
-          LearningState(
-            dailyWords: _currentWordRepository.getDailyWords(),
-          ),
-        );
+  ) : super(const LearningState(dailyWords: [])) {
+    unawaited(getDailyWords());
+  }
 
   final DailyWordsRepository _currentWordRepository;
+
+  Future<void> getDailyWords() async {
+    final words = await _currentWordRepository.getDailyWords();
+    emit(LearningState(dailyWords: words));
+  }
 
   void nextWord() {
     var curIndex = state.currentIndex;
     if (state.isCurrentWordLast) {
-      curIndex = 0;
+      //curIndex = 0;
+      return;
     } else {
       curIndex = curIndex + 1;
     }
@@ -29,28 +34,80 @@ class LearningCubit extends Cubit<LearningState> {
   void prevWord() {
     var curIndex = state.currentIndex;
     if (state.isCurrentWordFirst) {
-      curIndex = state.dailyWords.length;
+      //curIndex = state.dailyWords.length;
+      return;
     } else {
       curIndex = curIndex - 1;
     }
     emit(state.copyWith(indexCurrentWord: curIndex));
   }
 
-  //String getWord() => state.dailyWords[state.indexCurrentWord].word;
-  //String getTranslate() => state.dailyWords[state.indexCurrentWord].translate;
+  // void getWords() {
+  //   emit(
+  //     const LearningState.loading(),
+  //   );
 
-  void goToTest() {
-    //
-  }
+  //   final dailyWords = _currentWordRepository.getDailyWords();
 
-  Future<Translation> translateToUA() async {
-    final translator = GoogleTranslator();
-    final translation = await translator.translate(
-      state.currentWord.word,
-      from: 'en',
-      to: 'ru',
-    );
+  //   emit(
+  //     LearningState.loaded(
+  //       dailyWords: dailyWords,
+  //     ),
+  //   );
+  // }
 
-    return translation;
-  }
+  // int? get currentIndex {
+  //   final index = state.mapOrNull(loaded: (state) => state.indexCurrentWord);
+  //   return index;
+  // }
+
+  // OneWord? get currentWord {
+  //   final word = state.mapOrNull(
+  //       loaded: (state) => state.dailyWords[state.indexCurrentWord],);
+  //   return word;
+  // }
+
+  // bool get isCurrentWordFirst {
+  //   return currentIndex == 0;
+  // }
+
+  //   bool get isCurrentWordLast {
+  //   final length = state.mapOrNull(loaded: (state) => state.dailyWords.length);
+  //   return currentIndex == (length!-1);
+  // }
+
+  // void nextWord() {
+  //   var index = currentIndex;
+  //   if (isCurrentWordLast) {
+  //     index = 0;
+  //   } else {
+  //     index = index! + 1;
+  //   }
+
+  //   final words = state.mapOrNull(loaded: (state) => state.dailyWords);
+
+  //   emit(
+  //     LearningState.loaded(
+  //       indexCurrentWord: index,
+  //       dailyWords: words!,
+  //     ),
+  //   );
+  // }
+
+  // void prevWord() {
+  //   var index = currentIndex;
+  //   if (isCurrentWordFirst) {
+  //     final length = state.mapOrNull(loaded: (state) => state.dailyWords.length);
+  //     index = length;
+  //   } else {
+  //     index = index! - 1;
+  //   }
+  //   final words = state.mapOrNull(loaded: (state) => state.dailyWords);
+  //   emit(
+  //     LearningState.loaded(
+  //       indexCurrentWord: index!,
+  //       dailyWords: words!,
+  //     ),
+  //   );
+  // }
 }
