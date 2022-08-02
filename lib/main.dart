@@ -4,38 +4,18 @@ import 'package:english_for_it/features/start_screen/start_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:injectable/injectable.dart';
 
 void main() {
-  runApp(const MyApp());
+  configureInjection(Environment.prod);
+  runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({
+class MyApp extends StatelessWidget {
+  MyApp({
     super.key,
     //this.initialization,
   });
-
-  //final Future<GetIt>? initialization;
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  //late final Future<GetIt> _initialization;
-
-  @override
-  void initState() {
-    super.initState();
-    getIt.pushNewScope();
-    //_initialization = widget.initialization ?? configureInjection();
-  }
-
-  @override
-  void dispose() {
-    getIt.popScope();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) => MaterialApp.router(
@@ -43,13 +23,15 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
           primarySwatch: Colors.purple,
           textTheme: GoogleFonts.courgetteTextTheme(),
+          backgroundColor: const Color.fromARGB(255, 242, 211, 248),
+          errorColor: Colors.grey,
         ),
         routeInformationProvider: _router.routeInformationProvider,
         routeInformationParser: _router.routeInformationParser,
         routerDelegate: _router.routerDelegate,
       );
 
-  final GoRouter _router = GoRouter(
+  final _router = GoRouter(
     routes: <GoRoute>[
       GoRoute(
         path: '/learning',
