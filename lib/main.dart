@@ -1,6 +1,8 @@
+import 'package:english_for_it/core/model/one_word.dart';
 import 'package:english_for_it/di/injection.dart';
 import 'package:english_for_it/features/learning_screen/learning_screen.dart';
 import 'package:english_for_it/features/start_screen/start_screen.dart';
+import 'package:english_for_it/features/testing_screen.dart/testing_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -14,7 +16,6 @@ void main() {
 class MyApp extends StatelessWidget {
   MyApp({
     super.key,
-    //this.initialization,
   });
 
   @override
@@ -34,12 +35,19 @@ class MyApp extends StatelessWidget {
   final _router = GoRouter(
     routes: <GoRoute>[
       GoRoute(
+        path: '/',
+        builder: (context, state) => const StartScreen(),
+      ),
+      GoRoute(
         path: '/learning',
         builder: (context, state) => const LearningScreen(),
       ),
       GoRoute(
-        path: '/',
-        builder: (context, state) => const StartScreen(),
+        path: '/testing',
+        //builder: (context, state) => const TestingScreen(),
+        builder: (context, state) => TestingScreen(
+          words: state.extra! as List<OneWord>,
+        ),
       ),
     ],
   );

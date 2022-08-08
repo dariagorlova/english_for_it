@@ -8,11 +8,13 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:translator/translator.dart' as _i3;
 
-import '../core/service/daily_words_repository.dart' as _i5;
-import '../core/service/vocabulary.dart' as _i4;
-import '../features/learning_screen/cubit/learning_cubit.dart' as _i6;
-import 'google_translator_module.dart' as _i7;
-import 'seed_module.dart' as _i8;
+import '../core/model/one_word.dart' as _i5;
+import '../core/service/daily_words_repository.dart' as _i7;
+import '../core/service/vocabulary.dart' as _i6;
+import '../features/learning_screen/cubit/learning_cubit.dart' as _i8;
+import '../features/testing_screen.dart/cubit/testing_cubit.dart' as _i4;
+import 'google_translator_module.dart' as _i9;
+import 'seed_module.dart' as _i10;
 
 const String _prod = 'prod';
 // ignore_for_file: unnecessary_lambdas
@@ -26,17 +28,19 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
   gh.factory<_i3.GoogleTranslator>(
       () => googleTranslatorModule.googleTranslator,
       registerFor: {_prod});
-  gh.lazySingleton<_i4.Vocabulary>(() => _i4.Vocabulary());
+  gh.factoryParam<_i4.TestingCubit, List<_i5.OneWord>, dynamic>(
+      (words, _) => _i4.TestingCubit(words));
+  gh.lazySingleton<_i6.Vocabulary>(() => _i6.Vocabulary());
   gh.factory<int>(() => seedModule.seed, instanceName: 'seed');
-  gh.factory<_i5.DailyWordsRepository>(() => _i5.DailyWordsRepository(
-      get<_i4.Vocabulary>(),
+  gh.factory<_i7.DailyWordsRepository>(() => _i7.DailyWordsRepository(
+      get<_i6.Vocabulary>(),
       get<_i3.GoogleTranslator>(),
       get<int>(instanceName: 'seed')));
-  gh.factory<_i6.LearningCubit>(
-      () => _i6.LearningCubit(get<_i5.DailyWordsRepository>()));
+  gh.factory<_i8.LearningCubit>(
+      () => _i8.LearningCubit(get<_i7.DailyWordsRepository>()));
   return get;
 }
 
-class _$GoogleTranslatorModule extends _i7.GoogleTranslatorModule {}
+class _$GoogleTranslatorModule extends _i9.GoogleTranslatorModule {}
 
-class _$SeedModule extends _i8.SeedModule {}
+class _$SeedModule extends _i10.SeedModule {}

@@ -42,7 +42,7 @@ class LearningView extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: const Text('TEST'),
         onPressed: () {
-          //context.read<LearningCubit>().goToTest();
+          context.read<LearningCubit>().goToTest(context);
         },
       ),
     );
@@ -63,25 +63,29 @@ class WordCard extends StatelessWidget {
           return Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Expanded(
-                child: Container(
-                  foregroundDecoration: state.isCurrentWordFirst
-                      ? BoxDecoration(
-                          color: Theme.of(context).errorColor,
-                          backgroundBlendMode: BlendMode.lighten,
-                        )
-                      : null,
-                  child: InkWell(
-                    onTap: state.isLoading
-                        ? null
-                        : () => context.read<LearningCubit>().prevWord(),
-                    child: const Icon(
-                      Icons.arrow_back_ios,
-                      size: 50,
+              if (state.isLoading)
+                const SizedBox()
+              else ...[
+                Expanded(
+                  child: Container(
+                    foregroundDecoration: state.isCurrentWordFirst
+                        ? BoxDecoration(
+                            color: Theme.of(context).errorColor,
+                            backgroundBlendMode: BlendMode.lighten,
+                          )
+                        : null,
+                    child: InkWell(
+                      onTap: state.isLoading
+                          ? null
+                          : () => context.read<LearningCubit>().prevWord(),
+                      child: const Icon(
+                        Icons.arrow_back_ios,
+                        size: 50,
+                      ),
                     ),
                   ),
                 ),
-              ),
+              ],
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -102,25 +106,29 @@ class WordCard extends StatelessWidget {
                   ]
                 ],
               ),
-              Expanded(
-                child: Container(
-                  foregroundDecoration: state.isCurrentWordLast
-                      ? BoxDecoration(
-                          color: Theme.of(context).errorColor,
-                          backgroundBlendMode: BlendMode.lighten,
-                        )
-                      : null,
-                  child: InkWell(
-                    onTap: state.isLoading
-                        ? null
-                        : () => context.read<LearningCubit>().nextWord(),
-                    child: const Icon(
-                      Icons.arrow_forward_ios,
-                      size: 50,
+              if (state.isLoading)
+                const SizedBox()
+              else ...[
+                Expanded(
+                  child: Container(
+                    foregroundDecoration: state.isCurrentWordLast
+                        ? BoxDecoration(
+                            color: Theme.of(context).errorColor,
+                            backgroundBlendMode: BlendMode.lighten,
+                          )
+                        : null,
+                    child: InkWell(
+                      onTap: state.isLoading
+                          ? null
+                          : () => context.read<LearningCubit>().nextWord(),
+                      child: const Icon(
+                        Icons.arrow_forward_ios,
+                        size: 50,
+                      ),
                     ),
                   ),
                 ),
-              ),
+              ],
             ],
           );
         },

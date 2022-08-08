@@ -27,7 +27,7 @@ class DailyWordsRepository {
 
     final wordsWithTranslate = list2
         .map(
-          (word) => OneWord(word: word, translate: ''),
+          (word) => OneWord(word: word.toLowerCase(), translate: ''),
         )
         .toList();
 
