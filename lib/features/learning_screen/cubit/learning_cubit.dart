@@ -1,8 +1,9 @@
 import 'dart:async';
-
 import 'package:english_for_it/core/service/daily_words_repository.dart';
 import 'package:english_for_it/features/learning_screen/cubit/learning_state.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
@@ -38,5 +39,11 @@ class LearningCubit extends Cubit<LearningState> {
       curIndex = curIndex - 1;
     }
     emit(state.copyWith(indexCurrentWord: curIndex));
+  }
+
+  void goToTest(BuildContext context) {
+    //context.push('/testing');
+
+    context.go('/testing', extra: state.dailyWords);
   }
 }
