@@ -6,19 +6,38 @@ import 'package:flutter_test/flutter_test.dart';
 
 import './step/the_app_is_running.dart';
 import './step/i_tap_text.dart';
-import './step/i_wait_second.dart';
+import './step/i_wait.dart';
 import './step/i_see_text.dart';
+import './step/i_tap_icon.dart';
 
 void main() {
   Future<void> bddSetUp(WidgetTester tester) async {
     await theAppIsRunning(tester);
     await iTapText(tester, "Let's start");
-    await iWaitSecond(tester, 1);
+    await iWait(tester);
   }
   group('''Learning words''', () {
-    testWidgets('''''', (tester) async {
+    testWidgets('''As User I want to see first word''', (tester) async {
       await bddSetUp(tester);
       await iSeeText(tester, 'Words for Today');
+      await iSeeText(tester, 'developer');
+    });
+    testWidgets('''As User I can't tap previous button when first word on the screen''', (tester) async {
+      await bddSetUp(tester);
+      await iTapIcon(tester, Icons.arrow_back_ios);
+      await iSeeText(tester, 'developer');
+    });
+    testWidgets('''As User I want to see next word''', (tester) async {
+      await bddSetUp(tester);
+      await iTapIcon(tester, Icons.arrow_forward_ios);
+      await iSeeText(tester, 'computer');
+    });
+    testWidgets('''As User I can't tap next button when last word on the screen''', (tester) async {
+      await bddSetUp(tester);
+      await iTapIcon(tester, Icons.arrow_forward_ios);
+      await iWait(tester);
+      await iTapIcon(tester, Icons.arrow_forward_ios);
+      await iSeeText(tester, 'computer');
     });
   });
 }
