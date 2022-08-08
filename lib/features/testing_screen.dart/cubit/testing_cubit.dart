@@ -65,10 +65,10 @@ class TestingCubit extends Cubit<TestingState> {
 
   bool checkChoise(int choise) {
     if (state.indexOfCorrectAnswerForCurrentWord != choise) {
-      var listAnswers = state.answerTried;
+      final listAnswers = state.answerTried;
       //listAnswers[choise] = true;
 
-      var list2 = <bool>[];
+      final list2 = <bool>[];
       for (var i = 0; i < listAnswers.length; i++) {
         if (i == choise) {
           list2.add(true);
@@ -84,7 +84,9 @@ class TestingCubit extends Cubit<TestingState> {
 
       emit(
         state.copyWith(
-            indexCurrentWord: state.currentIndex + 1, answerTried: listNew),
+          indexCurrentWord: state.currentIndex + 1,
+          answerTried: listNew,
+        ),
       );
 
       return true;
