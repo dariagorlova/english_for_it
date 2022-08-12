@@ -28,11 +28,11 @@ class LearningView extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Words for Today'),
       ),
-      body: const SafeArea(
+      body: SafeArea(
         child: Center(
           child: SizedBox(
-            height: 300, // ! make with MediaQuery!
-            child: Padding(
+            height: MediaQuery.of(context).size.height * 0.5,
+            child: const Padding(
               padding: EdgeInsets.all(15),
               child: WordCard(),
             ),
