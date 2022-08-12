@@ -31,6 +31,7 @@ class TestingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height * 0.4;
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
@@ -46,7 +47,7 @@ class TestingView extends StatelessWidget {
                     const Text('Loading')
                   else ...[
                     SizedBox(
-                      height: 300,
+                      height: height, //300,
                       child: Padding(
                         padding: const EdgeInsets.all(15),
                         child: Card(
@@ -62,7 +63,7 @@ class TestingView extends StatelessWidget {
                     ),
                     const Spacer(),
                     SizedBox(
-                      height: 300,
+                      height: height, //300,
                       child: Padding(
                         padding: const EdgeInsets.all(15),
                         child: ListView.builder(
