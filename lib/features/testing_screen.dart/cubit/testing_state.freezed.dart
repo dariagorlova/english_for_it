@@ -20,6 +20,7 @@ mixin _$TestingState {
       throw _privateConstructorUsedError;
   int get indexCurrentWord => throw _privateConstructorUsedError;
   List<bool> get answerTried => throw _privateConstructorUsedError;
+  int get numberOfWrongAttempts => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TestingStateCopyWith<TestingState> get copyWith =>
@@ -34,7 +35,8 @@ abstract class $TestingStateCopyWith<$Res> {
   $Res call(
       {List<WordWithAnswers> wordsWithAnswers,
       int indexCurrentWord,
-      List<bool> answerTried});
+      List<bool> answerTried,
+      int numberOfWrongAttempts});
 }
 
 /// @nodoc
@@ -50,6 +52,7 @@ class _$TestingStateCopyWithImpl<$Res> implements $TestingStateCopyWith<$Res> {
     Object? wordsWithAnswers = freezed,
     Object? indexCurrentWord = freezed,
     Object? answerTried = freezed,
+    Object? numberOfWrongAttempts = freezed,
   }) {
     return _then(_value.copyWith(
       wordsWithAnswers: wordsWithAnswers == freezed
@@ -64,6 +67,10 @@ class _$TestingStateCopyWithImpl<$Res> implements $TestingStateCopyWith<$Res> {
           ? _value.answerTried
           : answerTried // ignore: cast_nullable_to_non_nullable
               as List<bool>,
+      numberOfWrongAttempts: numberOfWrongAttempts == freezed
+          ? _value.numberOfWrongAttempts
+          : numberOfWrongAttempts // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -78,7 +85,8 @@ abstract class _$$_TestingStateCopyWith<$Res>
   $Res call(
       {List<WordWithAnswers> wordsWithAnswers,
       int indexCurrentWord,
-      List<bool> answerTried});
+      List<bool> answerTried,
+      int numberOfWrongAttempts});
 }
 
 /// @nodoc
@@ -97,6 +105,7 @@ class __$$_TestingStateCopyWithImpl<$Res>
     Object? wordsWithAnswers = freezed,
     Object? indexCurrentWord = freezed,
     Object? answerTried = freezed,
+    Object? numberOfWrongAttempts = freezed,
   }) {
     return _then(_$_TestingState(
       wordsWithAnswers: wordsWithAnswers == freezed
@@ -111,6 +120,10 @@ class __$$_TestingStateCopyWithImpl<$Res>
           ? _value._answerTried
           : answerTried // ignore: cast_nullable_to_non_nullable
               as List<bool>,
+      numberOfWrongAttempts: numberOfWrongAttempts == freezed
+          ? _value.numberOfWrongAttempts
+          : numberOfWrongAttempts // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -121,7 +134,8 @@ class _$_TestingState implements _TestingState {
   const _$_TestingState(
       {final List<WordWithAnswers> wordsWithAnswers = const [],
       this.indexCurrentWord = 0,
-      final List<bool> answerTried = const []})
+      final List<bool> answerTried = const [],
+      this.numberOfWrongAttempts = 0})
       : _wordsWithAnswers = wordsWithAnswers,
         _answerTried = answerTried;
 
@@ -145,8 +159,12 @@ class _$_TestingState implements _TestingState {
   }
 
   @override
+  @JsonKey()
+  final int numberOfWrongAttempts;
+
+  @override
   String toString() {
-    return 'TestingState(wordsWithAnswers: $wordsWithAnswers, indexCurrentWord: $indexCurrentWord, answerTried: $answerTried)';
+    return 'TestingState(wordsWithAnswers: $wordsWithAnswers, indexCurrentWord: $indexCurrentWord, answerTried: $answerTried, numberOfWrongAttempts: $numberOfWrongAttempts)';
   }
 
   @override
@@ -159,7 +177,9 @@ class _$_TestingState implements _TestingState {
             const DeepCollectionEquality()
                 .equals(other.indexCurrentWord, indexCurrentWord) &&
             const DeepCollectionEquality()
-                .equals(other._answerTried, _answerTried));
+                .equals(other._answerTried, _answerTried) &&
+            const DeepCollectionEquality()
+                .equals(other.numberOfWrongAttempts, numberOfWrongAttempts));
   }
 
   @override
@@ -167,7 +187,8 @@ class _$_TestingState implements _TestingState {
       runtimeType,
       const DeepCollectionEquality().hash(_wordsWithAnswers),
       const DeepCollectionEquality().hash(indexCurrentWord),
-      const DeepCollectionEquality().hash(_answerTried));
+      const DeepCollectionEquality().hash(_answerTried),
+      const DeepCollectionEquality().hash(numberOfWrongAttempts));
 
   @JsonKey(ignore: true)
   @override
@@ -179,7 +200,8 @@ abstract class _TestingState implements TestingState {
   const factory _TestingState(
       {final List<WordWithAnswers> wordsWithAnswers,
       final int indexCurrentWord,
-      final List<bool> answerTried}) = _$_TestingState;
+      final List<bool> answerTried,
+      final int numberOfWrongAttempts}) = _$_TestingState;
 
   @override
   List<WordWithAnswers> get wordsWithAnswers;
@@ -187,6 +209,8 @@ abstract class _TestingState implements TestingState {
   int get indexCurrentWord;
   @override
   List<bool> get answerTried;
+  @override
+  int get numberOfWrongAttempts;
   @override
   @JsonKey(ignore: true)
   _$$_TestingStateCopyWith<_$_TestingState> get copyWith =>
