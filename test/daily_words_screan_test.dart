@@ -9,6 +9,7 @@ import './step/i_tap_text.dart';
 import './step/i_wait.dart';
 import './step/i_see_text.dart';
 import './step/i_tap_icon.dart';
+import './step/i_tap_icon_times.dart';
 
 void main() {
   Future<void> bddSetUp(WidgetTester tester) async {
@@ -34,10 +35,8 @@ void main() {
     });
     testWidgets('''As User I can't tap next button when last word on the screen''', (tester) async {
       await bddSetUp(tester);
-      await iTapIcon(tester, Icons.arrow_forward_ios);
-      await iWait(tester);
-      await iTapIcon(tester, Icons.arrow_forward_ios);
-      await iSeeText(tester, 'computer');
+      await iTapIconTimes(tester, Icons.arrow_forward_ios, 10);
+      await iSeeText(tester, 'keyboard');
     });
   });
 }

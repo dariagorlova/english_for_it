@@ -1,5 +1,6 @@
 import 'package:english_for_it/core/model/one_word.dart';
 import 'package:english_for_it/di/injection.dart';
+import 'package:english_for_it/features/congratulation_screen/congratulation_screen.dart';
 import 'package:english_for_it/features/learning_screen/learning_screen.dart';
 import 'package:english_for_it/features/start_screen/start_screen.dart';
 import 'package:english_for_it/features/testing_screen.dart/testing_screen.dart';
@@ -44,10 +45,19 @@ class MyApp extends StatelessWidget {
       ),
       GoRoute(
         path: '/testing',
-        //builder: (context, state) => const TestingScreen(),
         builder: (context, state) => TestingScreen(
           words: state.extra! as List<OneWord>,
         ),
+      ),
+      GoRoute(
+        path: '/congratulation',
+        builder: (context, state) {
+          final number = state.queryParams['times'];
+          final num = int.parse(number!);
+          return CongratulationScreen(
+            times: num,
+          );
+        },
       ),
     ],
   );

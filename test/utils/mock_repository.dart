@@ -8,6 +8,8 @@ Vocabulary getWordsRepository() {
   when(mock.getAllWords).thenReturn([
     'developer',
     'computer',
+    'bug',
+    'keyboard',
   ]);
   return mock;
 }

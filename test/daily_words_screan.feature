@@ -20,7 +20,7 @@ Feature: Learning words
         And I see {'computer'} text
 
     Scenario: As User I can't tap next button when last word on the screen
-        And I tap {Icons.arrow_forward_ios} icon 
-        And I wait
-        And I tap {Icons.arrow_forward_ios} icon
-        Then I see {'computer'} text 
+        Then I tap {Icons.arrow_forward_ios} icon {10} times
+        And I see {'keyboard'} text
+       
+

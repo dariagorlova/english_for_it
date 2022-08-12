@@ -35,23 +35,14 @@ class CardView extends StatelessWidget {
       height: 60,
       child: InkWell(
         onTap: () {
-          context.read<TestingCubit>().checkChoise(number);
+          context.read<TestingCubit>().checkChoise(number, context);
+          //if (res) context.read<TestingCubit>().endTest(context);
         },
         child: Card(
           elevation: 4,
           child: BlocSelector<TestingCubit, TestingState, bool>(
             selector: (state) => state.isAnswerTried(number),
-            builder: (context, isAnswerTried) =>
-                // AnimatedDefaultTextStyle(
-                //   duration: const Duration(milliseconds: 300),
-                //   style: TextStyle(
-                //     fontSize: isAnswerTried ? 30 : 40,
-                //     color: isAnswerTried
-                //         ? Theme.of(context).errorColor
-                //         : Theme.of(context).primaryColor,
-                //   ),
-                //   child: Text(
-                Text(
+            builder: (context, isAnswerTried) => Text(
               title,
               textAlign: TextAlign.center,
               style: TextStyle(

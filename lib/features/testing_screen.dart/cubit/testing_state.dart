@@ -9,11 +9,13 @@ class TestingState with _$TestingState {
     @Default([]) List<WordWithAnswers> wordsWithAnswers,
     @Default(0) int indexCurrentWord,
     @Default([]) List<bool> answerTried,
+    @Default(0) int numberOfWrongAttempts,
   }) = _TestingState;
 }
 
 extension XTrainingState on TestingState {
   int get currentIndex => indexCurrentWord;
+  int get numberOfFails => numberOfWrongAttempts;
   WordWithAnswers get currentWord => wordsWithAnswers[indexCurrentWord];
   bool isAnswerTried(int num) => answerTried[num];
   void answerWasTried(int num) => answerTried[num] = true;
