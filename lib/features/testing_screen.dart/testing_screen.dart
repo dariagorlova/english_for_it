@@ -10,15 +10,16 @@ class TestingScreen extends StatelessWidget {
   const TestingScreen({
     super.key,
     required this.words,
+    required this.variantOfTest,
   });
 
   final List<OneWord> words;
+  final int variantOfTest;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      //create: (_) => getIt<TestingCubit>(),
-      create: (_) => getIt<TestingCubit>(param1: words),
+      create: (_) => getIt<TestingCubit>(param1: words, param2: variantOfTest),
       child: const TestingView(),
     );
   }

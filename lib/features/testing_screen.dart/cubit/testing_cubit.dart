@@ -11,6 +11,7 @@ import 'package:injectable/injectable.dart';
 class TestingCubit extends Cubit<TestingState> {
   TestingCubit(
     @factoryParam List<OneWord> words,
+    @factoryParam int variantENtoUA,
   ) : super(
           const TestingState(
             wordsWithAnswers: [],
@@ -19,7 +20,7 @@ class TestingCubit extends Cubit<TestingState> {
             numberOfWrongAttempts: 0,
           ),
         ) {
-    init(words);
+    variantENtoUA == 0 ? init(words) : initUA(words);
   }
 
   void init(List<OneWord> dailyWords) {
@@ -50,6 +51,45 @@ class TestingCubit extends Cubit<TestingState> {
           answers: answers,
           indexOfCorrectAnswer: answers.indexWhere(
             (element) => element == w.translate,
+          ),
+        );
+      },
+    ).toList();
+    final listAnswers = List.generate(4, (_) => false);
+
+    emit(
+      TestingState(wordsWithAnswers: words, answerTried: listAnswers),
+    );
+  }
+
+  void initUA(List<OneWord> dailyWords) {
+    if (dailyWords.isEmpty) return;
+
+    final listTranslations = dailyWords
+        .map(
+          (word) => word.word,
+        )
+        .toList();
+
+    final words = dailyWords.map(
+      (w) {
+        final answers = <String>[w.word];
+        while (true) {
+          final tmpWord = _getRandomElement(listTranslations);
+          if (!answers.contains(tmpWord)) {
+            answers.add(tmpWord);
+          }
+          if (answers.length == 4) {
+            break;
+          }
+        }
+        answers.shuffle();
+
+        return WordWithAnswers(
+          word: w.translate,
+          answers: answers,
+          indexOfCorrectAnswer: answers.indexWhere(
+            (element) => element == w.word,
           ),
         );
       },

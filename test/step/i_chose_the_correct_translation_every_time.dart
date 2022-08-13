@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'i_tap_text.dart';
-import 'i_wait.dart';
+//import 'i_tap_text.dart';
+//import 'i_wait.dart';
 
 Future<void> iChoseTheCorrectTranslationEveryTime(WidgetTester tester) async {
   // await iTapText(tester, 'розробниця');
@@ -25,5 +25,5 @@ Future<void> iChoseTheCorrectTranslationEveryTime(WidgetTester tester) async {
   // await iTapText(tester, 'компʼютер');
   // await iWait(tester);
 
-  const maxCountAttempts = 40;
+  //const maxCountAttempts = 40;
 }
