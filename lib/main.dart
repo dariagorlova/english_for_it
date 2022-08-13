@@ -47,6 +47,14 @@ class MyApp extends StatelessWidget {
         path: '/testing',
         builder: (context, state) => TestingScreen(
           words: state.extra! as List<OneWord>,
+          variantOfTest: 0,
+        ),
+      ),
+      GoRoute(
+        path: '/testingUA',
+        builder: (context, state) => TestingScreen(
+          words: state.extra! as List<OneWord>,
+          variantOfTest: 1,
         ),
       ),
       GoRoute(
