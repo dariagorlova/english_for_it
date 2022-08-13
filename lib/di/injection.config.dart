@@ -28,8 +28,8 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
   gh.factory<_i3.GoogleTranslator>(
       () => googleTranslatorModule.googleTranslator,
       registerFor: {_prod});
-  gh.factoryParam<_i4.TestingCubit, List<_i5.OneWord>, dynamic>(
-      (words, _) => _i4.TestingCubit(words));
+  gh.factoryParam<_i4.TestingCubit, List<_i5.OneWord>, int>(
+      (words, variantENtoUA) => _i4.TestingCubit(words, variantENtoUA));
   gh.lazySingleton<_i6.Vocabulary>(() => _i6.Vocabulary());
   gh.factory<int>(() => seedModule.seed, instanceName: 'seed');
   gh.factory<_i7.DailyWordsRepository>(() => _i7.DailyWordsRepository(

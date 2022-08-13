@@ -30,21 +30,39 @@ class LearningView extends StatelessWidget {
       ),
       body: SafeArea(
         child: Center(
-          child: SizedBox(
-            height: MediaQuery.of(context).size.height * 0.5,
-            child: const Padding(
-              padding: EdgeInsets.all(15),
-              child: WordCard(),
-            ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.5,
+                child: const Padding(
+                  padding: EdgeInsets.all(15),
+                  child: WordCard(),
+                ),
+              ),
+              const Spacer(),
+              ElevatedButton(
+                onPressed: () {
+                  context.read<LearningCubit>().goToTest(context, 0);
+                },
+                child: const Text('Translate EN to UA'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  context.read<LearningCubit>().goToTest(context, 1);
+                },
+                child: const Text('Translate UA to EN'),
+              ),
+            ],
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: const Text('TEST'),
-        onPressed: () {
-          context.read<LearningCubit>().goToTest(context);
-        },
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   child: const Text('TEST'),
+      //   onPressed: () {
+      //     context.read<LearningCubit>().goToTest(context);
+      //   },
+      // ),
     );
   }
 }

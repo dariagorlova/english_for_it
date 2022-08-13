@@ -39,54 +39,67 @@ class _CongratulationScreenState extends State<CongratulationScreen> {
           backgroundColor: Theme.of(context).backgroundColor,
           body: Padding(
             padding: const EdgeInsets.all(15),
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Congratulation! You passed the test!',
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.headline3,
+            child: Column(
+              children: [
+                Align(
+                  alignment: Alignment.topRight,
+                  child: IconButton(
+                    onPressed: () {
+                      context.push('/learning');
+                    },
+                    icon: const Icon(Icons.close),
                   ),
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  Text(
-                    '${widget.times} times you answered incorrectly',
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.headline5,
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  if (widget.times > 3)
-                    Column(
-                      children: [
-                        const SizedBox(
-                          height: 30,
-                        ),
+                ),
+                Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Congratulation! You passed the test!',
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.headline3,
+                      ),
+                      const SizedBox(
+                        height: 50,
+                      ),
+                      Text(
+                        '${widget.times} times you answered incorrectly',
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.headline5,
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      if (widget.times > 3)
+                        Column(
+                          children: [
+                            const SizedBox(
+                              height: 30,
+                            ),
+                            Text(
+                              'Maybe you need to go over the words again?',
+                              textAlign: TextAlign.center,
+                              style: Theme.of(context).textTheme.headline5,
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                context.push('/learning');
+                              },
+                              child: const Text(
+                                'back to learning',
+                              ),
+                            ),
+                          ],
+                        )
+                      else
                         Text(
-                          'Maybe you need to go over the words again?',
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.headline5,
+                          'Great job!',
+                          style: Theme.of(context).textTheme.headline4,
                         ),
-                        ElevatedButton(
-                          onPressed: () {
-                            context.push('/learning');
-                          },
-                          child: const Text(
-                            'back to learning',
-                          ),
-                        ),
-                      ],
-                    )
-                  else
-                    Text(
-                      'Great job!',
-                      style: Theme.of(context).textTheme.headline4,
-                    ),
-                ],
-              ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
         ),

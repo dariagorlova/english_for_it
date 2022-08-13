@@ -41,9 +41,10 @@ class LearningCubit extends Cubit<LearningState> {
     emit(state.copyWith(indexCurrentWord: curIndex));
   }
 
-  void goToTest(BuildContext context) {
+  void goToTest(BuildContext context, int variant) {
     //context.push('/testing');
-
-    context.go('/testing', extra: state.dailyWords);
+    variant == 0
+        ? context.go('/testing', extra: state.dailyWords)
+        : context.go('/testingUA', extra: state.dailyWords);
   }
 }
