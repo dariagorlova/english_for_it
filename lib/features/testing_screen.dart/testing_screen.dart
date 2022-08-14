@@ -37,6 +37,16 @@ class TestingView extends StatelessWidget {
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         title: const Text('Testing daily words'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              context.read<TestingCubit>().backToLearn(context);
+            },
+            icon: const Icon(
+              Icons.menu_book,
+            ),
+          ),
+        ],
       ),
       body: SafeArea(
         child: Center(

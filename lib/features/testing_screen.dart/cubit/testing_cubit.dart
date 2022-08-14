@@ -146,6 +146,10 @@ class TestingCubit extends Cubit<TestingState> {
     }
   }
 
+  void backToLearn(BuildContext context) {
+    context.push('/learning');
+  }
+
   void endTest(BuildContext context) {
     // if (state.currentIndex == state.wordsWithAnswers.length) {
     //context.push('/congratulation, extra: state.numberOfWrongAttempts');

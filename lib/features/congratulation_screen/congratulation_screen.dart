@@ -37,6 +37,7 @@ class _CongratulationScreenState extends State<CongratulationScreen> {
       children: [
         Scaffold(
           backgroundColor: Theme.of(context).backgroundColor,
+          appBar: AppBar(),
           body: Padding(
             padding: const EdgeInsets.all(15),
             child: Center(

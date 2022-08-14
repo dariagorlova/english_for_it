@@ -17,7 +17,7 @@ void main() {
     await theAppIsRunning(tester);
     await iTapText(tester, "Let's start");
     await iWait(tester);
-    await iTapText(tester, 'TEST');
+    await iTapText(tester, 'Translate EN to UA');
     await iWait(tester);
   }
   group('''Testing knowledge''', () {
@@ -37,12 +37,15 @@ void main() {
     testWidgets('''As User I'm making the right choice''', (tester) async {
       await bddSetUp(tester);
       await iTapText(tester, 'розробниця');
+      await iWait(tester);
       await iDontSeeText(tester, 'developer');
       await iSeeText(tester, 'computer');
     });
     testWidgets('''As User I finished test''', (tester) async {
       await bddSetUp(tester);
       await iChoseTheCorrectTranslationEveryTime(tester);
+      await iWait(tester);
+      await iSeeText(tester, 'Congratulation! You passed the test!');
     });
   });
 }
