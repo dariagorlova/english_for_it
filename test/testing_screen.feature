@@ -4,7 +4,7 @@ Feature: Testing knowledge
         Given the app is running
         And I tap {"Let's start"} text
         And I wait
-        And I tap {'TEST'} text
+        And I tap {'Translate EN to UA'} text
         And I wait
 
     Scenario: As User I want to see first word and answers
@@ -20,9 +20,11 @@ Feature: Testing knowledge
 
     Scenario: As User I'm making the right choice
         Then I tap {'розробниця'} text
+        And I wait
         And I don't see {'developer'} text
         And I see {'computer'} text
 
     Scenario: As User I finished test
         When I chose the correct translation every time
-        #Then I see {'Congratulation! You passed the test!'} text
+        And I wait
+        Then I see {'Congratulation! You passed the test!'} text
