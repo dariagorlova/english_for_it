@@ -27,6 +27,16 @@ class MyApp extends StatelessWidget {
           textTheme: GoogleFonts.courgetteTextTheme(),
           backgroundColor: const Color.fromARGB(255, 242, 211, 248),
           errorColor: Colors.grey,
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+              textStyle: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                wordSpacing: 2,
+                fontStyle: GoogleFonts.courgette().fontStyle,
+              ),
+            ),
+          ),
         ),
         routeInformationProvider: _router.routeInformationProvider,
         routeInformationParser: _router.routeInformationParser,
