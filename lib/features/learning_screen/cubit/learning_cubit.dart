@@ -3,7 +3,6 @@ import 'package:english_for_it/core/service/daily_words_repository.dart';
 import 'package:english_for_it/features/learning_screen/cubit/learning_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_tts/flutter_tts.dart';
 import 'package:go_router/go_router.dart';
 import 'package:injectable/injectable.dart';
 
@@ -52,10 +51,20 @@ class LearningCubit extends Cubit<LearningState> {
   }
 
   void goToTest(BuildContext context, int variant) {
-    //context.push('/testing');
-    variant == 0
-        ? context.go('/testing', extra: state.dailyWords)
-        : context.go('/testingUA', extra: state.dailyWords);
+    var path = '/testing';
+    switch (variant) {
+      case 0:
+        path = '/testing';
+        break;
+      case 1:
+        path = '/testingUA';
+        break;
+      case 2:
+        path = '/makePairs';
+        break;
+    }
+
+    context.go(path, extra: state.dailyWords);
   }
 
   void backToStart(BuildContext context) {
