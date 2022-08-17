@@ -1,9 +1,6 @@
-import 'dart:io';
-
 import 'package:english_for_it/di/injection.dart';
 import 'package:english_for_it/features/learning_screen/cubit/learning_cubit.dart';
 import 'package:english_for_it/features/learning_screen/cubit/learning_state.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tts/flutter_tts.dart';
@@ -66,6 +63,12 @@ class LearningView extends StatelessWidget {
                   context.read<LearningCubit>().goToTest(context, 1);
                 },
                 child: const Text('Translate UA to EN'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  context.read<LearningCubit>().goToTest(context, 2);
+                },
+                child: const Text('Make pairs'),
               ),
             ],
           ),
@@ -174,10 +177,14 @@ class _WordCardState extends State<WordCard> {
                   else ...[
                     Row(
                       children: [
+                        //FittedBox(
+                        //  fit: BoxFit.fitWidth,
+                        // child: Text(
                         Text(
                           state.currentWord.word, //'developer',
                           style: Theme.of(context).textTheme.headline3,
                         ),
+                        //),
                         IconButton(
                           icon: const Icon(Icons.volume_up),
                           iconSize: 40,
@@ -191,9 +198,14 @@ class _WordCardState extends State<WordCard> {
                       ],
                     ),
                     const Divider(),
-                    Text(
-                      state.currentWord.translate, //'розробник',
-                      style: Theme.of(context).textTheme.headline4,
+                    SizedBox(
+                      //width: 350,
+                      child: Text(
+                        state.currentWord.translate, //'розробник',
+                        style: Theme.of(context).textTheme.headline4,
+                        maxLines: 2,
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ]
                 ],

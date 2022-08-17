@@ -179,3 +179,153 @@ abstract class _WordWithAnswers implements WordWithAnswers {
   _$$_WordWithAnswersCopyWith<_$_WordWithAnswers> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+mixin _$WordWithState {
+  OneWord get word => throw _privateConstructorUsedError;
+  WordState get state => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $WordWithStateCopyWith<WordWithState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $WordWithStateCopyWith<$Res> {
+  factory $WordWithStateCopyWith(
+          WordWithState value, $Res Function(WordWithState) then) =
+      _$WordWithStateCopyWithImpl<$Res>;
+  $Res call({OneWord word, WordState state});
+
+  $OneWordCopyWith<$Res> get word;
+}
+
+/// @nodoc
+class _$WordWithStateCopyWithImpl<$Res>
+    implements $WordWithStateCopyWith<$Res> {
+  _$WordWithStateCopyWithImpl(this._value, this._then);
+
+  final WordWithState _value;
+  // ignore: unused_field
+  final $Res Function(WordWithState) _then;
+
+  @override
+  $Res call({
+    Object? word = freezed,
+    Object? state = freezed,
+  }) {
+    return _then(_value.copyWith(
+      word: word == freezed
+          ? _value.word
+          : word // ignore: cast_nullable_to_non_nullable
+              as OneWord,
+      state: state == freezed
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as WordState,
+    ));
+  }
+
+  @override
+  $OneWordCopyWith<$Res> get word {
+    return $OneWordCopyWith<$Res>(_value.word, (value) {
+      return _then(_value.copyWith(word: value));
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_WordWithStateCopyWith<$Res>
+    implements $WordWithStateCopyWith<$Res> {
+  factory _$$_WordWithStateCopyWith(
+          _$_WordWithState value, $Res Function(_$_WordWithState) then) =
+      __$$_WordWithStateCopyWithImpl<$Res>;
+  @override
+  $Res call({OneWord word, WordState state});
+
+  @override
+  $OneWordCopyWith<$Res> get word;
+}
+
+/// @nodoc
+class __$$_WordWithStateCopyWithImpl<$Res>
+    extends _$WordWithStateCopyWithImpl<$Res>
+    implements _$$_WordWithStateCopyWith<$Res> {
+  __$$_WordWithStateCopyWithImpl(
+      _$_WordWithState _value, $Res Function(_$_WordWithState) _then)
+      : super(_value, (v) => _then(v as _$_WordWithState));
+
+  @override
+  _$_WordWithState get _value => super._value as _$_WordWithState;
+
+  @override
+  $Res call({
+    Object? word = freezed,
+    Object? state = freezed,
+  }) {
+    return _then(_$_WordWithState(
+      word: word == freezed
+          ? _value.word
+          : word // ignore: cast_nullable_to_non_nullable
+              as OneWord,
+      state: state == freezed
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as WordState,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_WordWithState implements _WordWithState {
+  const _$_WordWithState(
+      {this.word = const OneWord(word: '', translate: ''),
+      this.state = WordState.initial});
+
+  @override
+  @JsonKey()
+  final OneWord word;
+  @override
+  @JsonKey()
+  final WordState state;
+
+  @override
+  String toString() {
+    return 'WordWithState(word: $word, state: $state)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_WordWithState &&
+            const DeepCollectionEquality().equals(other.word, word) &&
+            const DeepCollectionEquality().equals(other.state, state));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(word),
+      const DeepCollectionEquality().hash(state));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_WordWithStateCopyWith<_$_WordWithState> get copyWith =>
+      __$$_WordWithStateCopyWithImpl<_$_WordWithState>(this, _$identity);
+}
+
+abstract class _WordWithState implements WordWithState {
+  const factory _WordWithState({final OneWord word, final WordState state}) =
+      _$_WordWithState;
+
+  @override
+  OneWord get word;
+  @override
+  WordState get state;
+  @override
+  @JsonKey(ignore: true)
+  _$$_WordWithStateCopyWith<_$_WordWithState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
