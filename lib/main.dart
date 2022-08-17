@@ -2,6 +2,7 @@ import 'package:english_for_it/core/model/one_word.dart';
 import 'package:english_for_it/di/injection.dart';
 import 'package:english_for_it/features/congratulation_screen/congratulation_screen.dart';
 import 'package:english_for_it/features/learning_screen/learning_screen.dart';
+import 'package:english_for_it/features/make_pair_screen/make_pair_screen.dart';
 import 'package:english_for_it/features/start_screen/start_screen.dart';
 import 'package:english_for_it/features/testing_screen.dart/testing_screen.dart';
 import 'package:flutter/material.dart';
@@ -65,6 +66,12 @@ class MyApp extends StatelessWidget {
         builder: (context, state) => TestingScreen(
           words: state.extra! as List<OneWord>,
           variantOfTest: 1,
+        ),
+      ),
+      GoRoute(
+        path: '/makePairs',
+        builder: (context, state) => MakePairScreen(
+          words: state.extra! as List<OneWord>,
         ),
       ),
       GoRoute(
