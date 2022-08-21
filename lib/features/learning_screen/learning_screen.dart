@@ -52,25 +52,43 @@ class LearningView extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              ElevatedButton(
-                onPressed: () {
-                  context.read<LearningCubit>().goToTest(context, 0);
-                },
-                child: const Text('Translate EN to UA'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  context.read<LearningCubit>().goToTest(context, 1);
-                },
-                child: const Text('Translate UA to EN'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  context.read<LearningCubit>().goToTest(context, 2);
-                },
-                child: const Text('Make pairs'),
-              ),
+              const TestProgramButton(title: 'Translate EN to UA', index: 0),
+              const TestProgramButton(title: 'Translate UA to EN', index: 1),
+              const TestProgramButton(title: 'Make pairs', index: 2),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class TestProgramButton extends StatelessWidget {
+  const TestProgramButton({
+    super.key,
+    required this.title,
+    required this.index,
+  });
+
+  final String title;
+  final int index;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 250,
+      child: Padding(
+        padding: const EdgeInsets.all(2),
+        child: ElevatedButton(
+          onPressed: () {
+            context.read<LearningCubit>().goToTest(context, index);
+          },
+          child: Text(
+            title,
+            style: Theme.of(context)
+                .textTheme
+                .headlineSmall
+                ?.copyWith(color: Theme.of(context).cardColor),
           ),
         ),
       ),
@@ -163,31 +181,26 @@ class _WordCardState extends State<WordCard> {
                           : () => context.read<LearningCubit>().prevWord(),
                       child: const Icon(
                         Icons.arrow_back_ios,
-                        size: 50,
+                        size: 40,
                       ),
                     ),
                   ),
                 ),
               ],
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  if (state.isLoading)
-                    const Text('Loading')
-                  else ...[
-                    Row(
-                      children: [
-                        //FittedBox(
-                        //  fit: BoxFit.fitWidth,
-                        // child: Text(
-                        Text(
-                          state.currentWord.word, //'developer',
-                          style: Theme.of(context).textTheme.headline3,
-                        ),
-                        //),
-                        IconButton(
+              Expanded(
+                flex: 3,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    if (state.isLoading)
+                      const Text('Loading')
+                    else ...[
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: IconButton(
+                          alignment: Alignment.topRight,
                           icon: const Icon(Icons.volume_up),
-                          iconSize: 40,
+                          iconSize: 30,
                           color: Colors.green,
                           splashColor: Colors.greenAccent,
                           onPressed: () {
@@ -195,20 +208,32 @@ class _WordCardState extends State<WordCard> {
                             _speak(state.currentWord.word);
                           },
                         ),
-                      ],
-                    ),
-                    const Divider(),
-                    SizedBox(
-                      //width: 350,
-                      child: Text(
-                        state.currentWord.translate, //'розробник',
-                        style: Theme.of(context).textTheme.headline4,
-                        maxLines: 2,
-                        textAlign: TextAlign.center,
                       ),
-                    ),
-                  ]
-                ],
+                      FittedBox(
+                        fit: BoxFit.fitWidth,
+                        child: Column(
+                          children: [
+                            Text(
+                              state.currentWord.word, //'developer',
+                              style: Theme.of(context).textTheme.headline3,
+                            ),
+                            //),
+                          ],
+                        ),
+                      ),
+                      const Divider(),
+                      FittedBox(
+                        fit: BoxFit.fitWidth,
+                        child: Text(
+                          state.currentWord.translate, //'розробник',
+                          style: Theme.of(context).textTheme.headline4,
+                          maxLines: 2,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ]
+                  ],
+                ),
               ),
               if (state.isLoading)
                 const SizedBox()
@@ -227,7 +252,7 @@ class _WordCardState extends State<WordCard> {
                           : () => context.read<LearningCubit>().nextWord(),
                       child: const Icon(
                         Icons.arrow_forward_ios,
-                        size: 50,
+                        size: 40,
                       ),
                     ),
                   ),
