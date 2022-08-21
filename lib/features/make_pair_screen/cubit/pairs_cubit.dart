@@ -105,6 +105,16 @@ class PairsCubit extends Cubit<PairsState> {
 
   void addFirstPartOfPair(String word, int index, int numCol) {
     final curList = numCol == 0 ? state.leftColumn : state.rightColumn;
+    final oppositeList = numCol == 0 ? state.rightColumn : state.leftColumn;
+    final listOp = <WordWithState>[];
+    for (final w in oppositeList) {
+      if (w.state == WordState.wrong) {
+        listOp.add(WordWithState(word: w.word, state: WordState.initial));
+      } else {
+        listOp.add(w);
+      }
+    }
+
     //final list2 = [...curList]..[index].state = WordState.checking;
     final list2 = <WordWithState>[];
     for (var i = 0; i < curList.length; i++) {
@@ -116,7 +126,16 @@ class PairsCubit extends Cubit<PairsState> {
           ),
         );
       } else {
-        list2.add(curList[i]);
+        if (curList[i].state == WordState.wrong) {
+          list2.add(
+            WordWithState(
+              word: curList[i].word,
+              state: WordState.initial,
+            ),
+          );
+        } else {
+          list2.add(curList[i]);
+        }
       }
     }
 
@@ -124,17 +143,19 @@ class PairsCubit extends Cubit<PairsState> {
         ? emit(
             PairsState(
               wordsOnTheLeft: list2,
-              wordsOnTheRight: state.wordsOnTheRight,
+              wordsOnTheRight: listOp,
               currentPair: <String>[word],
               isFirstWordInPairInEN: numCol == 0,
+              numberOfWrongAttempts: state.numberOfFails,
             ),
           )
         : emit(
             PairsState(
               wordsOnTheRight: list2,
-              wordsOnTheLeft: state.wordsOnTheLeft,
+              wordsOnTheLeft: listOp,
               currentPair: <String>[word],
               isFirstWordInPairInEN: numCol == 0,
+              numberOfWrongAttempts: state.numberOfFails,
             ),
           );
   }
@@ -172,6 +193,7 @@ class PairsCubit extends Cubit<PairsState> {
               wordsOnTheRight: state.wordsOnTheRight,
               currentPair: <String>[word],
               isFirstWordInPairInEN: state.isFirstWordInPairExist,
+              numberOfWrongAttempts: state.numberOfFails,
             ),
           )
         : emit(
@@ -180,6 +202,7 @@ class PairsCubit extends Cubit<PairsState> {
               wordsOnTheRight: list2,
               currentPair: <String>[word],
               isFirstWordInPairInEN: state.isFirstWordInPairExist,
+              numberOfWrongAttempts: state.numberOfFails,
             ),
           );
   }
@@ -237,6 +260,7 @@ class PairsCubit extends Cubit<PairsState> {
         wordsOnTheRight: listRight,
         currentPair: <String>[],
         isFirstWordInPairInEN: true,
+        numberOfWrongAttempts: state.numberOfFails,
       ),
     );
   }
@@ -281,15 +305,17 @@ class PairsCubit extends Cubit<PairsState> {
       }
     }
 
+    var newNumOfFails = state.numberOfFails + 1;
     emit(
       PairsState(
         wordsOnTheLeft: listLeft,
         wordsOnTheRight: listRight,
         currentPair: <String>[],
         isFirstWordInPairInEN: true,
-        numberOfWrongAttempts: state.numberOfFails + 1,
+        numberOfWrongAttempts: newNumOfFails,
       ),
     );
+    newNumOfFails = state.numberOfFails;
   }
 
   void endGame(BuildContext context) {

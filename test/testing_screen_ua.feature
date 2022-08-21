@@ -1,31 +1,31 @@
-Feature: Testing knowledge (choose the correcct translation of the English word)
+Feature: Testing knowledge (choose the correcct translation of the Ukrainian word)
 
     Background:
         Given the app is running
         And I tap {"Let's start"} text
         And I wait
-        And I tap {'Translate EN to UA'} text
+        And I tap {'Translate UA to EN'} text
         And I wait
 
     Scenario: As User I want to see first word and answers
         Then I see {'Testing daily words'} text
-        And I see {'task'} text
         And I see {'завдання'} text
+        And I see {'task'} text
 
     Scenario: As User I'm making the wrong choice
-        Then I tap {'помилка'} text
+        Then I tap {'code'} text
         And I see {1} text with {Colors.grey} color
-        And I tap {'зустріч'} text
+        And I tap {'bug'} text
         And I see {2} text with {Colors.grey} color
 
     Scenario: As User I'm making the right choice
-        Then I tap {'завдання'} text
+        Then I tap {'task'} text
         And I wait
-        And I don't see {'task'} text
-        And I see {'code'} text
+        And I don't see {'завдання'} text
+        And I see {'код'} text
 
     Scenario: As User I finished test
-        When I chose the correct translation every time
+        When I chose the correct EN translation every time
         And I wait
         Then I see {'Congratulation! You passed the test!'} text
 

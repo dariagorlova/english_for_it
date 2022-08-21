@@ -29,4 +29,10 @@ final _mockTranslations = <String, String>{
   'computer': 'компʼютер',
   'bug': 'помилка',
   'keyboard': 'клавіатура',
+  'code': 'код',
+  'task': 'завдання',
+  'generation': 'генерація',
+  'repository': 'репозиторій',
+  'meeting': 'зустріч',
+  'deadline': 'крайній термін',
 };
