@@ -9,7 +9,6 @@ Feature: Start of application
 
   Scenario: As a User I tap a button
     And I tap {"Let's start"} text
-    # And I wait {1} second
     And I wait
     Then I don't see {"Let's start"} text
 

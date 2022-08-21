@@ -10,6 +10,12 @@ Vocabulary getWordsRepository() {
     'computer',
     'bug',
     'keyboard',
+    'code',
+    'task',
+    'generation',
+    'repository',
+    'meeting',
+    'deadline',
   ]);
   return mock;
 }

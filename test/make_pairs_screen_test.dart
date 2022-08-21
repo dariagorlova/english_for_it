@@ -8,6 +8,9 @@ import './step/the_app_is_running.dart';
 import './step/i_tap_text.dart';
 import './step/i_wait.dart';
 import './step/i_see_text.dart';
+import './step/i_see_card_with_color_times.dart';
+import './step/i_tap_correct_pairs_all_times.dart';
+import './step/i_tap_icon.dart';
 
 void main() {
   Future<void> bddSetUp(WidgetTester tester) async {
@@ -23,6 +26,41 @@ void main() {
       await iSeeText(tester, 'Make pairs');
       await iSeeText(tester, 'developer');
       await iSeeText(tester, 'розробниця');
+    });
+    testWidgets('''As User I choose word''', (tester) async {
+      await bddSetUp(tester);
+      await iTapText(tester, 'developer');
+      await iSeeCardWithColorTimes(tester, Colors.blue.shade200, 1);
+    });
+    testWidgets('''As User I choose another word in same column''', (tester) async {
+      await bddSetUp(tester);
+      await iTapText(tester, 'developer');
+      await iTapText(tester, 'computer');
+      await iSeeCardWithColorTimes(tester, Colors.blue.shade200, 1);
+    });
+    testWidgets('''As User I choose two words in different columns (right choice)''', (tester) async {
+      await bddSetUp(tester);
+      await iTapText(tester, 'developer');
+      await iTapText(tester, 'розробниця');
+      await iSeeCardWithColorTimes(tester, Colors.green.shade300, 2);
+    });
+    testWidgets('''As User I choose two words in different columns (wrong choice)''', (tester) async {
+      await bddSetUp(tester);
+      await iTapText(tester, 'developer');
+      await iTapText(tester, 'помилка');
+      await iSeeCardWithColorTimes(tester, Colors.red.shade300, 2);
+    });
+    testWidgets('''As User I make right choice all time''', (tester) async {
+      await bddSetUp(tester);
+      await iTapCorrectPairsAllTimes(tester);
+      await iWait(tester);
+      await iSeeText(tester, 'Congratulation! You passed the test!');
+    });
+    testWidgets('''As User I want to return to learning words''', (tester) async {
+      await bddSetUp(tester);
+      await iTapIcon(tester, Icons.menu_book);
+      await iWait(tester);
+      await iSeeText(tester, 'Words for Today');
     });
   });
 }

@@ -1,24 +1,22 @@
 import 'package:flutter_test/flutter_test.dart';
 
 import 'i_tap_text.dart';
-import 'i_wait.dart';
 
 Future<void> iChoseTheCorrectTranslationEveryTime(WidgetTester tester) async {
   final listWords = <String>[
-    'розробниця',
-    'компʼютер',
+    'завдання',
+    'код',
     'клавіатура',
+    'компʼютер',
     'помилка',
+    'зустріч',
+    'репозиторій',
     'розробниця',
-    'компʼютер',
-    'розробниця',
-    'розробниця',
-    'клавіатура',
-    'клавіатура',
+    'крайній термін',
+    'генерація',
   ];
 
   for (final w in listWords) {
     await iTapText(tester, w);
-    await iWait(tester);
   }
 }
