@@ -19,11 +19,23 @@ class DailyWordsRepository {
   Future<List<OneWord>> getDailyWords() {
     final list = allWords.getAllWords();
 
-    var currentSeed = seed;
-    final list2 = List.generate(10, (_) {
-      currentSeed++;
-      return _getRandomElement(list, currentSeed);
-    });
+    // final list2 = List.generate(
+    //   10,
+    //   (index) => _getRandomElement(list, seed + index),
+    // );
+
+    var index = 0;
+    final list2 = <String>[];
+    while (true) {
+      final element = _getRandomElement(list, seed + index);
+      if (!list2.contains(element)) {
+        list2.add(element);
+      }
+      if (list2.length == 10) {
+        break;
+      }
+      index++;
+    }
 
     final wordsWithTranslate = list2
         .map(
