@@ -97,9 +97,9 @@ class _CongratulationScreenState extends State<CongratulationScreen> {
           blastDirectionality: BlastDirectionality.explosive,
           emissionFrequency: 0.3,
           gravity: 0.1,
-          //shouldLoop: true,
           createParticlePath: (size) {
             final path = Path();
+            // ignore: cascade_invocations
             path.addOval(
               Rect.fromCircle(
                 center: Offset.zero,
