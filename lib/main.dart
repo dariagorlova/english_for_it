@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         title: 'English for IT',
         theme: ThemeData(
           primarySwatch: Colors.purple,
-          textTheme: GoogleFonts.courgetteTextTheme(),
+          textTheme: GoogleFonts.pattayaTextTheme(),
           backgroundColor: const Color.fromARGB(255, 242, 211, 248),
           errorColor: Colors.grey,
           elevatedButtonTheme: ElevatedButtonThemeData(
