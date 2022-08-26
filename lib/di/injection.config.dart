@@ -36,9 +36,7 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
   gh.lazySingleton<_i7.Vocabulary>(() => _i7.Vocabulary());
   gh.factory<int>(() => seedModule.seed, instanceName: 'seed');
   gh.factory<_i8.DailyWordsRepository>(() => _i8.DailyWordsRepository(
-      get<_i7.Vocabulary>(),
-      get<_i3.GoogleTranslator>(),
-      get<int>(instanceName: 'seed')));
+      get<_i7.Vocabulary>(), get<int>(instanceName: 'seed')));
   gh.factory<_i9.LearningCubit>(
       () => _i9.LearningCubit(get<_i8.DailyWordsRepository>()));
   return get;

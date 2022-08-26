@@ -2,7 +2,7 @@ import 'package:english_for_it/di/injection.dart' as di;
 import 'package:english_for_it/main.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:injectable/injectable.dart';
-import '../utils/mock_google_translator.dart';
+//import '../utils/mock_google_translator.dart';
 import '../utils/mock_repository.dart';
 
 Future<void> theAppIsRunning(WidgetTester tester) async {
@@ -15,6 +15,6 @@ Future<void> theAppIsRunning(WidgetTester tester) async {
     ..allowReassignment = true
     ..registerFactory<int>(() => 0, instanceName: 'seed')
     ..registerSingleton(getWordsRepository())
-    ..registerSingleton(getGoogleTranslator())
+    //..registerSingleton(getGoogleTranslator())
     ..allowReassignment = false;
 }

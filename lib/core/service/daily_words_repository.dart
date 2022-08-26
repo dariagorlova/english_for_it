@@ -1,22 +1,22 @@
 import 'dart:math';
 import 'package:english_for_it/core/model/one_word.dart';
-import 'package:english_for_it/core/model/word_translation_model.dart';
+//import 'package:english_for_it/core/model/word_translation_model.dart';
 import 'package:english_for_it/core/service/dbase_service.dart';
 import 'package:english_for_it/core/service/vocabulary.dart';
 import 'package:injectable/injectable.dart';
-import 'package:translator/translator.dart';
+//import 'package:translator/translator.dart';
 
 @injectable
 class DailyWordsRepository {
   DailyWordsRepository(
     this.allWords,
-    this._googleTranslator,
+    //this._googleTranslator,
     @Named('seed') this.seed,
   );
 
   final Vocabulary allWords;
   final int seed;
-  final GoogleTranslator _googleTranslator;
+  //final GoogleTranslator _googleTranslator;
 
   Future<List<OneWord>> getDailyWords() async {
     //final list = allWords.getAllWords();
