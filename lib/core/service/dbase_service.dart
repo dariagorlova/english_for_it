@@ -2,22 +2,23 @@ import 'dart:async';
 
 import 'package:english_for_it/core/domain/dbase.dart';
 import 'package:english_for_it/core/model/word_translation_model.dart';
-import 'package:get_it/get_it.dart';
+//import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-abstract class DbaseService {
-  // Future<bool> checkPermissions();
-  Future<void> connectDb();
-  Future<void> disconnectDb();
-  Future<int> getWordsCount();
-  Future<OneWordPair> getWordByIndex(int index);
-}
+// abstract class DbaseService {
+//   // Future<bool> checkPermissions();
+//   Future<void> connectDb();
+//   Future<void> disconnectDb();
+//   Future<int> getWordsCount();
+//   Future<OneWordPair> getWordByIndex(int index);
+// }
 
-@prod
-@Injectable(as: DbaseService)
-class DbaseServiceImpl implements DbaseService, Disposable {
-  DbaseServiceImpl({required this.isPermissionsGranted});
+//@prod
+//@Injectable(as: DbaseService)
+//class DbaseServiceImpl implements DbaseService {
+class DbaseService {
+  DbaseService({required this.isPermissionsGranted});
   final _db = DbStorage();
   final bool isPermissionsGranted;
 
