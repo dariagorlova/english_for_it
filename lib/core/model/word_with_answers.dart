@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'word_with_answers.freezed.dart';
 
-enum WordState { initial, checking, correctly, wrong, tried }
+enum WordState { initial, checking, correctly, wrong }
 
 @freezed
 class WordWithAnswers with _$WordWithAnswers {
