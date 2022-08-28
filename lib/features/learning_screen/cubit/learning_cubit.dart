@@ -10,25 +10,17 @@ import 'package:injectable/injectable.dart';
 class LearningCubit extends Cubit<LearningState> {
   LearningCubit(
     this._currentWordRepository,
-    //this._flutterTts,
   ) : super(const LearningState(dailyWords: [])) {
     //initTTS();
     unawaited(getDailyWords());
   }
 
   final DailyWordsRepository _currentWordRepository;
-  //FlutterTts _flutterTts;
 
   Future<void> getDailyWords() async {
     final words = await _currentWordRepository.getDailyWords();
     emit(LearningState(dailyWords: words));
   }
-
-  // Future<void> initTTS() async {
-  //   _flutterTts = FlutterTts();
-  //   await _flutterTts.awaitSpeakCompletion(true);
-  //   await _flutterTts.getDefaultEngine;
-  //}
 
   void nextWord() {
     var curIndex = state.currentIndex;
@@ -69,12 +61,5 @@ class LearningCubit extends Cubit<LearningState> {
 
   void backToStart(BuildContext context) {
     context.go('/');
-  }
-
-  Future<void> playSound() async {
-    //   await _flutterTts.setVolume(0.5);
-    //   await _flutterTts.setSpeechRate(0.5);
-    //   await _flutterTts.setPitch(1);
-    //   await _flutterTts.speak(state.currentWord.word);
   }
 }

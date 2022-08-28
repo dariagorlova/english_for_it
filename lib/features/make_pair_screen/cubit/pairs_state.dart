@@ -32,18 +32,4 @@ extension XPairsState on PairsState {
   List<WordWithState> get rightColumn => wordsOnTheRight;
 
   int get numberOfFails => numberOfWrongAttempts;
-
-  // int get currentIndex => indexCurrentWord;
-  // int get numberOfFails => numberOfWrongAttempts;
-  // WordWithAnswers get currentWord => wordsWithAnswers[indexCurrentWord];
-  // bool isAnswerTried(int num) => answerTried[num];
-  // void answerWasTried(int num) => answerTried[num] = true;
-
-  // String get currentWordEN => wordsWithAnswers[indexCurrentWord].word;
-  // List<String> get currentWordAnswers =>
-  //     wordsWithAnswers[indexCurrentWord].answers;
-  // int get indexOfCorrectAnswerForCurrentWord =>
-  //     wordsWithAnswers[indexCurrentWord].indexOfCorrectAnswer;
-
-  // bool get isLoading => wordsWithAnswers.isEmpty;
 }

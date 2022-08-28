@@ -29,6 +29,7 @@ class OneWordPair {
   }
 
   @override
+  // ignore: avoid_equals_and_hash_code_on_mutable_classes
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is OneWordPair &&
@@ -38,5 +39,6 @@ class OneWordPair {
           id == other.id;
 
   @override
+  // ignore: avoid_equals_and_hash_code_on_mutable_classes
   int get hashCode => word.hashCode ^ translation.hashCode ^ id.hashCode;
 }
