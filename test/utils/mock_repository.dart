@@ -27,7 +27,7 @@ DailyWordsRepository getWordsRepository() {
   final mock = MockWordsRepository();
   when(mock.getDailyWords).thenAnswer((_) async {
     return const [
-      OneWord(word: 'developer', translate: 'розробник'),
+      OneWord(word: 'developer', translate: 'розробниця'),
       OneWord(word: 'computer', translate: 'компʼютер'),
       OneWord(word: 'bug', translate: 'помилка'),
       OneWord(word: 'keyboard', translate: 'клавіатура'),

@@ -3,16 +3,16 @@ import 'package:flutter_test/flutter_test.dart';
 
 Future<void> iChoseTheCorrectEnTranslationEveryTime(WidgetTester tester) async {
   final listWords = <String>[
-    'task',
-    'code',
-    'keyboard',
+    'developer',
     'computer',
     'bug',
-    'meeting',
-    'repository',
-    'developer',
-    'deadline',
+    'keyboard',
+    'code',
+    'task',
     'generation',
+    'repository',
+    'meeting',
+    'deadline',
   ];
 
   for (final w in listWords) {

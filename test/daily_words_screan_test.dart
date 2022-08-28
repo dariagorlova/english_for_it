@@ -22,23 +22,23 @@ void main() {
     testWidgets('''As User I want to see first word''', (tester) async {
       await bddSetUp(tester);
       await iSeeText(tester, 'Words for Today');
-      await iSeeText(tester, 'task');
+      await iSeeText(tester, 'developer');
     });
     testWidgets('''As User I can't tap previous button when first word on the screen''', (tester) async {
       await bddSetUp(tester);
       await iTapIcon(tester, Icons.arrow_back_ios);
-      await iSeeText(tester, 'task');
+      await iSeeText(tester, 'developer');
     });
     testWidgets('''As User I want to see next word''', (tester) async {
       await bddSetUp(tester);
       await iTapIcon(tester, Icons.arrow_forward_ios);
-      await iDontSeeText(tester, 'task');
-      await iSeeText(tester, 'code');
+      await iDontSeeText(tester, 'developer');
+      await iSeeText(tester, 'computer');
     });
     testWidgets('''As User I can't tap next button when last word on the screen''', (tester) async {
       await bddSetUp(tester);
       await iTapIconTimes(tester, Icons.arrow_forward_ios, 10);
-      await iSeeText(tester, 'generation');
+      await iSeeText(tester, 'deadline');
     });
     testWidgets('''As User I want to return to start screen''', (tester) async {
       await bddSetUp(tester);

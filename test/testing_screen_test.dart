@@ -25,22 +25,28 @@ void main() {
     testWidgets('''As User I want to see first word and answers''', (tester) async {
       await bddSetUp(tester);
       await iSeeText(tester, 'Testing daily words');
-      await iSeeText(tester, 'task');
+      await iSeeText(tester, 'developer');
+      await iSeeText(tester, 'розробниця');
+    });
+    testWidgets('''As User I see translation variants''', (tester) async {
+      await bddSetUp(tester);
+      await iSeeText(tester, 'код');
       await iSeeText(tester, 'завдання');
+      await iSeeText(tester, 'репозиторій');
     });
     testWidgets('''As User I'm making the wrong choice''', (tester) async {
       await bddSetUp(tester);
-      await iTapText(tester, 'помилка');
+      await iTapText(tester, 'код');
       await iSeeTextWithColor(tester, 1, Colors.grey);
-      await iTapText(tester, 'зустріч');
+      await iTapText(tester, 'завдання');
       await iSeeTextWithColor(tester, 2, Colors.grey);
     });
     testWidgets('''As User I'm making the right choice''', (tester) async {
       await bddSetUp(tester);
-      await iTapText(tester, 'завдання');
+      await iTapText(tester, 'розробниця');
       await iWait(tester);
-      await iDontSeeText(tester, 'task');
-      await iSeeText(tester, 'code');
+      await iDontSeeText(tester, 'developer');
+      await iSeeText(tester, 'computer');
     });
     testWidgets('''As User I finished test''', (tester) async {
       await bddSetUp(tester);
