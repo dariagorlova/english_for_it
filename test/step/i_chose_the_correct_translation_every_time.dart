@@ -4,16 +4,16 @@ import 'i_tap_text.dart';
 
 Future<void> iChoseTheCorrectTranslationEveryTime(WidgetTester tester) async {
   final listWords = <String>[
-    'завдання',
-    'код',
-    'клавіатура',
+    'розробниця',
     'компʼютер',
     'помилка',
-    'зустріч',
-    'репозиторій',
-    'розробниця',
-    'крайній термін',
+    'клавіатура',
+    'код',
+    'завдання',
     'генерація',
+    'репозиторій',
+    'зустріч',
+    'крайній термін',
   ];
 
   for (final w in listWords) {

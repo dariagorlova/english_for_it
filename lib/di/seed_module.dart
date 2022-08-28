@@ -7,4 +7,10 @@ abstract class SeedModule {
     final now = DateTime.now();
     return DateTime(now.year, now.month, now.day).millisecondsSinceEpoch;
   }
+
+  @Named('translates_seed')
+  int get translatesSeed {
+    final now = DateTime.now();
+    return DateTime(now.year, now.month, now.day).millisecondsSinceEpoch;
+  }
 }

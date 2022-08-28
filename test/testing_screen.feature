@@ -9,20 +9,32 @@ Feature: Testing knowledge (choose the correcct translation of the English word)
 
     Scenario: As User I want to see first word and answers
         Then I see {'Testing daily words'} text
-        And I see {'task'} text
-        And I see {'завдання'} text
+        And I see {'developer'} text
+        And I see {'розробниця'} text
+
+    Scenario: As User I see translation variants
+        #Then I see {'компʼютер'} text
+        #Then I see {'помилка'} text
+        #Then I see {'клавіатура'} text
+        Then I see {'код'} text
+        Then I see {'завдання'} text
+        #Then I see {'генерація'} text
+        Then I see {'репозиторій'} text
+        #Then I see {'зустріч'} text
+        #Then I see {'крайній термін'} text
+
 
     Scenario: As User I'm making the wrong choice
-        Then I tap {'помилка'} text
+        Then I tap {'код'} text
         And I see {1} text with {Colors.grey} color
-        And I tap {'зустріч'} text
+        And I tap {'завдання'} text
         And I see {2} text with {Colors.grey} color
 
     Scenario: As User I'm making the right choice
-        Then I tap {'завдання'} text
+        Then I tap {'розробниця'} text
         And I wait
-        And I don't see {'task'} text
-        And I see {'code'} text
+        And I don't see {'developer'} text
+        And I see {'computer'} text
 
     Scenario: As User I finished test
         When I chose the correct translation every time

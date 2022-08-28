@@ -10,9 +10,11 @@ import 'package:injectable/injectable.dart';
 @injectable
 class TestingCubit extends Cubit<TestingState> {
   TestingCubit(
+    @Named('translates_seed') int translatesSeed,
     @factoryParam List<OneWord> words,
     @factoryParam int variantENtoUA,
-  ) : super(
+  )   : _random = Random(translatesSeed),
+        super(
           const TestingState(
             wordsWithAnswers: [],
             indexCurrentWord: 0,
@@ -22,6 +24,8 @@ class TestingCubit extends Cubit<TestingState> {
         ) {
     variantENtoUA == 0 ? init(words) : initUA(words);
   }
+
+  final Random _random;
 
   void init(List<OneWord> dailyWords) {
     if (dailyWords.isEmpty) return;
@@ -102,7 +106,7 @@ class TestingCubit extends Cubit<TestingState> {
   }
 
   String _getRandomElement<String>(List<String> allWords) {
-    final i = Random().nextInt(allWords.length);
+    final i = _random.nextInt(allWords.length);
     return allWords[i];
   }
 
@@ -148,14 +152,5 @@ class TestingCubit extends Cubit<TestingState> {
 
   void backToLearn(BuildContext context) {
     context.push('/learning');
-  }
-
-  void endTest(BuildContext context) {
-    // if (state.currentIndex == state.wordsWithAnswers.length) {
-    //context.push('/congratulation, extra: state.numberOfWrongAttempts');
-    //context.push('/congratulation?times=$state.numberOfWrongAttempts');
-    //  final numberOfFails = state.numberOfFails;
-    //  context.push('/congratulation?times=$numberOfFails');
-    //}
   }
 }

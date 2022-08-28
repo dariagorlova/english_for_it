@@ -9,9 +9,9 @@ import './step/i_tap_text.dart';
 import './step/i_wait.dart';
 import './step/i_see_text.dart';
 import './step/i_see_text_with_color.dart';
-import './step/i_dont_see_text.dart';
 import './step/i_chose_the_correct_en_translation_every_time.dart';
 import './step/i_tap_icon.dart';
+import './step/i_dont_see_text.dart';
 
 void main() {
   Future<void> bddSetUp(WidgetTester tester) async {
@@ -25,22 +25,21 @@ void main() {
     testWidgets('''As User I want to see first word and answers''', (tester) async {
       await bddSetUp(tester);
       await iSeeText(tester, 'Testing daily words');
-      await iSeeText(tester, 'завдання');
-      await iSeeText(tester, 'task');
+      await iSeeText(tester, 'розробниця');
+      await iSeeText(tester, 'developer');
     });
     testWidgets('''As User I'm making the wrong choice''', (tester) async {
       await bddSetUp(tester);
       await iTapText(tester, 'code');
       await iSeeTextWithColor(tester, 1, Colors.grey);
-      await iTapText(tester, 'bug');
+      await iTapText(tester, 'task');
       await iSeeTextWithColor(tester, 2, Colors.grey);
     });
     testWidgets('''As User I'm making the right choice''', (tester) async {
       await bddSetUp(tester);
-      await iTapText(tester, 'task');
+      await iTapText(tester, 'developer');
       await iWait(tester);
-      await iDontSeeText(tester, 'завдання');
-      await iSeeText(tester, 'код');
+      await iSeeText(tester, 'компʼютер');
     });
     testWidgets('''As User I finished test''', (tester) async {
       await bddSetUp(tester);

@@ -9,20 +9,20 @@ Feature: Testing knowledge (choose the correcct translation of the Ukrainian wor
 
     Scenario: As User I want to see first word and answers
         Then I see {'Testing daily words'} text
-        And I see {'завдання'} text
-        And I see {'task'} text
+        And I see {'розробниця'} text
+        And I see {'developer'} text
 
     Scenario: As User I'm making the wrong choice
         Then I tap {'code'} text
         And I see {1} text with {Colors.grey} color
-        And I tap {'bug'} text
+        And I tap {'task'} text
         And I see {2} text with {Colors.grey} color
 
     Scenario: As User I'm making the right choice
-        Then I tap {'task'} text
+        Then I tap {'developer'} text
         And I wait
-        And I don't see {'завдання'} text
-        And I see {'код'} text
+        #And I don't see {'розробниця'} text
+        And I see {'компʼютер'} text
 
     Scenario: As User I finished test
         When I chose the correct EN translation every time

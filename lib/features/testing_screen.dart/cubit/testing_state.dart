@@ -16,9 +16,9 @@ class TestingState with _$TestingState {
 extension XTrainingState on TestingState {
   int get currentIndex => indexCurrentWord;
   int get numberOfFails => numberOfWrongAttempts;
-  WordWithAnswers get currentWord => wordsWithAnswers[indexCurrentWord];
+  //WordWithAnswers get currentWord => wordsWithAnswers[indexCurrentWord];
   bool isAnswerTried(int num) => answerTried[num];
-  void answerWasTried(int num) => answerTried[num] = true;
+  //void answerWasTried(int num) => answerTried[num] = true;
 
   String get currentWordEN => wordsWithAnswers[indexCurrentWord].word;
   List<String> get currentWordAnswers =>

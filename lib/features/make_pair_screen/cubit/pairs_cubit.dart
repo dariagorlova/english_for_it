@@ -61,8 +61,6 @@ class PairsCubit extends Cubit<PairsState> {
         return Colors.green.shade300;
       case WordState.wrong:
         return Colors.red.shade300;
-      case WordState.tried:
-        return Colors.grey.shade200;
       case WordState.initial:
         return Colors.white;
     }
@@ -75,8 +73,7 @@ class PairsCubit extends Cubit<PairsState> {
         ? state.stateOfWordInEN(index)
         : state.stateOfWordInUA(index);
 
-    if ((stateOfWord == WordState.correctly) ||
-        (stateOfWord == WordState.tried)) {
+    if (stateOfWord == WordState.correctly) {
       return;
     }
 
