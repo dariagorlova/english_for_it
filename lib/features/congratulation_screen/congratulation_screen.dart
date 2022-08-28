@@ -37,7 +37,18 @@ class _CongratulationScreenState extends State<CongratulationScreen> {
       children: [
         Scaffold(
           backgroundColor: Theme.of(context).backgroundColor,
-          appBar: AppBar(),
+          appBar: AppBar(
+            actions: [
+              IconButton(
+                onPressed: () {
+                  context.go('/');
+                },
+                icon: const Icon(
+                  Icons.menu_book,
+                ),
+              ),
+            ],
+          ),
           body: Padding(
             padding: const EdgeInsets.all(15),
             child: Center(
