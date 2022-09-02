@@ -34,7 +34,7 @@ class LearningView extends StatelessWidget {
               context.read<LearningCubit>().backToStart(context);
             },
             icon: const Icon(
-              Icons.menu_book,
+              Icons.home,
             ),
           ),
         ],

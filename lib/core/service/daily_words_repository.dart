@@ -6,16 +6,19 @@ import 'package:injectable/injectable.dart';
 @injectable
 class DailyWordsRepository {
   DailyWordsRepository(
-    this._dbaseService,
+    // this._dbaseService,
     @Named('seed') int seed,
   ) : _random = Random(seed);
 
-  final DbaseService _dbaseService;
+  //final DbaseService _dbaseService;
   final Random _random;
 
   Future<List<OneWord>> getDailyWords() async {
-    await _dbaseService.connectDb();
-    final count = await _dbaseService.getWordsCount();
+    final dbase = DbaseService(
+      isPermissionsGranted: await DbaseService.checkPermissions(),
+    );
+    await dbase.connectDb();
+    final count = await dbase.getWordsCount();
 
     final listIndex = <int>[];
     while (true) {
@@ -30,11 +33,11 @@ class DailyWordsRepository {
 
     final listDailyWords = await Future.wait(
       Iterable.generate(10, (index) {
-        return _dbaseService.getWordByIndex(listIndex[index]);
+        return dbase.getWordByIndex(listIndex[index]);
       }),
     );
 
-    await _dbaseService.disconnectDb();
+    await dbase.disconnectDb();
 
     final list2 = <OneWord>[];
     for (final w in listDailyWords) {
