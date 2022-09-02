@@ -18,13 +18,16 @@ void main() {
     await iTapText(tester, "Let's start");
     await iWait(tester);
   }
+
   group('''Learning words''', () {
     testWidgets('''As User I want to see first word''', (tester) async {
       await bddSetUp(tester);
       await iSeeText(tester, 'Words for Today');
       await iSeeText(tester, 'developer');
     });
-    testWidgets('''As User I can't tap previous button when first word on the screen''', (tester) async {
+    testWidgets(
+        '''As User I can't tap previous button when first word on the screen''',
+        (tester) async {
       await bddSetUp(tester);
       await iTapIcon(tester, Icons.arrow_back_ios);
       await iSeeText(tester, 'developer');
@@ -35,14 +38,16 @@ void main() {
       await iDontSeeText(tester, 'developer');
       await iSeeText(tester, 'computer');
     });
-    testWidgets('''As User I can't tap next button when last word on the screen''', (tester) async {
+    testWidgets(
+        '''As User I can't tap next button when last word on the screen''',
+        (tester) async {
       await bddSetUp(tester);
       await iTapIconTimes(tester, Icons.arrow_forward_ios, 10);
       await iSeeText(tester, 'deadline');
     });
     testWidgets('''As User I want to return to start screen''', (tester) async {
       await bddSetUp(tester);
-      await iTapIcon(tester, Icons.menu_book);
+      await iTapIcon(tester, Icons.home);
       await iWait(tester);
       await iDontSeeText(tester, 'Words for Today');
       await iSeeText(tester, "Let's start");
