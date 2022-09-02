@@ -12,8 +12,8 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:injectable/injectable.dart';
 
-void main() {
-  //async {
+void main() //{
+async {
   //WidgetsFlutterBinding.ensureInitialized();
   //await FlutterNotification.init(FlutterLocalNotificationsPlugin());
 
