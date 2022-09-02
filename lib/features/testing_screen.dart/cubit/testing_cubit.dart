@@ -135,7 +135,7 @@ class TestingCubit extends Cubit<TestingState> {
           );
         } else {
           final numberOfFails = state.numberOfFails;
-          context.push('/congratulation?times=$numberOfFails');
+          context.go('/congratulation?times=$numberOfFails');
 
           emit(
             state.copyWith(

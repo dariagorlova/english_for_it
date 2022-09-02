@@ -320,7 +320,7 @@ class PairsCubit extends Cubit<PairsState> {
     if (state.wordsOnTheLeft
         .every((element) => element.state == WordState.correctly)) {
       final numberOfFails = state.numberOfFails;
-      context.push('/congratulation?times=$numberOfFails');
+      context.go('/congratulation?times=$numberOfFails');
 
       emit(
         state.copyWith(
@@ -335,6 +335,6 @@ class PairsCubit extends Cubit<PairsState> {
   }
 
   void backToLearn(BuildContext context) {
-    context.push('/learning');
+    context.go('/learning');
   }
 }
