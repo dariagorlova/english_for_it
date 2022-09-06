@@ -115,4 +115,26 @@ class DbStorage {
     final count = Sqflite.firstIntValue(await _database.rawQuery(queryStr));
     return count ?? 0;
   }
+
+  /// ### отримати 10 слів поспіль починаючи з [initialIndex]
+  /// передбачено перехід через 0, коли initialIndex під час збільшення
+  /// стає більше за кількість рядків у таблиці
+  Future<List<OneWordPair>> get10WordsForToday(int initialIndex) async {
+    final total = await getWordsCount();
+    final List<Map> list = await _database.rawQuery('SELECT * FROM Vocabulary');
+    final res = <OneWordPair>[];
+    var index = initialIndex;
+    while (res.length < 10) {
+      if (index >= total - 1) index = 0;
+      res.add(
+        OneWordPair(
+          newId: list[index]['id'] as int,
+          word: list[index]['word'] as String,
+          translation: list[index]['translation'] as String,
+        ),
+      );
+      index++;
+    }
+    return res;
+  }
 }

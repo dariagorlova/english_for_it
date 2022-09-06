@@ -1,25 +1,25 @@
 import 'dart:async';
-
+import 'package:english_for_it/core/domain/app_settings.dart';
 import 'package:english_for_it/core/domain/dbase.dart';
 import 'package:english_for_it/core/model/word_translation_model.dart';
-//import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-// abstract class DbaseService {
-//   // Future<bool> checkPermissions();
-//   Future<void> connectDb();
-//   Future<void> disconnectDb();
-//   Future<int> getWordsCount();
-//   Future<OneWordPair> getWordByIndex(int index);
-// }
+abstract class DbaseService {
+  Future<void> connectDb();
+  Future<void> disconnectDb();
+  //Future<bool> saveWord(OneWordPair line);
+  Future<int> getWordsCount();
+  //Future<bool> deleteWordById(int id);
+  Future<OneWordPair> getWordByIndex(int index);
+  Future<List<OneWordPair>> get10WordsForToday();
+}
 
-//@prod
-//@Injectable(as: DbaseService)
-//class DbaseServiceImpl implements DbaseService {
-class DbaseService {
-  DbaseService({required this.isPermissionsGranted});
-  final _db = DbStorage();
+@prod
+@Injectable(as: DbaseService)
+class DbaseServiceImpl extends DbaseService {
+  DbaseServiceImpl({required this.isPermissionsGranted, required this.db});
+  final DbStorage db;
   final bool isPermissionsGranted;
 
   static Future<bool> checkPermissions() async {
@@ -32,12 +32,12 @@ class DbaseService {
 
   @override
   Future<void> connectDb() async {
-    if (isPermissionsGranted) await _db.openDict();
+    if (isPermissionsGranted) await db.openDict();
   }
 
   @override
   Future<void> disconnectDb() async {
-    if (isPermissionsGranted) await _db.closeDict();
+    if (isPermissionsGranted) await db.closeDict();
   }
 
   // @override
@@ -56,8 +56,8 @@ class DbaseService {
 
   @override
   Future<int> getWordsCount() async {
-    if (isPermissionsGranted && _db.isConnected()) {
-      final res = await _db.getWordsCount();
+    if (isPermissionsGranted && db.isConnected()) {
+      final res = await db.getWordsCount();
       return res;
     }
     return -1;
@@ -73,8 +73,8 @@ class DbaseService {
 
   @override
   Future<OneWordPair> getWordByIndex(int index) async {
-    if (isPermissionsGranted && _db.isConnected()) {
-      final res = await _db.getWordByIndex(index);
+    if (isPermissionsGranted && db.isConnected()) {
+      final res = await db.getWordByIndex(index);
       return res;
     }
     return OneWordPair(
@@ -82,6 +82,42 @@ class DbaseService {
       word: 'db connection error',
       translation: "з'єднання з БД відсутнє",
     );
+  }
+
+  @override
+  Future<List<OneWordPair>> get10WordsForToday() async {
+    if (isPermissionsGranted && db.isConnected()) {
+      final dt = DateTime.now();
+      // read shared_preferences
+      final appDataProvider = AppDataProvider();
+      final curDate = '${dt.year}.${dt.month}.${dt.day}';
+      final savedDate = appDataProvider.getDate() ?? curDate;
+      var savedIndex = appDataProvider.getIndex() ?? 0;
+
+      // check if curDate != savedDate, add 10 to savedIndex
+      // if after adding savedIndex > items count in DB,
+      // drag savedIndex through 0
+      if (curDate.compareTo(savedDate) != 0) {
+        savedIndex += 10;
+        final totalElements = await getWordsCount();
+        if (savedIndex >= totalElements) savedIndex -= totalElements;
+      }
+
+      // take 10 elements in a row, start from savedIndex
+      final res = await db.get10WordsForToday(savedIndex);
+      // update info in shared_preferences
+      appDataProvider
+        ..saveDate(curDate)
+        ..saveIndex(savedIndex);
+      return res;
+    } else {
+      return <OneWordPair>[
+        OneWordPair(
+          word: 'PERMISSIONS DENIED',
+          translation: 'ЗАБОРОНЕНО КОРИСТУВАЧЕМ',
+        ),
+      ];
+    }
   }
 
   // Future<List<OneWordPair>> getAllWords() async {
@@ -92,8 +128,7 @@ class DbaseService {
   //   return <OneWordPair>[];
   // }
 
-  @override
   FutureOr<void> onDispose() {
-    return _db.closeDict();
+    return db.closeDict();
   }
 }
