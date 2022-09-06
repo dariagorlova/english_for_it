@@ -1,3 +1,4 @@
+import 'package:english_for_it/core/domain/shared_prefs_helper.dart';
 import 'package:english_for_it/core/model/one_word.dart';
 //import 'package:english_for_it/core/service/notification_service.dart';
 import 'package:english_for_it/di/injection.dart';
@@ -14,9 +15,9 @@ import 'package:injectable/injectable.dart';
 
 void main() //{
 async {
-  //WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   //await FlutterNotification.init(FlutterLocalNotificationsPlugin());
-
+  await SharedPrefs.init();
   configureInjection(Environment.prod);
   runApp(MyApp());
 }
@@ -27,6 +28,9 @@ class MyApp extends StatelessWidget {
   });
 
   @override
+  //Widget build(BuildContext context) => FutureBuilder(
+  //      future: _initialization,
+  //      builder: (context, snapshot) {
   Widget build(BuildContext context) => MaterialApp.router(
         title: 'English for IT',
         theme: ThemeData(
