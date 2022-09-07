@@ -65,7 +65,19 @@ class _StartScreenState extends State<StartScreen> with WidgetsBindingObserver {
                   //}
                 },
                 child: Text(
-                  "Let's start",
+                  'learn words',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headlineSmall
+                      ?.copyWith(color: Theme.of(context).cardColor),
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  context.go('/learningPhrases');
+                },
+                child: Text(
+                  'learn phrases',
                   style: Theme.of(context)
                       .textTheme
                       .headlineSmall
