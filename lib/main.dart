@@ -1,14 +1,13 @@
 import 'package:english_for_it/core/domain/shared_prefs_helper.dart';
 import 'package:english_for_it/core/model/one_word.dart';
-//import 'package:english_for_it/core/service/notification_service.dart';
 import 'package:english_for_it/di/injection.dart';
 import 'package:english_for_it/features/congratulation_screen/congratulation_screen.dart';
 import 'package:english_for_it/features/learning_screen/learning_screen.dart';
 import 'package:english_for_it/features/make_pair_screen/make_pair_screen.dart';
+import 'package:english_for_it/features/phrases_screen/phrases_screen.dart';
 import 'package:english_for_it/features/start_screen/start_screen.dart';
 import 'package:english_for_it/features/testing_screen.dart/testing_screen.dart';
 import 'package:flutter/material.dart';
-//import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:injectable/injectable.dart';
@@ -28,9 +27,6 @@ class MyApp extends StatelessWidget {
   });
 
   @override
-  //Widget build(BuildContext context) => FutureBuilder(
-  //      future: _initialization,
-  //      builder: (context, snapshot) {
   Widget build(BuildContext context) => MaterialApp.router(
         title: 'English for IT',
         theme: ThemeData(
@@ -63,6 +59,10 @@ class MyApp extends StatelessWidget {
       GoRoute(
         path: '/learning',
         builder: (context, state) => const LearningScreen(),
+      ),
+      GoRoute(
+        path: '/learningPhrases',
+        builder: (context, state) => const PhrasesScreen(),
       ),
       GoRoute(
         path: '/testing',

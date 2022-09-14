@@ -2,7 +2,7 @@ Feature: Learning words
 
     Background:
         Given the app is running
-        And I tap {"Let's start"} text
+        And I tap {'learn words'} text
         And I wait
 
     Scenario: As User I want to see first word
@@ -23,7 +23,7 @@ Feature: Learning words
         And I see {'deadline'} text
 
     Scenario: As User I want to return to start screen
-        Then I tap {Icons.menu_book} icon
+        Then I tap {Icons.home} icon
         And I wait
         And I don't see {'Words for Today'} text
         And I see {"Let's start"} text

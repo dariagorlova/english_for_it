@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:english_for_it/core/service/daily_words_repository.dart';
+import 'package:english_for_it/core/service/daily_repository.dart';
 import 'package:english_for_it/features/learning_screen/cubit/learning_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,7 +15,7 @@ class LearningCubit extends Cubit<LearningState> {
     unawaited(getDailyWords());
   }
 
-  final DailyWordsRepository _currentWordRepository;
+  final DailyRepository _currentWordRepository;
 
   Future<void> getDailyWords() async {
     final words = await _currentWordRepository.getDailyWords();

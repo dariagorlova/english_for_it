@@ -2,7 +2,7 @@ Feature: Testing knowledge (make pairs)
 
     Background:
         Given the app is running
-        And I tap {"Let's start"} text
+        And I tap {'learn words'} text
         And I wait
         And I tap {'Make pairs'} text
         And I wait

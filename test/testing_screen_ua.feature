@@ -2,7 +2,7 @@ Feature: Testing knowledge (choose the correcct translation of the Ukrainian wor
 
     Background:
         Given the app is running
-        And I tap {"Let's start"} text
+        And I tap {'learn words'} text
         And I wait
         And I tap {'Translate UA to EN'} text
         And I wait
