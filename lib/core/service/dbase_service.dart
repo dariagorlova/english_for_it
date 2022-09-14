@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:english_for_it/core/domain/app_settings.dart';
 import 'package:english_for_it/core/domain/dbase.dart';
+import 'package:english_for_it/core/model/phrase.dart';
 import 'package:english_for_it/core/model/word_translation_model.dart';
 import 'package:injectable/injectable.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -8,11 +9,12 @@ import 'package:permission_handler/permission_handler.dart';
 abstract class DbaseService {
   Future<void> connectDb();
   Future<void> disconnectDb();
-  //Future<bool> saveWord(OneWordPair line);
   Future<int> getWordsCount();
-  //Future<bool> deleteWordById(int id);
   Future<OneWordPair> getWordByIndex(int index);
   Future<List<OneWordPair>> get10WordsForToday();
+  Future<int> getPhrasesCount();
+  Future<Phrase> getPhraseByIndex(int index);
+  Future<List<Phrase>> get10PhrasesForToday();
 }
 
 @prod
@@ -40,20 +42,6 @@ class DbaseServiceImpl extends DbaseService {
     if (isPermissionsGranted) await db.closeDict();
   }
 
-  // @override
-  // Future<bool> saveWord(OneWordPair line) async {
-  //   if (isPermissionsGranted && _db.isConnected()) {
-  //     final res = await _db.saveWord(line);
-  //     if (line.id == -1) {
-  //       if (res == 0) return false;
-  //       line = line.copyWith(id: res);
-  //       return true;
-  //     }
-  //     return res == 1;
-  //   }
-  //   return false;
-  // }
-
   @override
   Future<int> getWordsCount() async {
     if (isPermissionsGranted && db.isConnected()) {
@@ -62,14 +50,6 @@ class DbaseServiceImpl extends DbaseService {
     }
     return -1;
   }
-
-  // Future<bool> deleteWordById(int id) async {
-  //   if (isPermissionsGranted && _db.isConnected()) {
-  //     final res = await _db.deleteWord(id);
-  //     return res;
-  //   }
-  //   return false;
-  // }
 
   @override
   Future<OneWordPair> getWordByIndex(int index) async {
@@ -120,13 +100,67 @@ class DbaseServiceImpl extends DbaseService {
     }
   }
 
-  // Future<List<OneWordPair>> getAllWords() async {
-  //   if (isPermissionsGranted && _db.isConnected()) {
-  //     final res = await _db.getAllWords();
-  //     return res;
-  //   }
-  //   return <OneWordPair>[];
-  // }
+  @override
+  Future<int> getPhrasesCount() async {
+    if (isPermissionsGranted && db.isConnected()) {
+      final res = await db.getWordsCount();
+      return res;
+    }
+    return -1;
+  }
+
+  @override
+  Future<Phrase> getPhraseByIndex(int index) async {
+    if (isPermissionsGranted && db.isConnected()) {
+      final res = await db.getPhraseByIndex(index);
+      return res;
+    }
+    return const Phrase(
+      newId: -1,
+      phrase: 'db connection error',
+      byAnotherWords: 'db connection error',
+      sentence: 'db connection error',
+      byAnotherWordsTranslation: "з'єднання з БД відсутнє",
+      sentenceTranslation: "з'єднання з БД відсутнє",
+    );
+  }
+
+  @override
+  Future<List<Phrase>> get10PhrasesForToday() async {
+    if (isPermissionsGranted && db.isConnected()) {
+      final dt = DateTime.now();
+      // read shared_preferences
+      final appDataProvider = AppDataProvider();
+      final curDate = '${dt.year}.${dt.month}.${dt.day}';
+      final savedDate = appDataProvider.getDate() ?? curDate;
+      var savedIndex = appDataProvider.getIndex() ?? 0;
+
+      // read from db
+      if (curDate.compareTo(savedDate) != 0) {
+        savedIndex += 10;
+        final totalElements = await getPhrasesCount();
+        if (savedIndex >= totalElements) savedIndex -= totalElements;
+      }
+      final res = await db.get10PhrasesForToday(savedIndex);
+
+      // update info in shared_preferences
+      appDataProvider
+        ..saveDate(curDate)
+        ..saveIndex(savedIndex);
+      return res;
+    } else {
+      return <Phrase>[
+        const Phrase(
+          newId: -1,
+          phrase: 'PERMISSIONS DENIED',
+          byAnotherWords: 'PERMISSIONS DENIED',
+          sentence: 'PERMISSIONS DENIED',
+          byAnotherWordsTranslation: 'ЗАБОРОНЕНО КОРИСТУВАЧЕМ',
+          sentenceTranslation: 'ЗАБОРОНЕНО КОРИСТУВАЧЕМ',
+        ),
+      ];
+    }
+  }
 
   FutureOr<void> onDispose() {
     return db.closeDict();

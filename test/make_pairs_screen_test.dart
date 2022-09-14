@@ -15,7 +15,7 @@ import './step/i_tap_icon.dart';
 void main() {
   Future<void> bddSetUp(WidgetTester tester) async {
     await theAppIsRunning(tester);
-    await iTapText(tester, "Let's start");
+    await iTapText(tester, 'learn words');
     await iWait(tester);
     await iTapText(tester, 'Make pairs');
     await iWait(tester);

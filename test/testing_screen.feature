@@ -2,7 +2,7 @@ Feature: Testing knowledge (choose the correcct translation of the English word)
 
     Background:
         Given the app is running
-        And I tap {"Let's start"} text
+        And I tap {'learn words'} text
         And I wait
         And I tap {'Translate EN to UA'} text
         And I wait
@@ -13,16 +13,9 @@ Feature: Testing knowledge (choose the correcct translation of the English word)
         And I see {'розробниця'} text
 
     Scenario: As User I see translation variants
-        #Then I see {'компʼютер'} text
-        #Then I see {'помилка'} text
-        #Then I see {'клавіатура'} text
         Then I see {'код'} text
         Then I see {'завдання'} text
-        #Then I see {'генерація'} text
         Then I see {'репозиторій'} text
-        #Then I see {'зустріч'} text
-        #Then I see {'крайній термін'} text
-
 
     Scenario: As User I'm making the wrong choice
         Then I tap {'код'} text

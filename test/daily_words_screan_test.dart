@@ -15,7 +15,7 @@ import './step/i_tap_icon_times.dart';
 void main() {
   Future<void> bddSetUp(WidgetTester tester) async {
     await theAppIsRunning(tester);
-    await iTapText(tester, "Let's start");
+    await iTapText(tester, 'learn words');
     await iWait(tester);
   }
   group('''Learning words''', () {
@@ -42,7 +42,7 @@ void main() {
     });
     testWidgets('''As User I want to return to start screen''', (tester) async {
       await bddSetUp(tester);
-      await iTapIcon(tester, Icons.menu_book);
+      await iTapIcon(tester, Icons.home);
       await iWait(tester);
       await iDontSeeText(tester, 'Words for Today');
       await iSeeText(tester, "Let's start");

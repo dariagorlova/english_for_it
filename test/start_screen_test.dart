@@ -15,16 +15,23 @@ void main() {
     await theAppIsRunning(tester);
   }
   group('''Start of application''', () {
-    testWidgets('''As a User I want to see motivational text and button for start''', (tester) async {
+    testWidgets('''As a User I want to see motivational text and buttons for start''', (tester) async {
       await bddSetUp(tester);
       await iSeeText(tester, 'Today is an excellent day to learn something new!');
-      await iSeeText(tester, "Let's start");
+      await iSeeText(tester, 'learn words');
+      await iSeeText(tester, 'learn phrases');
     });
-    testWidgets('''As a User I tap a button''', (tester) async {
+    testWidgets('''As a User I want to learn words and tap a button''', (tester) async {
       await bddSetUp(tester);
-      await iTapText(tester, "Let's start");
+      await iTapText(tester, 'learn words');
       await iWait(tester);
-      await iDontSeeText(tester, "Let's start");
+      await iDontSeeText(tester, 'learn words');
+    });
+    testWidgets('''As a User I want to learn phrases and tap a button''', (tester) async {
+      await bddSetUp(tester);
+      await iTapText(tester, 'learn phrases');
+      await iWait(tester);
+      await iDontSeeText(tester, 'learn phrases');
     });
   });
 }
