@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:english_for_it/core/model/phrase.dart';
 import 'package:english_for_it/core/model/word_translation_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -31,6 +32,9 @@ class DbStorage {
       onCreate: (Database db, int version) async {
         await db.execute(
           'CREATE TABLE Vocabulary (id INTEGER PRIMARY KEY AUTOINCREMENT, word TEXT, translation TEXT)',
+        );
+        await db.execute(
+          'CREATE TABLE Phrases (id INTEGER PRIMARY KEY AUTOINCREMENT, phrase TEXT, by_another_words TEXT, sentence TEXT, by_another_words_translation TEXT, sentence_translation TEXT)',
         );
       },
       onConfigure: (Database db) async {
@@ -131,6 +135,60 @@ class DbStorage {
           newId: list[index]['id']! as int,
           word: list[index]['word']! as String,
           translation: list[index]['translation']! as String,
+        ),
+      );
+      index++;
+    }
+    return res;
+  }
+
+  Future<Phrase> getPhraseByIndex(int index) async {
+    final list = await _database.rawQuery('SELECT * FROM Phrases');
+    if (list.length < index) {
+      return const Phrase(
+        newId: -1,
+        phrase: 'phrase was not found',
+        byAnotherWords: 'phrase was not found',
+        sentence: 'phrase was not found',
+        byAnotherWordsTranslation: 'фраза не знайдена',
+        sentenceTranslation: 'фраза не знайдена',
+      );
+    }
+    final phrase = Phrase(
+      newId: list[index - 1]['id']! as int,
+      phrase: list[index - 1]['phrase']! as String,
+      byAnotherWords: list[index - 1]['by_another_words']! as String,
+      sentence: list[index - 1]['sentence']! as String,
+      byAnotherWordsTranslation:
+          list[index - 1]['by_another_words_translation']! as String,
+      sentenceTranslation: list[index - 1]['sentence_translation']! as String,
+    );
+
+    return phrase;
+  }
+
+  Future<int> getPhrasesCount() async {
+    const queryStr = 'SELECT COUNT(*) FROM Phrases';
+    final count = Sqflite.firstIntValue(await _database.rawQuery(queryStr));
+    return count ?? 0;
+  }
+
+  Future<List<Phrase>> get10PhrasesForToday(int initialIndex) async {
+    final total = await getPhrasesCount();
+    final list = await _database.rawQuery('SELECT * FROM Phrases');
+    final res = <Phrase>[];
+    var index = initialIndex;
+    while (res.length < 10) {
+      if (index >= total - 1) index = 0;
+      res.add(
+        Phrase(
+          newId: list[index]['id']! as int,
+          phrase: list[index]['phrase']! as String,
+          byAnotherWords: list[index]['by_another_words']! as String,
+          sentence: list[index]['sentence']! as String,
+          byAnotherWordsTranslation:
+              list[index]['by_another_words_translation']! as String,
+          sentenceTranslation: list[index]['sentence_translation']! as String,
         ),
       );
       index++;
