@@ -47,41 +47,47 @@ class _StartScreenState extends State<StartScreen> with WidgetsBindingObserver {
               const SizedBox(
                 height: 100,
               ),
-              ElevatedButton(
-                onPressed: () {
-                  //   async {
-                  // await FlutterNotification.instance.cancelNotification();
-                  // await FlutterNotification.instance.requestPermissions();
-                  // final now = tz.TZDateTime.now(tz.local);
-                  // await FlutterNotification.instance.registerMessage(
-                  //   //hour: now.hour,
-                  //   hour: now.hour + 24,
-                  //   minutes: now.minute,
-                  //   message: 'Time to English practice!',
-                  // );
-                  //
-                  // if (mounted) {
-                  context.go('/learning');
-                  //}
-                },
-                child: Text(
-                  'learn words',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineSmall
-                      ?.copyWith(color: Theme.of(context).cardColor),
+              SizedBox(
+                width: 200,
+                child: ElevatedButton(
+                  onPressed: () {
+                    //   async {
+                    // await FlutterNotification.instance.cancelNotification();
+                    // await FlutterNotification.instance.requestPermissions();
+                    // final now = tz.TZDateTime.now(tz.local);
+                    // await FlutterNotification.instance.registerMessage(
+                    //   //hour: now.hour,
+                    //   hour: now.hour + 24,
+                    //   minutes: now.minute,
+                    //   message: 'Time to English practice!',
+                    // );
+                    //
+                    // if (mounted) {
+                    context.go('/learning');
+                    //}
+                  },
+                  child: Text(
+                    'learn words',
+                    style: Theme.of(context)
+                        .textTheme
+                        .headlineSmall
+                        ?.copyWith(color: Theme.of(context).cardColor),
+                  ),
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  context.go('/learningPhrases');
-                },
-                child: Text(
-                  'learn phrases',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineSmall
-                      ?.copyWith(color: Theme.of(context).cardColor),
+              SizedBox(
+                width: 200,
+                child: ElevatedButton(
+                  onPressed: () {
+                    context.go('/learningPhrases');
+                  },
+                  child: Text(
+                    'learn phrases',
+                    style: Theme.of(context)
+                        .textTheme
+                        .headlineSmall
+                        ?.copyWith(color: Theme.of(context).cardColor),
+                  ),
                 ),
               ),
             ],
