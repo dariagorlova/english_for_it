@@ -19,7 +19,9 @@ extension XPhrasesState on PhrasesState {
 
   Phrase get currentPhrase => dailyPhrases[indexCurrenPhrase];
 
-  //String get textForDisplay => textForScreen;
+  String get byAnotherWords => displayInEnglish
+      ? dailyPhrases[indexCurrenPhrase].byAnotherWords
+      : dailyPhrases[indexCurrenPhrase].byAnotherWordsTranslation;
 
   bool get isCurrentPhraseFirst => indexCurrenPhrase == 0;
 
