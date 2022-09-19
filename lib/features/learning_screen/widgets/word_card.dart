@@ -1,67 +1,13 @@
 import 'package:english_for_it/features/learning_screen/cubit/learning_cubit.dart';
 import 'package:english_for_it/features/learning_screen/cubit/learning_state.dart';
+import 'package:english_for_it/features/phrases_screen/widgets/speak_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_tts/flutter_tts.dart';
 
-class WordCard extends StatefulWidget {
+class WordCard extends StatelessWidget {
   const WordCard({
     super.key,
   });
-
-  @override
-  State<WordCard> createState() => _WordCardState();
-}
-
-enum TtsState { playing, stopped }
-
-class _WordCardState extends State<WordCard> {
-  late FlutterTts flutterTts;
-  TtsState ttsState = TtsState.stopped;
-  double volume = 0.5;
-  double pitch = 1;
-  double rate = 0.5;
-
-  @override
-  void initState() {
-    super.initState();
-    flutterTts = FlutterTts();
-    initSpeak();
-  }
-
-  void initSpeak() {
-    flutterTts
-      ..setStartHandler(() {
-        setState(() {
-          ttsState = TtsState.playing;
-        });
-      })
-      ..setCompletionHandler(() {
-        setState(() {
-          ttsState = TtsState.stopped;
-        });
-      })
-      ..setErrorHandler((msg) {
-        setState(() {
-          ttsState = TtsState.stopped;
-        });
-      });
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    flutterTts.stop();
-  }
-
-  Future<void> _speak(String text) async {
-    await flutterTts.setVolume(volume);
-    await flutterTts.setSpeechRate(rate);
-    await flutterTts.setPitch(pitch);
-
-    final result = await flutterTts.speak(text);
-    if (result == 1) setState(() => ttsState = TtsState.playing);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -103,20 +49,7 @@ class _WordCardState extends State<WordCard> {
                     if (state.isLoading)
                       const Text('Loading')
                     else ...[
-                      Align(
-                        alignment: Alignment.topRight,
-                        child: IconButton(
-                          alignment: Alignment.topRight,
-                          icon: const Icon(Icons.volume_up),
-                          iconSize: 30,
-                          color: Colors.green,
-                          splashColor: Colors.greenAccent,
-                          onPressed: () {
-                            // context.read<LearningCubit>().playSound();
-                            _speak(state.currentWord.word);
-                          },
-                        ),
-                      ),
+                      SpeakButton(phrase: <String>[state.currentWord.word]),
                       FittedBox(
                         fit: BoxFit.fitWidth,
                         child: Column(

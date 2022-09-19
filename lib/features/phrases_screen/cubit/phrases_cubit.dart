@@ -19,11 +19,11 @@ class PhrasesCubit extends Cubit<PhrasesState> {
 
   Future<void> getDailyPhrases() async {
     final phrases = await _currentWordRepository.getDailyPhrases();
-    final text = <String>[phrases.first.byAnotherWords];
+    final text = <String>[phrases.first.byAnotherWords, '', ''];
     emit(
       PhrasesState(
         dailyPhrases: phrases,
-        textForDisplay: text, //phrases.first.byAnotherWords,
+        textForDisplay: text,
       ),
     );
   }
@@ -63,10 +63,6 @@ class PhrasesCubit extends Cubit<PhrasesState> {
           ? '' // phrase ends a sentence
           : sentence.substring(endIndex, sentence.length).trim();
 
-      //phrase
-      //  ..padLeft(phrase.length + 1)
-      //  ..padRight(phrase.length + 1);
-
       sentenceBySmallParts[0] = partBeforePhrase; // 'I finally'
       sentenceBySmallParts[1] =
           ' $phrase '; // ' applied for ' <- will bold on screen
@@ -102,19 +98,18 @@ class PhrasesCubit extends Cubit<PhrasesState> {
     var res = state.textForDisplay;
     if (state.sentenceDisplayed) {
       if (state.displayInEnglish) {
-        //res = state.currentPhrase.sentence;
         res = _breakStringOnParts(
           state.currentPhrase.sentence,
           state.currentPhrase.phrase,
         );
       } else {
-        res = <String>[state.currentPhrase.sentenceTranslation];
+        res = <String>[state.currentPhrase.sentenceTranslation, '', ''];
       }
     } else {
       if (state.displayInEnglish) {
-        res = <String>[state.currentPhrase.byAnotherWords];
+        res = <String>[state.currentPhrase.byAnotherWords, '', ''];
       } else {
-        res = <String>[state.currentPhrase.byAnotherWordsTranslation];
+        res = <String>[state.currentPhrase.byAnotherWordsTranslation, '', ''];
       }
     }
 

@@ -86,9 +86,8 @@ class DbaseServiceImpl extends DbaseService {
       // take 10 elements in a row, start from savedIndex
       final res = await db.get10WordsForToday(savedIndex);
       // update info in shared_preferences
-      appDataProvider
-        ..saveDate(curDate)
-        ..saveIndex(savedIndex);
+      unawaited(appDataProvider.saveDate(curDate));
+      unawaited(appDataProvider.saveIndex(savedIndex));
       return res;
     } else {
       return <OneWordPair>[
@@ -144,9 +143,8 @@ class DbaseServiceImpl extends DbaseService {
       final res = await db.get10PhrasesForToday(savedIndex);
 
       // update info in shared_preferences
-      appDataProvider
-        ..saveDate(curDate)
-        ..saveIndex(savedIndex);
+      unawaited(appDataProvider.saveDate(curDate));
+      unawaited(appDataProvider.saveIndex(savedIndex));
       return res;
     } else {
       return <Phrase>[
