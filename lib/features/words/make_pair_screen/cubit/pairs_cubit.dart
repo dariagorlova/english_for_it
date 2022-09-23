@@ -1,6 +1,6 @@
 import 'package:english_for_it/core/model/one_word.dart';
 import 'package:english_for_it/core/model/word_with_answers.dart';
-import 'package:english_for_it/features/make_pair_screen/cubit/pairs_state.dart';
+import 'package:english_for_it/features/words/make_pair_screen/cubit/pairs_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';

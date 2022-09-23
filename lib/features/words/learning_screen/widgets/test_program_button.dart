@@ -1,4 +1,4 @@
-import 'package:english_for_it/features/learning_screen/cubit/learning_cubit.dart';
+import 'package:english_for_it/features/words/learning_screen/cubit/learning_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

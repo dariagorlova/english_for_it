@@ -1,7 +1,7 @@
 import 'package:english_for_it/di/injection.dart';
-import 'package:english_for_it/features/phrases_screen/cubit/phrases_cubit.dart';
-import 'package:english_for_it/features/phrases_screen/cubit/phrases_state.dart';
-import 'package:english_for_it/features/phrases_screen/widgets/phrase_card.dart';
+import 'package:english_for_it/features/phrases/phrases_learning_screen/cubit/phrases_cubit.dart';
+import 'package:english_for_it/features/phrases/phrases_learning_screen/cubit/phrases_state.dart';
+import 'package:english_for_it/features/phrases/phrases_learning_screen/widgets/phrase_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -58,6 +58,22 @@ class PhrasesScreenView extends StatelessWidget {
                 child: const Padding(
                   padding: EdgeInsets.all(15),
                   child: PhraseCard(),
+                ),
+              ),
+              // SizedBox(
+              //   height: MediaQuery.of(context).size.height * 0.2,
+              // ),
+              ElevatedButton(
+                onPressed: () {
+                  //context.go('/testingPhrases');
+                  context.read<PhrasesCubit>().goToTest(context);
+                },
+                child: Text(
+                  'Test the learned',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headlineSmall
+                      ?.copyWith(color: Theme.of(context).cardColor),
                 ),
               ),
             ],

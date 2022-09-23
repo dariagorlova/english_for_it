@@ -1,8 +1,8 @@
 import 'package:english_for_it/core/model/one_word.dart';
 import 'package:english_for_it/di/injection.dart';
-import 'package:english_for_it/features/testing_screen.dart/cubit/testing_cubit.dart';
-import 'package:english_for_it/features/testing_screen.dart/cubit/testing_state.dart';
-import 'package:english_for_it/features/testing_screen.dart/widgets/choise_card.dart';
+import 'package:english_for_it/features/words/testing_screen.dart/cubit/testing_cubit.dart';
+import 'package:english_for_it/features/words/testing_screen.dart/cubit/testing_state.dart';
+import 'package:english_for_it/features/words/testing_screen.dart/widgets/choise_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

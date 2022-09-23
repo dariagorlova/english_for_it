@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:english_for_it/core/service/daily_repository.dart';
-import 'package:english_for_it/features/learning_screen/cubit/learning_state.dart';
+import 'package:english_for_it/features/words/learning_screen/cubit/learning_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';

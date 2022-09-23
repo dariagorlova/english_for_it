@@ -7,7 +7,7 @@ part 'phrases_state.freezed.dart';
 class PhrasesState with _$PhrasesState {
   const factory PhrasesState({
     required List<Phrase> dailyPhrases,
-    required List<String> textForDisplay,
+    required List<List<String>> sentences,
     @Default(0) int indexCurrenPhrase,
     @Default(true) bool displayInEnglish,
     @Default(false) bool sentenceDisplayed,
@@ -15,17 +15,9 @@ class PhrasesState with _$PhrasesState {
 }
 
 extension XPhrasesState on PhrasesState {
-  int get currentIndex => indexCurrenPhrase;
-
-  Phrase get currentPhrase => dailyPhrases[indexCurrenPhrase];
-
-  // List<String> get sentence => displayInEnglish
-  //     ? textForDisplay
-  //     : <String>[dailyPhrases[indexCurrenPhrase].sentenceTranslation, '', ''];
-
-  String get sentence => displayInEnglish
-      ? dailyPhrases[indexCurrenPhrase].sentence
-      : dailyPhrases[indexCurrenPhrase].sentenceTranslation;
+  String get sentenceTranslation =>
+      dailyPhrases[indexCurrenPhrase].sentenceTranslation;
+  List<String> get sentence => sentences[indexCurrenPhrase];
 
   String get byAnotherWords => displayInEnglish
       ? dailyPhrases[indexCurrenPhrase].byAnotherWords

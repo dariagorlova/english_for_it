@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$PhrasesState {
   List<Phrase> get dailyPhrases => throw _privateConstructorUsedError;
-  List<String> get textForDisplay => throw _privateConstructorUsedError;
+  List<List<String>> get sentences => throw _privateConstructorUsedError;
   int get indexCurrenPhrase => throw _privateConstructorUsedError;
   bool get displayInEnglish => throw _privateConstructorUsedError;
   bool get sentenceDisplayed => throw _privateConstructorUsedError;
@@ -34,7 +34,7 @@ abstract class $PhrasesStateCopyWith<$Res> {
       _$PhrasesStateCopyWithImpl<$Res>;
   $Res call(
       {List<Phrase> dailyPhrases,
-      List<String> textForDisplay,
+      List<List<String>> sentences,
       int indexCurrenPhrase,
       bool displayInEnglish,
       bool sentenceDisplayed});
@@ -51,7 +51,7 @@ class _$PhrasesStateCopyWithImpl<$Res> implements $PhrasesStateCopyWith<$Res> {
   @override
   $Res call({
     Object? dailyPhrases = freezed,
-    Object? textForDisplay = freezed,
+    Object? sentences = freezed,
     Object? indexCurrenPhrase = freezed,
     Object? displayInEnglish = freezed,
     Object? sentenceDisplayed = freezed,
@@ -61,10 +61,10 @@ class _$PhrasesStateCopyWithImpl<$Res> implements $PhrasesStateCopyWith<$Res> {
           ? _value.dailyPhrases
           : dailyPhrases // ignore: cast_nullable_to_non_nullable
               as List<Phrase>,
-      textForDisplay: textForDisplay == freezed
-          ? _value.textForDisplay
-          : textForDisplay // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+      sentences: sentences == freezed
+          ? _value.sentences
+          : sentences // ignore: cast_nullable_to_non_nullable
+              as List<List<String>>,
       indexCurrenPhrase: indexCurrenPhrase == freezed
           ? _value.indexCurrenPhrase
           : indexCurrenPhrase // ignore: cast_nullable_to_non_nullable
@@ -90,7 +90,7 @@ abstract class _$$_PhrasesStateCopyWith<$Res>
   @override
   $Res call(
       {List<Phrase> dailyPhrases,
-      List<String> textForDisplay,
+      List<List<String>> sentences,
       int indexCurrenPhrase,
       bool displayInEnglish,
       bool sentenceDisplayed});
@@ -110,7 +110,7 @@ class __$$_PhrasesStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? dailyPhrases = freezed,
-    Object? textForDisplay = freezed,
+    Object? sentences = freezed,
     Object? indexCurrenPhrase = freezed,
     Object? displayInEnglish = freezed,
     Object? sentenceDisplayed = freezed,
@@ -120,10 +120,10 @@ class __$$_PhrasesStateCopyWithImpl<$Res>
           ? _value._dailyPhrases
           : dailyPhrases // ignore: cast_nullable_to_non_nullable
               as List<Phrase>,
-      textForDisplay: textForDisplay == freezed
-          ? _value._textForDisplay
-          : textForDisplay // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+      sentences: sentences == freezed
+          ? _value._sentences
+          : sentences // ignore: cast_nullable_to_non_nullable
+              as List<List<String>>,
       indexCurrenPhrase: indexCurrenPhrase == freezed
           ? _value.indexCurrenPhrase
           : indexCurrenPhrase // ignore: cast_nullable_to_non_nullable
@@ -145,12 +145,12 @@ class __$$_PhrasesStateCopyWithImpl<$Res>
 class _$_PhrasesState implements _PhrasesState {
   const _$_PhrasesState(
       {required final List<Phrase> dailyPhrases,
-      required final List<String> textForDisplay,
+      required final List<List<String>> sentences,
       this.indexCurrenPhrase = 0,
       this.displayInEnglish = true,
       this.sentenceDisplayed = false})
       : _dailyPhrases = dailyPhrases,
-        _textForDisplay = textForDisplay;
+        _sentences = sentences;
 
   final List<Phrase> _dailyPhrases;
   @override
@@ -159,11 +159,11 @@ class _$_PhrasesState implements _PhrasesState {
     return EqualUnmodifiableListView(_dailyPhrases);
   }
 
-  final List<String> _textForDisplay;
+  final List<List<String>> _sentences;
   @override
-  List<String> get textForDisplay {
+  List<List<String>> get sentences {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_textForDisplay);
+    return EqualUnmodifiableListView(_sentences);
   }
 
   @override
@@ -178,7 +178,7 @@ class _$_PhrasesState implements _PhrasesState {
 
   @override
   String toString() {
-    return 'PhrasesState(dailyPhrases: $dailyPhrases, textForDisplay: $textForDisplay, indexCurrenPhrase: $indexCurrenPhrase, displayInEnglish: $displayInEnglish, sentenceDisplayed: $sentenceDisplayed)';
+    return 'PhrasesState(dailyPhrases: $dailyPhrases, sentences: $sentences, indexCurrenPhrase: $indexCurrenPhrase, displayInEnglish: $displayInEnglish, sentenceDisplayed: $sentenceDisplayed)';
   }
 
   @override
@@ -189,7 +189,7 @@ class _$_PhrasesState implements _PhrasesState {
             const DeepCollectionEquality()
                 .equals(other._dailyPhrases, _dailyPhrases) &&
             const DeepCollectionEquality()
-                .equals(other._textForDisplay, _textForDisplay) &&
+                .equals(other._sentences, _sentences) &&
             const DeepCollectionEquality()
                 .equals(other.indexCurrenPhrase, indexCurrenPhrase) &&
             const DeepCollectionEquality()
@@ -202,7 +202,7 @@ class _$_PhrasesState implements _PhrasesState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_dailyPhrases),
-      const DeepCollectionEquality().hash(_textForDisplay),
+      const DeepCollectionEquality().hash(_sentences),
       const DeepCollectionEquality().hash(indexCurrenPhrase),
       const DeepCollectionEquality().hash(displayInEnglish),
       const DeepCollectionEquality().hash(sentenceDisplayed));
@@ -216,7 +216,7 @@ class _$_PhrasesState implements _PhrasesState {
 abstract class _PhrasesState implements PhrasesState {
   const factory _PhrasesState(
       {required final List<Phrase> dailyPhrases,
-      required final List<String> textForDisplay,
+      required final List<List<String>> sentences,
       final int indexCurrenPhrase,
       final bool displayInEnglish,
       final bool sentenceDisplayed}) = _$_PhrasesState;
@@ -224,7 +224,7 @@ abstract class _PhrasesState implements PhrasesState {
   @override
   List<Phrase> get dailyPhrases;
   @override
-  List<String> get textForDisplay;
+  List<List<String>> get sentences;
   @override
   int get indexCurrenPhrase;
   @override
