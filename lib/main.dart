@@ -1,12 +1,15 @@
 import 'package:english_for_it/core/domain/shared_prefs_helper.dart';
 import 'package:english_for_it/core/model/one_word.dart';
+import 'package:english_for_it/core/model/phrase.dart';
 import 'package:english_for_it/di/injection.dart';
 import 'package:english_for_it/features/congratulation_screen/congratulation_screen.dart';
-import 'package:english_for_it/features/learning_screen/learning_screen.dart';
-import 'package:english_for_it/features/make_pair_screen/make_pair_screen.dart';
-import 'package:english_for_it/features/phrases_screen/phrases_screen.dart';
+import 'package:english_for_it/features/phrases/phrases_learning_screen/phrases_screen.dart';
+import 'package:english_for_it/features/phrases/phrases_testing_screen/phrases_testing_screen.dart';
+import 'package:english_for_it/features/start_screen/irregular_verbs_screen.dart';
 import 'package:english_for_it/features/start_screen/start_screen.dart';
-import 'package:english_for_it/features/testing_screen.dart/testing_screen.dart';
+import 'package:english_for_it/features/words/learning_screen/learning_screen.dart';
+import 'package:english_for_it/features/words/make_pair_screen/make_pair_screen.dart';
+import 'package:english_for_it/features/words/testing_screen.dart/testing_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -65,6 +68,12 @@ class MyApp extends StatelessWidget {
         builder: (context, state) => const PhrasesScreen(),
       ),
       GoRoute(
+        path: '/testingPhrases',
+        builder: (context, state) => PhrasesTestingScreen(
+          phrases: state.extra! as List<Phrase>,
+        ),
+      ),
+      GoRoute(
         path: '/testing',
         builder: (context, state) => TestingScreen(
           words: state.extra! as List<OneWord>,
@@ -93,6 +102,10 @@ class MyApp extends StatelessWidget {
             times: num,
           );
         },
+      ),
+      GoRoute(
+        path: '/irregularVerbs',
+        builder: (context, state) => const IrregularVerbsScreen(),
       ),
     ],
   );
