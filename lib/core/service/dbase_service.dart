@@ -102,7 +102,7 @@ class DbaseServiceImpl extends DbaseService {
   @override
   Future<int> getPhrasesCount() async {
     if (isPermissionsGranted && db.isConnected()) {
-      final res = await db.getWordsCount();
+      final res = await db.getPhrasesCount();
       return res;
     }
     return -1;

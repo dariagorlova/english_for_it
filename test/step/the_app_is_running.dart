@@ -15,5 +15,6 @@ Future<void> theAppIsRunning(WidgetTester tester) async {
     ..registerFactory<int>(() => 0, instanceName: 'seed')
     ..registerFactory<int>(() => 1, instanceName: 'translates_seed')
     ..registerSingleton(getWordsRepository())
+    //..registerSingleton(getPhrasesRepository())
     ..allowReassignment = false;
 }

@@ -29,10 +29,10 @@ Feature: Testing knowledge (choose the correcct translation of the English word)
         And I don't see {'developer'} text
         And I see {'computer'} text
 
-    Scenario: As User I finished test
-        When I chose the correct translation every time
-        And I wait
-        Then I see {'Congratulation! You passed the test!'} text
+    #Scenario: As User I finished test
+    #    When I chose the correct translation every time
+    #    And I wait
+    #    Then I see {'Congratulation! You passed the test!'} text
 
     Scenario: As User I want to return to learning words
         Then I tap {Icons.menu_book} icon

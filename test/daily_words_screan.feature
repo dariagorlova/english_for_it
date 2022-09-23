@@ -26,7 +26,7 @@ Feature: Learning words
         Then I tap {Icons.home} icon
         And I wait
         And I don't see {'Words for Today'} text
-        And I see {"Let's start"} text
+        And I see {'learn words'} text
 
        
 
