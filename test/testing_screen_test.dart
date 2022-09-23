@@ -10,7 +10,6 @@ import './step/i_wait.dart';
 import './step/i_see_text.dart';
 import './step/i_see_text_with_color.dart';
 import './step/i_dont_see_text.dart';
-import './step/i_chose_the_correct_translation_every_time.dart';
 import './step/i_tap_icon.dart';
 
 void main() {
@@ -47,12 +46,6 @@ void main() {
       await iWait(tester);
       await iDontSeeText(tester, 'developer');
       await iSeeText(tester, 'computer');
-    });
-    testWidgets('''As User I finished test''', (tester) async {
-      await bddSetUp(tester);
-      await iChoseTheCorrectTranslationEveryTime(tester);
-      await iWait(tester);
-      await iSeeText(tester, 'Congratulation! You passed the test!');
     });
     testWidgets('''As User I want to return to learning words''', (tester) async {
       await bddSetUp(tester);

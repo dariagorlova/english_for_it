@@ -45,7 +45,7 @@ void main() {
       await iTapIcon(tester, Icons.home);
       await iWait(tester);
       await iDontSeeText(tester, 'Words for Today');
-      await iSeeText(tester, "Let's start");
+      await iSeeText(tester, 'learn words');
     });
   });
 }

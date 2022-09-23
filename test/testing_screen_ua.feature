@@ -24,10 +24,10 @@ Feature: Testing knowledge (choose the correcct translation of the Ukrainian wor
         #And I don't see {'розробниця'} text
         And I see {'компʼютер'} text
 
-    Scenario: As User I finished test
-        When I chose the correct EN translation every time
-        And I wait
-        Then I see {'Congratulation! You passed the test!'} text
+    #Scenario: As User I finished test
+    #    When I chose the correct EN translation every time
+    #    And I wait
+    #    Then I see {'Congratulation! You passed the test!'} text
 
     Scenario: As User I want to return to learning words
         Then I tap {Icons.menu_book} icon
