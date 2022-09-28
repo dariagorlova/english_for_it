@@ -62,7 +62,7 @@ class _StartScreenState extends State<StartScreen> with WidgetsBindingObserver {
                 style: Theme.of(context).textTheme.headline5,
               ),
               onTap: () {
-                // go to page /translator
+                context.go('/searchWord');
                 Navigator.pop(context);
               },
             ),
@@ -75,7 +75,6 @@ class _StartScreenState extends State<StartScreen> with WidgetsBindingObserver {
                 style: Theme.of(context).textTheme.headline5,
               ),
               onTap: () {
-                // go to page with irregular Verbs
                 context.go('/irregularVerbs');
                 Navigator.pop(context);
               },
@@ -85,66 +84,153 @@ class _StartScreenState extends State<StartScreen> with WidgetsBindingObserver {
       ),
       backgroundColor: Theme.of(context).backgroundColor,
       body: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: EdgeInsets.all(MediaQuery.of(context).size.width / 30),
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
+          child: MediaQuery.of(context).orientation == Orientation.portrait
+              ? const VerticalView()
+              : const HorizontalView(),
+        ),
+      ),
+    );
+  }
+}
+
+class VerticalView extends StatelessWidget {
+  const VerticalView({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final heightScreen = MediaQuery.of(context).size.height;
+    final widthScreen = MediaQuery.of(context).size.width;
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Image.asset(
+          'assets/images/meeting.png',
+          width: MediaQuery.of(context).size.width - 10,
+          height: MediaQuery.of(context).size.height / 3.5,
+        ),
+        const SizedBox(
+          height: 15,
+        ),
+        Text(
+          'Today is an excellent day to learn something new!',
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.headlineLarge,
+        ),
+        SizedBox(
+          height: heightScreen / 8.5,
+        ),
+        SizedBox(
+          width: widthScreen / 2,
+          child: ElevatedButton(
+            onPressed: () {
+              //   async {
+              // await FlutterNotification.instance.cancelNotification();
+              // await FlutterNotification.instance.requestPermissions();
+              // final now = tz.TZDateTime.now(tz.local);
+              // await FlutterNotification.instance.registerMessage(
+              //   //hour: now.hour,
+              //   hour: now.hour + 24,
+              //   minutes: now.minute,
+              //   message: 'Time to English practice!',
+              // );
+              //
+              // if (mounted) {
+              context.go('/learning');
+              //}
+            },
+            child: Text(
+              'learn words',
+              style: Theme.of(context)
+                  .textTheme
+                  .headlineSmall
+                  ?.copyWith(color: Theme.of(context).cardColor),
+            ),
+          ),
+        ),
+        SizedBox(
+          width: widthScreen / 2,
+          child: ElevatedButton(
+            onPressed: () {
+              context.go('/learningPhrases');
+            },
+            child: Text(
+              'learn phrases',
+              style: Theme.of(context)
+                  .textTheme
+                  .headlineSmall
+                  ?.copyWith(color: Theme.of(context).cardColor),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class HorizontalView extends StatelessWidget {
+  const HorizontalView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final heightScreen = MediaQuery.of(context).size.height;
+    final widthScreen = MediaQuery.of(context).size.width;
+    return Row(
+      children: [
+        Image.asset(
+          'assets/images/meeting.png',
+          width: widthScreen / 2.5,
+        ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            SizedBox(
+              width: widthScreen / 2,
+              child: Text(
                 'Today is an excellent day to learn something new!',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.headlineLarge,
               ),
-              const SizedBox(
-                height: 100,
-              ),
-              SizedBox(
-                width: 200,
-                child: ElevatedButton(
-                  onPressed: () {
-                    //   async {
-                    // await FlutterNotification.instance.cancelNotification();
-                    // await FlutterNotification.instance.requestPermissions();
-                    // final now = tz.TZDateTime.now(tz.local);
-                    // await FlutterNotification.instance.registerMessage(
-                    //   //hour: now.hour,
-                    //   hour: now.hour + 24,
-                    //   minutes: now.minute,
-                    //   message: 'Time to English practice!',
-                    // );
-                    //
-                    // if (mounted) {
-                    context.go('/learning');
-                    //}
-                  },
-                  child: Text(
-                    'learn words',
-                    style: Theme.of(context)
-                        .textTheme
-                        .headlineSmall
-                        ?.copyWith(color: Theme.of(context).cardColor),
-                  ),
+            ),
+            SizedBox(
+              height: heightScreen / 30,
+            ),
+            SizedBox(
+              width: widthScreen / 4,
+              child: ElevatedButton(
+                onPressed: () {
+                  context.go('/learning');
+                },
+                child: Text(
+                  'learn words',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headlineSmall
+                      ?.copyWith(color: Theme.of(context).cardColor),
                 ),
               ),
-              SizedBox(
-                width: 200,
-                child: ElevatedButton(
-                  onPressed: () {
-                    context.go('/learningPhrases');
-                  },
-                  child: Text(
-                    'learn phrases',
-                    style: Theme.of(context)
-                        .textTheme
-                        .headlineSmall
-                        ?.copyWith(color: Theme.of(context).cardColor),
-                  ),
+            ),
+            SizedBox(
+              width: widthScreen / 4,
+              child: ElevatedButton(
+                onPressed: () {
+                  context.go('/learningPhrases');
+                },
+                child: Text(
+                  'learn phrases',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headlineSmall
+                      ?.copyWith(color: Theme.of(context).cardColor),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-      ),
+      ],
     );
   }
 }
