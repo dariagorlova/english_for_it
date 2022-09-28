@@ -47,11 +47,13 @@ class OneSideCard extends StatelessWidget {
                 const SpeakOffButton(),
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.all(10),
-            child: textWidget,
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(5),
+              child: textWidget,
+            ),
           ),
-          const Spacer(),
+          //const Spacer(),
           Padding(
             padding: const EdgeInsets.all(8),
             child: Row(

@@ -8,35 +8,20 @@ class ChoiseCard extends StatelessWidget {
     required this.number,
     required this.title,
     super.key,
+    required this.width,
   });
 
   final String title;
   final int number;
-
-  @override
-  Widget build(BuildContext context) {
-    return CardView(number: number, title: title);
-  }
-}
-
-class CardView extends StatelessWidget {
-  const CardView({
-    super.key,
-    required this.number,
-    required this.title,
-  });
-
-  final int number;
-  final String title;
+  final double width;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 60,
+      width: width,
       child: InkWell(
         onTap: () {
           context.read<TestingCubit>().checkChoise(number, context);
-          //if (res) context.read<TestingCubit>().endTest(context);
         },
         child: Card(
           elevation: 4,
@@ -46,12 +31,11 @@ class CardView extends StatelessWidget {
               title,
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 35, //isAnswerTried ? 30 : 40,
+                fontSize: 35,
                 color: isAnswerTried
                     ? Theme.of(context).errorColor
                     : Theme.of(context).primaryColor,
               ),
-              //style: Theme.of(context).textTheme.headline4,
             ),
             //),
           ),

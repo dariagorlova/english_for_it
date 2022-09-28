@@ -18,3 +18,21 @@ Feature: Start of application
     And I wait
     Then I don't see {'learn phrases'} text
 
+  Scenario: As a User I want to see drawer
+    When I tap {Icons.menu} icon
+    Then I see {'Improve Your English Level'} text
+
+  Scenario: As a User I want to know some word translation
+    When I tap {Icons.menu} icon
+    And I tap {'Translator'} text
+    #And I wait
+    And {1000} millisecond elapsed
+    Then I don't see {'Translator'} text
+    And I see {'Word in English:'} text
+    When I enter {'wine'} text into text field
+    And I tap {Icons.search} icon
+    And I wait
+    Then I see {'вино'} text
+        
+
+

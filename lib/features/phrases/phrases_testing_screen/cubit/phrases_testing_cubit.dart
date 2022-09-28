@@ -45,9 +45,18 @@ class PhrasesTestingCubit extends Cubit<PhrasesTestingState> {
           final tmpPhrase = _getRandomElement(dailyPhrases);
           final sentence =
               _breakStringOnParts(tmpPhrase.sentence, tmpPhrase.phrase);
-          if (!answers.contains(sentence)) {
-            answers.add(sentence);
+          // if (!answers.contains(sentence)) {
+          //   answers.add(sentence);
+          // }
+          var isAnswersContainsSentence = false;
+          for (final e in answers) {
+            if (e.first == sentence.first) {
+              isAnswersContainsSentence = true;
+              break;
+            }
           }
+          if (!isAnswersContainsSentence) answers.add(sentence);
+
           if (answers.length == 4) {
             break;
           }

@@ -8,9 +8,10 @@ import './step/the_app_is_running.dart';
 import './step/i_tap_text.dart';
 import './step/i_wait.dart';
 import './step/i_see_text.dart';
-import './step/i_see_text_with_color.dart';
+import './step/i_see_phrase.dart';
+import './step/i_tap_phrase.dart';
+import './step/i_see_phrase_with_color.dart';
 import './step/i_dont_see_text.dart';
-import './step/i_chose_the_correct_variants_every_time.dart';
 import './step/i_tap_icon.dart';
 
 void main() {
@@ -25,34 +26,28 @@ void main() {
     testWidgets('''As User I want to see first sentence and answers''', (tester) async {
       await bddSetUp(tester);
       await iSeeText(tester, 'Testing daily phrases');
-      await iSeeText(tester, "He's proficient in Java");
+      await iSeePhrase(tester, "He's proficient in Java.");
       await iSeeText(tester, 'be very good at');
     });
     testWidgets('''As User I see another variants''', (tester) async {
       await bddSetUp(tester);
-      await iSeeText(tester, 'have experience doing something');
-      await iSeeText(tester, 'opinion/position');
-      await iSeeText(tester, 'very solid');
+      await iSeePhrase(tester, 'He has a background in industrial design.');
+      await iSeePhrase(tester, 'My perspective on this is different.');
+      await iSeePhrase(tester, 'We designed a robust architecture.');
     });
     testWidgets('''As User I'm making the wrong choice''', (tester) async {
       await bddSetUp(tester);
-      await iTapText(tester, 'has a background');
-      await iSeeTextWithColor(tester, 1, Colors.grey);
-      await iTapText(tester, 'opinion/position');
-      await iSeeTextWithColor(tester, 2, Colors.grey);
+      await iTapPhrase(tester, 'He has a background in industrial design.');
+      await iSeePhraseWithColor(tester, 1, Colors.grey);
+      await iTapPhrase(tester, 'My perspective on this is different.');
+      await iSeePhraseWithColor(tester, 2, Colors.grey);
     });
     testWidgets('''As User I'm be very good at the right choice''', (tester) async {
       await bddSetUp(tester);
-      await iTapText(tester, 'розробниця');
+      await iTapText(tester, "He's proficient in Java.");
       await iWait(tester);
-      await iDontSeeText(tester, "He's proficient in Java");
-      await iSeeText(tester, 'He has a background in industrial design.');
-    });
-    testWidgets('''As User I finished test''', (tester) async {
-      await bddSetUp(tester);
-      await iChoseTheCorrectVariantsEveryTime(tester);
-      await iWait(tester);
-      await iSeeText(tester, 'Congratulation! You passed the test!');
+      await iDontSeeText(tester, "He's proficient in Java.");
+      await iSeeText(tester, 'have experience doing something');
     });
     testWidgets('''As User I want to return to learning phrases''', (tester) async {
       await bddSetUp(tester);

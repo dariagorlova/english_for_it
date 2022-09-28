@@ -11,6 +11,11 @@ class WordCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final heightScreen = MediaQuery.of(context).size.height;
+    final widthScreen = MediaQuery.of(context).size.width;
+    final btnSize = MediaQuery.of(context).orientation == Orientation.portrait
+        ? heightScreen / 20
+        : widthScreen / 20;
     return Card(
       elevation: 4,
       child: BlocBuilder<LearningCubit, LearningState>(
@@ -33,9 +38,9 @@ class WordCard extends StatelessWidget {
                       onTap: state.isLoading
                           ? null
                           : () => context.read<LearningCubit>().prevWord(),
-                      child: const Icon(
+                      child: Icon(
                         Icons.arrow_back_ios,
-                        size: 40,
+                        size: btnSize, //heightScreen / 20,
                       ),
                     ),
                   ),
@@ -91,9 +96,9 @@ class WordCard extends StatelessWidget {
                       onTap: state.isLoading
                           ? null
                           : () => context.read<LearningCubit>().nextWord(),
-                      child: const Icon(
+                      child: Icon(
                         Icons.arrow_forward_ios,
-                        size: 40,
+                        size: btnSize, //heightScreen / 20,
                       ),
                     ),
                   ),

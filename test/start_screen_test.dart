@@ -9,6 +9,9 @@ import './step/i_see_text.dart';
 import './step/i_tap_text.dart';
 import './step/i_wait.dart';
 import './step/i_dont_see_text.dart';
+import './step/i_tap_icon.dart';
+import './step/millisecond_elapsed.dart';
+import './step/i_enter_text_into_text_field.dart';
 
 void main() {
   Future<void> bddSetUp(WidgetTester tester) async {
@@ -32,6 +35,23 @@ void main() {
       await iTapText(tester, 'learn phrases');
       await iWait(tester);
       await iDontSeeText(tester, 'learn phrases');
+    });
+    testWidgets('''As a User I want to see drawer''', (tester) async {
+      await bddSetUp(tester);
+      await iTapIcon(tester, Icons.menu);
+      await iSeeText(tester, 'Improve Your English Level');
+    });
+    testWidgets('''As a User I want to know some word translation''', (tester) async {
+      await bddSetUp(tester);
+      await iTapIcon(tester, Icons.menu);
+      await iTapText(tester, 'Translator');
+      await millisecondElapsed(tester, 1000);
+      await iDontSeeText(tester, 'Translator');
+      await iSeeText(tester, 'Word in English:');
+      await iEnterTextIntoTextField(tester, 'wine');
+      await iTapIcon(tester, Icons.search);
+      await iWait(tester);
+      await iSeeText(tester, 'вино');
     });
   });
 }

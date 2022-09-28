@@ -7,15 +7,17 @@ class TestProgramButton extends StatelessWidget {
     super.key,
     required this.title,
     required this.index,
+    required this.buttonWidth,
   });
 
   final String title;
   final int index;
+  final double buttonWidth;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 250,
+      width: buttonWidth,
       child: Padding(
         padding: const EdgeInsets.all(2),
         child: ElevatedButton(

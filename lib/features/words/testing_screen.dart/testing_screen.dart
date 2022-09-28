@@ -32,7 +32,6 @@ class TestingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height * 0.4;
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
@@ -49,18 +48,93 @@ class TestingView extends StatelessWidget {
         ],
       ),
       body: SafeArea(
-        child: Center(
-          child: BlocBuilder<TestingCubit, TestingState>(
-            builder: (context, state) {
-              return Column(
+        child: MediaQuery.of(context).orientation == Orientation.portrait
+            ? const VerticalView()
+            : const HorizontalView(),
+      ),
+    );
+  }
+}
+
+class VerticalView extends StatelessWidget {
+  const VerticalView({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height * 0.4;
+    return Center(
+      child: BlocBuilder<TestingCubit, TestingState>(
+        builder: (context, state) {
+          return Column(
+            children: [
+              if (state.isLoading)
+                const Text('Loading')
+              else ...[
+                SizedBox(
+                  height: height,
+                  child: Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: Card(
+                      elevation: 4,
+                      child: Center(
+                        child: Text(
+                          state.currentWordEN, //'developer',
+                          style: Theme.of(context).textTheme.headline2,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const Spacer(),
+                SizedBox(
+                  height: height,
+                  child: Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: ListView.builder(
+                      padding: const EdgeInsets.all(8),
+                      itemCount: state.currentWordAnswers.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return ChoiseCard(
+                          number: index,
+                          title: state.currentWordAnswers[index],
+                          width: MediaQuery.of(context).size.width * 0.35,
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            ],
+          );
+        },
+      ),
+    );
+  }
+}
+
+class HorizontalView extends StatelessWidget {
+  const HorizontalView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: BlocBuilder<TestingCubit, TestingState>(
+        builder: (context, state) {
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Column(
                 children: [
                   if (state.isLoading)
                     const Text('Loading')
                   else ...[
                     SizedBox(
-                      height: height, //300,
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      height: MediaQuery.of(context).size.height * 0.8,
                       child: Padding(
-                        padding: const EdgeInsets.all(15),
+                        padding: const EdgeInsets.all(20),
                         child: Card(
                           elevation: 4,
                           child: Center(
@@ -72,29 +146,35 @@ class TestingView extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const Spacer(),
-                    SizedBox(
-                      height: height, //300,
-                      child: Padding(
-                        padding: const EdgeInsets.all(15),
-                        child: ListView.builder(
-                          padding: const EdgeInsets.all(8),
-                          itemCount: state.currentWordAnswers.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return ChoiseCard(
-                              number: index,
-                              title: state.currentWordAnswers[index],
-                            );
-                          },
-                        ),
-                      ),
-                    ),
                   ],
                 ],
-              );
-            },
-          ),
-        ),
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.35,
+                    height: MediaQuery.of(context).size.height * 0.8,
+                    child: Padding(
+                      padding: const EdgeInsets.all(15),
+                      child: ListView.builder(
+                        padding: const EdgeInsets.all(8),
+                        itemCount: state.currentWordAnswers.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return ChoiseCard(
+                            number: index,
+                            title: state.currentWordAnswers[index],
+                            width: MediaQuery.of(context).size.height * 0.3,
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          );
+        },
       ),
     );
   }

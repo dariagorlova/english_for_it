@@ -1,6 +1,7 @@
 // ignore_for_file: lines_longer_than_80_chars
 
 import 'dart:io';
+import 'package:english_for_it/core/model/one_word.dart';
 import 'package:english_for_it/core/model/phrase.dart';
 import 'package:english_for_it/core/model/word_translation_model.dart';
 import 'package:flutter/material.dart';
@@ -102,18 +103,19 @@ class DbStorage {
     return word;
   }
 
-  Future<List<OneWordPair>> getAllWords() async {
+  Future<List<OneWord>> getAllWords() async {
     final list = await _database.rawQuery('SELECT * FROM Vocabulary');
-    final listPairs = <OneWordPair>[];
+    final allWords = <OneWord>[];
     for (final w in list) {
-      listPairs.add(
-        OneWordPair(
-          word: w['word'].toString(),
-          translation: w['translation'].toString(),
+      allWords.add(
+        OneWord(
+          word: w['word']! as String,
+          translate: w['translation']! as String,
         ),
       );
     }
-    return listPairs;
+
+    return allWords;
   }
 
   Future<int> getWordsCount() async {

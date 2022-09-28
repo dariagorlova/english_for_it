@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:english_for_it/core/domain/app_settings.dart';
 import 'package:english_for_it/core/domain/dbase.dart';
+import 'package:english_for_it/core/model/one_word.dart';
 import 'package:english_for_it/core/model/phrase.dart';
 import 'package:english_for_it/core/model/word_translation_model.dart';
 import 'package:injectable/injectable.dart';
@@ -12,6 +13,7 @@ abstract class DbaseService {
   Future<int> getWordsCount();
   Future<OneWordPair> getWordByIndex(int index);
   Future<List<OneWordPair>> get10WordsForToday();
+  Future<List<OneWord>> getAllWords();
   Future<int> getPhrasesCount();
   Future<Phrase> getPhraseByIndex(int index);
   Future<List<Phrase>> get10PhrasesForToday();
@@ -96,6 +98,16 @@ class DbaseServiceImpl extends DbaseService {
           translation: 'ЗАБОРОНЕНО КОРИСТУВАЧЕМ',
         ),
       ];
+    }
+  }
+
+  @override
+  Future<List<OneWord>> getAllWords() async {
+    if (isPermissionsGranted && db.isConnected()) {
+      final res = await db.getAllWords();
+      return res;
+    } else {
+      return <OneWord>[];
     }
   }
 

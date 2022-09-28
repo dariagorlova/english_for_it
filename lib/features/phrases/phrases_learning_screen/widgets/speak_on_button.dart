@@ -81,12 +81,16 @@ class _SpeakButtonState extends State<SpeakButton> {
 
   @override
   Widget build(BuildContext context) {
+    final iconSize = MediaQuery.of(context).orientation == Orientation.portrait
+        ? MediaQuery.of(context).size.height / 25
+        : MediaQuery.of(context).size.width / 25;
+
     return Align(
       alignment: Alignment.topRight,
       child: IconButton(
         alignment: Alignment.topRight,
         icon: const Icon(Icons.volume_up),
-        iconSize: 35,
+        iconSize: iconSize, //MediaQuery.of(context).size.height / 25,
         color: Colors.green,
         splashColor: Colors.greenAccent,
         onPressed: speak,

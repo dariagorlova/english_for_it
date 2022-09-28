@@ -39,47 +39,109 @@ class PhrasesScreenView extends StatelessWidget {
       ),
       body: SafeArea(
         child: Center(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8),
-                //child: Text('1/10'),
-                child: BlocSelector<PhrasesCubit, PhrasesState, int>(
-                  selector: (state) => state.indexCurrenPhrase,
-                  builder: (context, indexCurrenPhrase) {
-                    return Text(
-                      '${indexCurrenPhrase + 1}/10',
-                    );
-                  },
-                ),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.7,
-                child: const Padding(
-                  padding: EdgeInsets.all(15),
-                  child: PhraseCard(),
-                ),
-              ),
-              // SizedBox(
-              //   height: MediaQuery.of(context).size.height * 0.2,
-              // ),
-              ElevatedButton(
-                onPressed: () {
-                  //context.go('/testingPhrases');
-                  context.read<PhrasesCubit>().goToTest(context);
-                },
-                child: Text(
-                  'Test the learned',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineSmall
-                      ?.copyWith(color: Theme.of(context).cardColor),
-                ),
-              ),
-            ],
-          ),
+          child: MediaQuery.of(context).orientation == Orientation.portrait
+              ? const VerticalView()
+              : const HorizontalView(),
         ),
       ),
+    );
+  }
+}
+
+class VerticalView extends StatelessWidget {
+  const VerticalView({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8),
+          //child: Text('1/10'),
+          child: BlocSelector<PhrasesCubit, PhrasesState, int>(
+            selector: (state) => state.indexCurrenPhrase,
+            builder: (context, indexCurrenPhrase) {
+              return Text(
+                '${indexCurrenPhrase + 1}/10',
+              );
+            },
+          ),
+        ),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.7,
+          child: const Padding(
+            padding: EdgeInsets.all(15),
+            child: PhraseCard(),
+          ),
+        ),
+        // SizedBox(
+        //   height: MediaQuery.of(context).size.height * 0.2,
+        // ),
+        ElevatedButton(
+          onPressed: () {
+            //context.go('/testingPhrases');
+            context.read<PhrasesCubit>().goToTest(context);
+          },
+          child: Text(
+            'Test the learned',
+            style: Theme.of(context)
+                .textTheme
+                .headlineSmall
+                ?.copyWith(color: Theme.of(context).cardColor),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class HorizontalView extends StatelessWidget {
+  const HorizontalView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8),
+              //child: Text('1/10'),
+              child: BlocSelector<PhrasesCubit, PhrasesState, int>(
+                selector: (state) => state.indexCurrenPhrase,
+                builder: (context, indexCurrenPhrase) {
+                  return Text(
+                    '${indexCurrenPhrase + 1}/10',
+                  );
+                },
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                //context.go('/testingPhrases');
+                context.read<PhrasesCubit>().goToTest(context);
+              },
+              child: Text(
+                'Test the learned',
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineSmall
+                    ?.copyWith(color: Theme.of(context).cardColor),
+              ),
+            ),
+          ],
+        ),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.67,
+          child: const Padding(
+            padding: EdgeInsets.all(3),
+            child: PhraseCard(),
+          ),
+        ),
+      ],
     );
   }
 }

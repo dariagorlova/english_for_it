@@ -6,6 +6,7 @@ import 'package:english_for_it/features/congratulation_screen/congratulation_scr
 import 'package:english_for_it/features/phrases/phrases_learning_screen/phrases_screen.dart';
 import 'package:english_for_it/features/phrases/phrases_testing_screen/phrases_testing_screen.dart';
 import 'package:english_for_it/features/start_screen/irregular_verbs_screen.dart';
+import 'package:english_for_it/features/start_screen/search_word/search_word_screen.dart';
 import 'package:english_for_it/features/start_screen/start_screen.dart';
 import 'package:english_for_it/features/words/learning_screen/learning_screen.dart';
 import 'package:english_for_it/features/words/make_pair_screen/make_pair_screen.dart';
@@ -18,7 +19,6 @@ import 'package:injectable/injectable.dart';
 void main() //{
 async {
   WidgetsFlutterBinding.ensureInitialized();
-  //await FlutterNotification.init(FlutterLocalNotificationsPlugin());
   await SharedPrefs.init();
   configureInjection(Environment.prod);
   runApp(MyApp());
@@ -102,6 +102,10 @@ class MyApp extends StatelessWidget {
             times: num,
           );
         },
+      ),
+      GoRoute(
+        path: '/searchWord',
+        builder: (context, state) => const SearchWord(),
       ),
       GoRoute(
         path: '/irregularVerbs',
