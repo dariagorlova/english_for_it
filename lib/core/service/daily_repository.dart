@@ -26,6 +26,18 @@ class DailyRepository {
     return list2;
   }
 
+  Future<List<OneWord>> getAllWords() async {
+    final dbase = DbaseServiceImpl(
+      isPermissionsGranted: await DbaseServiceImpl.checkPermissions(),
+      db: DbStorage(),
+    );
+    await dbase.connectDb();
+    final res = await dbase.getAllWords();
+    await dbase.disconnectDb();
+
+    return res;
+  }
+
   Future<List<Phrase>> getDailyPhrases() async {
     final list2 = <Phrase>[];
     final dbase = DbaseServiceImpl(
