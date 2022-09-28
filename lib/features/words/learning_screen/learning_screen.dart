@@ -1,5 +1,6 @@
 import 'package:english_for_it/di/injection.dart';
 import 'package:english_for_it/features/words/learning_screen/cubit/learning_cubit.dart';
+import 'package:english_for_it/features/words/learning_screen/cubit/learning_state.dart';
 import 'package:english_for_it/features/words/learning_screen/widgets/test_program_button.dart';
 import 'package:english_for_it/features/words/learning_screen/widgets/word_card.dart';
 import 'package:flutter/material.dart';
@@ -41,24 +42,117 @@ class LearningView extends StatelessWidget {
       ),
       body: SafeArea(
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.5,
-                child: const Padding(
-                  padding: EdgeInsets.all(15),
-                  child: WordCard(),
-                ),
-              ),
-              const Spacer(),
-              const TestProgramButton(title: 'Translate EN to UA', index: 0),
-              const TestProgramButton(title: 'Translate UA to EN', index: 1),
-              const TestProgramButton(title: 'Make pairs', index: 2),
-            ],
-          ),
+          child: MediaQuery.of(context).orientation == Orientation.portrait
+              ? const VerticalView()
+              : const HorizontalView(),
         ),
       ),
+    );
+  }
+}
+
+class VerticalView extends StatelessWidget {
+  const VerticalView({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8),
+          //child: Text('1/10'),
+          child: BlocSelector<LearningCubit, LearningState, int>(
+            selector: (state) => state.indexCurrentWord,
+            builder: (context, indexCurrenWord) {
+              return Text(
+                '${indexCurrenWord + 1}/10',
+              );
+            },
+          ),
+        ),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.5,
+          child: const Padding(
+            padding: EdgeInsets.all(15),
+            child: WordCard(),
+          ),
+        ),
+        const Spacer(),
+        TestProgramButton(
+          title: 'Translate EN to UA',
+          index: 0,
+          buttonWidth: MediaQuery.of(context).size.width / 1.5,
+        ),
+        TestProgramButton(
+          title: 'Translate UA to EN',
+          index: 1,
+          buttonWidth: MediaQuery.of(context).size.width / 1.5,
+        ),
+        TestProgramButton(
+          title: 'Make pairs',
+          index: 2,
+          buttonWidth: MediaQuery.of(context).size.width / 1.5,
+        ),
+      ],
+    );
+  }
+}
+
+class HorizontalView extends StatelessWidget {
+  const HorizontalView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8),
+              //child: Text('1/10'),
+              child: BlocSelector<LearningCubit, LearningState, int>(
+                selector: (state) => state.indexCurrentWord,
+                builder: (context, indexCurrenWord) {
+                  return Text(
+                    '${indexCurrenWord + 1}/10',
+                  );
+                },
+              ),
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.6,
+              height: MediaQuery.of(context).size.height * 0.7,
+              child: const Padding(
+                padding: EdgeInsets.all(10),
+                child: WordCard(),
+              ),
+            ),
+          ],
+        ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TestProgramButton(
+              title: 'Translate EN to UA',
+              index: 0,
+              buttonWidth: MediaQuery.of(context).size.width / 3.5,
+            ),
+            TestProgramButton(
+              title: 'Translate UA to EN',
+              index: 1,
+              buttonWidth: MediaQuery.of(context).size.width / 3.5,
+            ),
+            TestProgramButton(
+              title: 'Make pairs',
+              index: 2,
+              buttonWidth: MediaQuery.of(context).size.width / 3.5,
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

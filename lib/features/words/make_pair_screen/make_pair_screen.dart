@@ -28,8 +28,9 @@ class MakePairsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final columnHeight = MediaQuery.of(context).size.height - 30;
-    final columnWidth = MediaQuery.of(context).size.width / 2;
+    final columnHeight = MediaQuery.of(context).size.height;
+    final columnWidth = MediaQuery.of(context).size.width;
+    print('h: $columnHeight, w: $columnWidth');
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
@@ -48,93 +49,303 @@ class MakePairsView extends StatelessWidget {
       body: SafeArea(
         child: BlocBuilder<PairsCubit, PairsState>(
           builder: (context, state) {
-            return Row(
-              children: [
-                if (state.isLoading)
-                  const Text('Loading')
-                else ...[
-                  SizedBox(
-                    height: columnHeight,
-                    width: columnWidth,
-                    child: Padding(
-                      padding: const EdgeInsets.all(5),
-                      child: ListView.builder(
-                        padding: const EdgeInsets.all(8),
-                        itemCount: state.wordsOnTheLeft.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return InkWell(
-                            onTap: () {
-                              context.read<PairsCubit>().checkPair(index, 0);
-                              context.read<PairsCubit>().endGame(context);
-                            },
-                            child: SizedBox(
-                              height: columnHeight / 12,
-                              child: Card(
-                                elevation: 4,
-                                color: context
-                                    .read<PairsCubit>()
-                                    .getColorCardByIndex(
-                                      index,
-                                      0,
-                                    ),
-                                child: Center(
-                                  child: Text(
-                                    state.wordInENColumn(index).word,
-                                    style:
-                                        Theme.of(context).textTheme.headline5,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: columnHeight,
-                    width: columnWidth,
-                    child: Padding(
-                      padding: const EdgeInsets.all(5),
-                      child: ListView.builder(
-                        padding: const EdgeInsets.all(8),
-                        itemCount: state.wordsOnTheRight.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return InkWell(
-                            onTap: () {
-                              context.read<PairsCubit>().checkPair(index, 1);
-                              context.read<PairsCubit>().endGame(context);
-                            },
-                            child: SizedBox(
-                              height: columnHeight / 12,
-                              child: Card(
-                                elevation: 4,
-                                color: context
-                                    .read<PairsCubit>()
-                                    .getColorCardByIndex(
-                                      index,
-                                      1,
-                                    ),
-                                child: Center(
-                                  child: Text(
-                                    state.wordInUAColumn(index).translate,
-                                    style:
-                                        Theme.of(context).textTheme.headline5,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                  ),
-                ],
-              ],
-            );
+            return MediaQuery.of(context).orientation == Orientation.portrait
+                ? VerticalView(pState: state)
+                : HorizontalView(pState: state);
           },
         ),
       ),
+    );
+  }
+}
+
+class VerticalView extends StatelessWidget {
+  const VerticalView({
+    super.key,
+    required this.pState,
+  });
+
+  final PairsState pState;
+
+  @override
+  Widget build(BuildContext context) {
+    final columnHeight = MediaQuery.of(context).size.height - 30;
+    final columnWidth = MediaQuery.of(context).size.width / 2;
+    final textHeight =
+        MediaQuery.of(context).size.height > MediaQuery.of(context).size.width
+            ? MediaQuery.of(context).size.height / 36
+            : MediaQuery.of(context).size.width / 36;
+    print('height: $columnHeight, weidth: $columnWidth');
+    return Row(
+      children: [
+        if (pState.isLoading)
+          const Text('Loading')
+        else ...[
+          SizedBox(
+            height: columnHeight,
+            width: columnWidth,
+            child: Padding(
+              padding: const EdgeInsets.all(5),
+              child: ListView.builder(
+                padding: const EdgeInsets.all(8),
+                itemCount: pState.wordsOnTheLeft.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return InkWell(
+                    onTap: () {
+                      context.read<PairsCubit>().checkPair(index, 0);
+                      context.read<PairsCubit>().endGame(context);
+                    },
+                    child: SizedBox(
+                      height: columnHeight / 12,
+                      child: Card(
+                        elevation: 4,
+                        color: context.read<PairsCubit>().getColorCardByIndex(
+                              index,
+                              0,
+                            ),
+                        child: Center(
+                          child: Text(
+                            pState.wordInENColumn(index).word,
+                            style: TextStyle(
+                              fontSize: textHeight,
+                            ), //Theme.of(context).textTheme.headline5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
+          SizedBox(
+            height: columnHeight,
+            width: columnWidth,
+            child: Padding(
+              padding: const EdgeInsets.all(5),
+              child: ListView.builder(
+                padding: const EdgeInsets.all(8),
+                itemCount: pState.wordsOnTheRight.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return InkWell(
+                    onTap: () {
+                      context.read<PairsCubit>().checkPair(index, 1);
+                      context.read<PairsCubit>().endGame(context);
+                    },
+                    child: SizedBox(
+                      height: columnHeight / 12,
+                      child: Card(
+                        elevation: 4,
+                        color: context.read<PairsCubit>().getColorCardByIndex(
+                              index,
+                              1,
+                            ),
+                        child: Center(
+                          child: Text(
+                            pState.wordInUAColumn(index).translate,
+                            style: TextStyle(
+                              fontSize: textHeight,
+                            ), //Theme.of(context).textTheme.headline5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
+        ],
+      ],
+    );
+  }
+}
+
+class HorizontalView extends StatelessWidget {
+  const HorizontalView({super.key, required this.pState});
+
+  final PairsState pState;
+
+  @override
+  Widget build(BuildContext context) {
+    print(
+        'height: ${MediaQuery.of(context).size.height}, width: ${MediaQuery.of(context).size.width}');
+    final columnHeight = MediaQuery.of(context).size.height - 80;
+    final columnWidth = MediaQuery.of(context).size.width / 4.6;
+    final textHeight =
+        MediaQuery.of(context).size.height > MediaQuery.of(context).size.width
+            ? MediaQuery.of(context).size.height / 36
+            : MediaQuery.of(context).size.width / 36;
+
+    return Row(
+      children: [
+        Column(
+          children: [
+            Container(
+              // color: Colors.red,
+              height: columnHeight,
+              width: columnWidth,
+              child: Padding(
+                padding: const EdgeInsets.all(5),
+                child: ListView.builder(
+                  padding: const EdgeInsets.all(5),
+                  itemCount: 5, //pState.wordsOnTheLeft.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return InkWell(
+                      onTap: () {
+                        context.read<PairsCubit>().checkPair(index, 0);
+                        context.read<PairsCubit>().endGame(context);
+                      },
+                      child: SizedBox(
+                        height: (columnHeight - 60) / 5,
+                        child: Card(
+                          elevation: 4,
+                          color: context.read<PairsCubit>().getColorCardByIndex(
+                                index,
+                                0,
+                              ),
+                          child: Center(
+                            child: Text(
+                              pState.wordInENColumn(index).word,
+                              style: TextStyle(
+                                fontSize: textHeight,
+                              ), //Theme.of(context).textTheme.headline5,
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ),
+          ],
+        ),
+        Column(
+          children: [
+            Container(
+              //color: Colors.green,
+              height: columnHeight,
+              width: columnWidth,
+              child: Padding(
+                padding: const EdgeInsets.all(5),
+                child: ListView.builder(
+                  padding: const EdgeInsets.all(5),
+                  itemCount: 5, //pState.wordsOnTheRight.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return InkWell(
+                      onTap: () {
+                        context.read<PairsCubit>().checkPair(index, 1);
+                        context.read<PairsCubit>().endGame(context);
+                      },
+                      child: SizedBox(
+                        height: (columnHeight - 60) / 5,
+                        child: Card(
+                          elevation: 4,
+                          color: context.read<PairsCubit>().getColorCardByIndex(
+                                index,
+                                1,
+                              ),
+                          child: Center(
+                            child: Text(
+                              pState.wordInUAColumn(index).translate,
+                              style: TextStyle(
+                                fontSize: textHeight,
+                              ), //Theme.of(context).textTheme.headline5,
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ),
+          ],
+        ),
+        Column(
+          children: [
+            SizedBox(
+              height: columnHeight,
+              width: columnWidth,
+              child: Padding(
+                padding: const EdgeInsets.all(5),
+                child: ListView.builder(
+                  padding: const EdgeInsets.all(8),
+                  itemCount: 5, //pState.wordsOnTheLeft.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return InkWell(
+                      onTap: () {
+                        context.read<PairsCubit>().checkPair(index + 5, 0);
+                        context.read<PairsCubit>().endGame(context);
+                      },
+                      child: SizedBox(
+                        height: columnHeight / 7,
+                        child: Card(
+                          elevation: 4,
+                          color: context.read<PairsCubit>().getColorCardByIndex(
+                                index + 5,
+                                0,
+                              ),
+                          child: Center(
+                            child: Text(
+                              pState.wordInENColumn(index + 5).word,
+                              style: TextStyle(
+                                fontSize: textHeight,
+                              ), //Theme.of(context).textTheme.headline5,
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ),
+          ],
+        ),
+        Column(
+          children: [
+            SizedBox(
+              height: columnHeight,
+              width: columnWidth,
+              child: Padding(
+                padding: const EdgeInsets.all(5),
+                child: ListView.builder(
+                  padding: const EdgeInsets.all(8),
+                  itemCount: 5, //pState.wordsOnTheRight.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return InkWell(
+                      onTap: () {
+                        context.read<PairsCubit>().checkPair(index + 5, 1);
+                        context.read<PairsCubit>().endGame(context);
+                      },
+                      child: SizedBox(
+                        height: columnHeight / 7,
+                        child: Card(
+                          elevation: 4,
+                          color: context.read<PairsCubit>().getColorCardByIndex(
+                                index + 5,
+                                1,
+                              ),
+                          child: Center(
+                            child: Text(
+                              pState.wordInUAColumn(index + 5).translate,
+                              style: TextStyle(
+                                fontSize: textHeight,
+                              ), //Theme.of(context).textTheme.headline5,
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
