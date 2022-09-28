@@ -27,7 +27,7 @@ DailyRepository getWordsRepository() {
         newId: -1,
         phrase: 'proficient',
         byAnotherWords: 'be very good at',
-        sentence: "He's proficient in Java",
+        sentence: "He's proficient in Java.",
         byAnotherWordsTranslation: 'бути досвідченим у',
         sentenceTranslation: 'Він досконало володіє Java.',
       ),
