@@ -28,9 +28,9 @@ class MakePairsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final columnHeight = MediaQuery.of(context).size.height;
-    final columnWidth = MediaQuery.of(context).size.width;
-    print('h: $columnHeight, w: $columnWidth');
+    //final columnHeight = MediaQuery.of(context).size.height;
+    //final columnWidth = MediaQuery.of(context).size.width;
+    //print('h: $columnHeight, w: $columnWidth');
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
@@ -75,7 +75,7 @@ class VerticalView extends StatelessWidget {
         MediaQuery.of(context).size.height > MediaQuery.of(context).size.width
             ? MediaQuery.of(context).size.height / 36
             : MediaQuery.of(context).size.width / 36;
-    print('height: $columnHeight, weidth: $columnWidth');
+    //print('height: $columnHeight, weidth: $columnWidth');
     return Row(
       children: [
         if (pState.isLoading)
@@ -168,8 +168,9 @@ class HorizontalView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(
-        'height: ${MediaQuery.of(context).size.height}, width: ${MediaQuery.of(context).size.width}');
+    //print(
+    //    'height: ${MediaQuery.of(context).size.height},
+    //     width: ${MediaQuery.of(context).size.width}');
     final columnHeight = MediaQuery.of(context).size.height - 80;
     final columnWidth = MediaQuery.of(context).size.width / 4.6;
     final textHeight =
@@ -181,7 +182,7 @@ class HorizontalView extends StatelessWidget {
       children: [
         Column(
           children: [
-            Container(
+            SizedBox(
               // color: Colors.red,
               height: columnHeight,
               width: columnWidth,
@@ -223,7 +224,7 @@ class HorizontalView extends StatelessWidget {
         ),
         Column(
           children: [
-            Container(
+            SizedBox(
               //color: Colors.green,
               height: columnHeight,
               width: columnWidth,
