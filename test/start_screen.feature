@@ -24,15 +24,14 @@ Feature: Start of application
 
   Scenario: As a User I want to know some word translation
     When I tap {Icons.menu} icon
-    And I tap {'Translator'} text
-    #And I wait
-    And {1000} millisecond elapsed
-    Then I don't see {'Translator'} text
+    And I see {'Translator'} text
+    And I tap {0} item
+    Then I see {'Find translation'} text
     And I see {'Word in English:'} text
-    When I enter {'wine'} text into text field
-    And I tap {Icons.search} icon
-    And I wait
-    Then I see {'вино'} text
+    #When I enter {'wine'} text into text field
+    #And I tap {Icons.search} icon
+    #And I wait
+    #Then I see {'вино'} text
         
 
 
