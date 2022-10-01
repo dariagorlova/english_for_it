@@ -10,6 +10,7 @@ import './step/i_tap_text.dart';
 import './step/i_wait.dart';
 import './step/i_dont_see_text.dart';
 import './step/i_tap_icon.dart';
+import './step/i_wait_for_seconds.dart';
 import './step/i_tap_item.dart';
 
 void main() {
@@ -44,9 +45,10 @@ void main() {
       await bddSetUp(tester);
       await iTapIcon(tester, Icons.menu);
       await iSeeText(tester, 'Translator');
+      await iWaitForSeconds(tester, 1);
       await iTapItem(tester, 0);
+      await iWaitForSeconds(tester, 1);
       await iSeeText(tester, 'Find translation');
-      await iSeeText(tester, 'Word in English:');
     });
   });
 }

@@ -25,9 +25,11 @@ Feature: Start of application
   Scenario: As a User I want to know some word translation
     When I tap {Icons.menu} icon
     And I see {'Translator'} text
+    And I wait for {1} seconds
     And I tap {0} item
+    And I wait for {1} seconds
     Then I see {'Find translation'} text
-    And I see {'Word in English:'} text
+    # And I see {'Word in English:'} text
     #When I enter {'wine'} text into text field
     #And I tap {Icons.search} icon
     #And I wait
