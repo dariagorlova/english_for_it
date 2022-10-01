@@ -1,6 +1,4 @@
 import 'dart:async';
-
-import 'package:english_for_it/core/model/one_word.dart';
 import 'package:english_for_it/core/service/daily_repository.dart';
 import 'package:english_for_it/features/start_screen/search_word/cubit/search_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -29,6 +29,7 @@ class _SearchWordState extends State<SearchWordView> {
   String translationText = '';
 
   void _searchWord() {
+    FocusScope.of(context).unfocus();
     if (_wordController.text.isEmpty) {
       return;
     }
@@ -56,6 +57,7 @@ class _SearchWordState extends State<SearchWordView> {
   Widget build(BuildContext context) {
     final heightScreen = MediaQuery.of(context).size.height;
     final widthScreen = MediaQuery.of(context).size.width;
+    final screenOrientation = MediaQuery.of(context).orientation;
     print('height: $heightScreen, width: $widthScreen');
     return Scaffold(
       appBar: AppBar(
@@ -72,66 +74,74 @@ class _SearchWordState extends State<SearchWordView> {
         ],
       ),
       body: SafeArea(
-        child: BlocBuilder<SearchCubit, SearchState>(builder: (context, state) {
-          if (state.words.isEmpty) {
-            return const CircularProgressIndicator();
-          } else {
-            return Padding(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Word in English:',
-                    style: Theme.of(context).textTheme.headline6?.copyWith(
-                          color: Theme.of(context).primaryColor,
-                        ),
-                  ),
-                  Row(
+        child: BlocBuilder<SearchCubit, SearchState>(
+          builder: (context, state) {
+            if (state.words.isEmpty) {
+              return const CircularProgressIndicator();
+            } else {
+              return SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Expanded(
-                        child: TextFormField(
-                          style: Theme.of(context).textTheme.headline5,
-                          controller: _wordController,
-                        ),
+                      Text(
+                        'Word in English:',
+                        style: Theme.of(context).textTheme.headline6?.copyWith(
+                              color: Theme.of(context).primaryColor,
+                            ),
                       ),
-                      IconButton(
-                        icon: const Icon(Icons.search),
-                        color: Theme.of(context).primaryColor,
-                        onPressed: _searchWord,
+                      Row(
+                        children: [
+                          Expanded(
+                            child: TextField(
+                              style: Theme.of(context).textTheme.headline5,
+                              controller: _wordController,
+                            ),
+                          ),
+                          IconButton(
+                            icon: const Icon(Icons.search),
+                            color: Theme.of(context).primaryColor,
+                            onPressed: _searchWord,
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: screenOrientation == Orientation.portrait
+                            ? heightScreen / 17
+                            : widthScreen / 17, //50,
+                      ),
+                      Text(
+                        'Ukrainian Translation:',
+                        style: Theme.of(context).textTheme.headline6?.copyWith(
+                              color: Theme.of(context).primaryColor,
+                            ),
+                      ),
+                      Container(
+                        height: screenOrientation == Orientation.portrait
+                            ? heightScreen / 17
+                            : widthScreen / 17,
+                        width: widthScreen - 20,
+                        decoration: const BoxDecoration(
+                          border: Border(
+                            bottom: BorderSide(width: 1.5, color: Colors.grey),
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(5),
+                          child: Text(
+                            translationText,
+                            style: Theme.of(context).textTheme.headline5,
+                          ),
+                        ),
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  Text(
-                    'Ukrainian Translation:',
-                    style: Theme.of(context).textTheme.headline6?.copyWith(
-                          color: Theme.of(context).primaryColor,
-                        ),
-                  ),
-                  Container(
-                    height: 50,
-                    width: 700,
-                    decoration: const BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(width: 1.5, color: Colors.grey),
-                      ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(5),
-                      child: Text(
-                        '$translationText',
-                        style: Theme.of(context).textTheme.headline5,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            );
-          }
-        }),
+                ),
+              );
+            }
+          },
+        ),
       ),
     );
   }

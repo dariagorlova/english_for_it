@@ -1,4 +1,3 @@
-import 'package:english_for_it/features/phrases/phrases_learning_screen/widgets/one_side_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
