@@ -39,38 +39,40 @@ class PhraseChoiseCard extends StatelessWidget {
               //         : Theme.of(context).primaryColor,
               //   ),
               // ),
-              child: RichText(
-                maxLines: 6,
-                textAlign: TextAlign.center,
-                text: TextSpan(
-                  text: title[0],
-                  style: TextStyle(
-                    fontSize: 23,
-                    color: isAnswerTried
-                        ? Theme.of(context).errorColor
-                        : Theme.of(context).primaryColor,
+              child: Expanded(
+                child: RichText(
+                  maxLines: 6,
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    text: title[0],
+                    style: TextStyle(
+                      fontSize: 23,
+                      color: isAnswerTried
+                          ? Theme.of(context).errorColor
+                          : Theme.of(context).primaryColor,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: title[1],
+                        style: TextStyle(
+                          fontSize: 23,
+                          fontWeight: FontWeight.bold,
+                          color: isAnswerTried
+                              ? Theme.of(context).errorColor
+                              : Theme.of(context).primaryColor,
+                        ),
+                      ),
+                      TextSpan(
+                        text: title[2],
+                        style: TextStyle(
+                          fontSize: 23,
+                          color: isAnswerTried
+                              ? Theme.of(context).errorColor
+                              : Theme.of(context).primaryColor,
+                        ),
+                      ),
+                    ],
                   ),
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: title[1],
-                      style: TextStyle(
-                        fontSize: 23,
-                        fontWeight: FontWeight.bold,
-                        color: isAnswerTried
-                            ? Theme.of(context).errorColor
-                            : Theme.of(context).primaryColor,
-                      ),
-                    ),
-                    TextSpan(
-                      text: title[2],
-                      style: TextStyle(
-                        fontSize: 23,
-                        color: isAnswerTried
-                            ? Theme.of(context).errorColor
-                            : Theme.of(context).primaryColor,
-                      ),
-                    ),
-                  ],
                 ),
               ),
             ),
