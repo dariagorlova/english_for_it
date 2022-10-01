@@ -1,20 +1,28 @@
 # english_for_it
 
-The program for learning 3000 words which are necessary for the Intermediate level of English.
+The program for learning 3000 words which are necessary for the Intermediate level of English. 
+You can also learn about 300 phrases and sentences that will be useful in the IT field. Plus a table of irregular verbs.
 
 ## Getting Started
 
-Every day 10 random English words are chosen from a base of 3000 words. 
+Every day 10 random English words  and phrases are chosen from a base. 
 For them, you can view the translation and listen to the pronunciation. 
-[Learn daily words](https://docs.flutter.dev/get-started/codelab)
+[Learn daily words](https://github.com/dariagorlova/english_for_it/tree/master/doc/word1.png)
+[Learn daily phrases](https://github.com/dariagorlova/english_for_it/tree/master/doc/phrase1.gif)
 
-It is also possible to test knowledge with a variety of tests.
+It is possible to test knowledge with a variety of tests.
 
  - Find right translation for english word
  - Find right translation for ukraininan word
  - Make pairs english word - ukrainian word 
+ - Find a sentence in which the highlighted phrase is used in the same sense as in th given phrase
 
-![](https://docs.flutter.dev/get-started/codelab)|
-![](https://docs.flutter.dev/cookbook)|
-![](https://docs.flutter.dev/cookbook)
+![](https://github.com/dariagorlova/english_for_it/tree/master/doc/word2.png)|
+![](https://github.com/dariagorlova/english_for_it/tree/master/doc/word3.png)|
+![](https://github.com/dariagorlova/english_for_it/tree/master/doc/word4.png)|
+![](https://github.com/dariagorlova/english_for_it/tree/master/doc/phrase2.png)
+
+You can also find
+* a quick translation of any word
+* form of the irregular verb for the Past Simple and Past Participle
 
