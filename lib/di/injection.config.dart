@@ -4,6 +4,7 @@
 // InjectableConfigGenerator
 // **************************************************************************
 
+// ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
@@ -28,34 +29,63 @@ const String _prod = 'prod';
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
-_i1.GetIt $initGetIt(_i1.GetIt get,
-    {String? environment, _i2.EnvironmentFilter? environmentFilter}) {
-  final gh = _i2.GetItHelper(get, environment, environmentFilter);
+_i1.GetIt $initGetIt(
+  _i1.GetIt get, {
+  String? environment,
+  _i2.EnvironmentFilter? environmentFilter,
+}) {
+  final gh = _i2.GetItHelper(
+    get,
+    environment,
+    environmentFilter,
+  );
   final seedModule = _$SeedModule();
   gh.factory<_i3.DailyRepository>(() => _i3.DailyRepository());
   gh.factory<_i4.DbaseService>(
-      () => _i4.DbaseServiceImpl(
-          isPermissionsGranted: get<bool>(), db: get<_i5.DbStorage>()),
-      registerFor: {_prod});
+    () => _i4.DbaseServiceImpl(
+      isPermissionsGranted: get<bool>(),
+      db: get<_i5.DbStorage>(),
+    ),
+    registerFor: {_prod},
+  );
   gh.lazySingleton<_i6.IrregularVerbs>(() => _i6.IrregularVerbs());
   gh.factory<_i7.LearningCubit>(
       () => _i7.LearningCubit(get<_i3.DailyRepository>()));
-  gh.factoryParam<_i8.PairsCubit, List<_i9.OneWord>, dynamic>(
-      (words, _) => _i8.PairsCubit(words));
+  gh.factoryParam<_i8.PairsCubit, List<_i9.OneWord>, dynamic>((
+    words,
+    _,
+  ) =>
+      _i8.PairsCubit(words));
   gh.factory<_i10.PhrasesCubit>(
       () => _i10.PhrasesCubit(get<_i3.DailyRepository>()));
   gh.factory<_i11.SearchCubit>(
       () => _i11.SearchCubit(get<_i3.DailyRepository>()));
   gh.lazySingleton<_i12.Vocabulary>(() => _i12.Vocabulary());
-  gh.factory<int>(() => seedModule.seed, instanceName: 'seed');
-  gh.factory<int>(() => seedModule.translatesSeed,
-      instanceName: 'translates_seed');
-  gh.factoryParam<_i13.PhrasesTestingCubit, List<_i14.Phrase>, dynamic>(
-      (phrases, _) => _i13.PhrasesTestingCubit(
-          get<int>(instanceName: 'translates_seed'), phrases));
-  gh.factoryParam<_i15.TestingCubit, List<_i9.OneWord>, int>(
-      (words, variantENtoUA) => _i15.TestingCubit(
-          get<int>(instanceName: 'translates_seed'), words, variantENtoUA));
+  gh.factory<int>(
+    () => seedModule.seed,
+    instanceName: 'seed',
+  );
+  gh.factory<int>(
+    () => seedModule.translatesSeed,
+    instanceName: 'translates_seed',
+  );
+  gh.factoryParam<_i13.PhrasesTestingCubit, List<_i14.Phrase>, dynamic>((
+    phrases,
+    _,
+  ) =>
+      _i13.PhrasesTestingCubit(
+        get<int>(instanceName: 'translates_seed'),
+        phrases,
+      ));
+  gh.factoryParam<_i15.TestingCubit, List<_i9.OneWord>, int>((
+    words,
+    variantENtoUA,
+  ) =>
+      _i15.TestingCubit(
+        get<int>(instanceName: 'translates_seed'),
+        words,
+        variantENtoUA,
+      ));
   return get;
 }
 
