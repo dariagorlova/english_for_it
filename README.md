@@ -7,8 +7,8 @@ You can also learn about 300 phrases and sentences that will be useful in the IT
 
 Every day 10 random English words  and phrases are chosen from a base. 
 For them, you can view the translation and listen to the pronunciation. 
-[Learn daily words](https://github.com/dariagorlova/english_for_it/tree/master/doc/word1.png)
-[Learn daily phrases](https://github.com/dariagorlova/english_for_it/tree/master/doc/phrase1.gif)
+[Learn daily words](https://github.com/dariagorlova/english_for_it/blob/master/doc/word1.png)
+[Learn daily phrases](https://github.com/dariagorlova/english_for_it/blob/master/doc/phrase1.gif)
 
 It is possible to test knowledge with a variety of tests.
 
@@ -17,10 +17,10 @@ It is possible to test knowledge with a variety of tests.
  - Make pairs english word - ukrainian word 
  - Find a sentence in which the highlighted phrase is used in the same sense as in th given phrase
 
-![](https://github.com/dariagorlova/english_for_it/tree/master/doc/word2.png)|
-![](https://github.com/dariagorlova/english_for_it/tree/master/doc/word3.png)|
-![](https://github.com/dariagorlova/english_for_it/tree/master/doc/word4.png)|
-![](https://github.com/dariagorlova/english_for_it/tree/master/doc/phrase2.png)
+![](https://github.com/dariagorlova/english_for_it/blob/master/doc/word2.png)|
+![](https://github.com/dariagorlova/english_for_it/blob/master/doc/word3.png)|
+![](https://github.com/dariagorlova/english_for_it/blob/master/doc/word4.png)|
+![](https://github.com/dariagorlova/english_for_it/blob/master/doc/phrase2.png)
 
 You can also find
 * a quick translation of any word
