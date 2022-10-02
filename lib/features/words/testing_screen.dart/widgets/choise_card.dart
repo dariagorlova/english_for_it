@@ -33,7 +33,7 @@ class ChoiseCard extends StatelessWidget {
               style: TextStyle(
                 fontSize: 35,
                 color: isAnswerTried
-                    ? Theme.of(context).errorColor
+                    ? Theme.of(context).colorScheme.error
                     : Theme.of(context).primaryColor,
               ),
             ),

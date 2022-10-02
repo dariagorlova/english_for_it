@@ -32,7 +32,7 @@ class MakePairsView extends StatelessWidget {
     //final columnWidth = MediaQuery.of(context).size.width;
     //print('h: $columnHeight, w: $columnWidth');
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
         title: const Text('Make pairs'),
         actions: [

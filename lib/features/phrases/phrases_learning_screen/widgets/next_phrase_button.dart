@@ -24,7 +24,7 @@ class NextPhraseButton extends StatelessWidget {
         ),
         foregroundDecoration: phrasesState.isCurrentPhraseLast
             ? BoxDecoration(
-                color: Theme.of(context).errorColor,
+                color: Theme.of(context).colorScheme.error,
                 backgroundBlendMode: BlendMode.lighten,
               )
             : null,

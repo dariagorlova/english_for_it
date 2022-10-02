@@ -33,7 +33,7 @@ class TestingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
         title: const Text('Testing daily words'),
         actions: [
@@ -81,7 +81,7 @@ class VerticalView extends StatelessWidget {
                       child: Center(
                         child: Text(
                           state.currentWordEN, //'developer',
-                          style: Theme.of(context).textTheme.headline2,
+                          style: Theme.of(context).textTheme.displayMedium,
                         ),
                       ),
                     ),
@@ -140,7 +140,7 @@ class HorizontalView extends StatelessWidget {
                           child: Center(
                             child: Text(
                               state.currentWordEN, //'developer',
-                              style: Theme.of(context).textTheme.headline2,
+                              style: Theme.of(context).textTheme.displayMedium,
                             ),
                           ),
                         ),

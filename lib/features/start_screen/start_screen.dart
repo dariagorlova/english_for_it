@@ -33,12 +33,12 @@ class _StartScreenState extends State<StartScreen> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Theme.of(context).colorScheme.background,
         foregroundColor: Theme.of(context).primaryColor,
         elevation: 0,
       ),
       drawer: Drawer(
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Theme.of(context).colorScheme.background,
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
@@ -48,7 +48,7 @@ class _StartScreenState extends State<StartScreen> with WidgetsBindingObserver {
               ),
               child: Text(
                 'Improve Your English Level',
-                style: Theme.of(context).textTheme.headline4?.copyWith(
+                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                       color: Colors.white,
                     ),
               ),
@@ -59,7 +59,7 @@ class _StartScreenState extends State<StartScreen> with WidgetsBindingObserver {
               ),
               title: Text(
                 'Translator',
-                style: Theme.of(context).textTheme.headline5,
+                style: Theme.of(context).textTheme.headlineSmall,
               ),
               onTap: () {
                 context.go('/searchWord');
@@ -72,7 +72,7 @@ class _StartScreenState extends State<StartScreen> with WidgetsBindingObserver {
               ),
               title: Text(
                 'Irregular Verbs',
-                style: Theme.of(context).textTheme.headline5,
+                style: Theme.of(context).textTheme.headlineSmall,
               ),
               onTap: () {
                 context.go('/irregularVerbs');
@@ -82,7 +82,7 @@ class _StartScreenState extends State<StartScreen> with WidgetsBindingObserver {
           ],
         ),
       ),
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Padding(
         padding: EdgeInsets.all(MediaQuery.of(context).size.width / 30),
         child: Center(

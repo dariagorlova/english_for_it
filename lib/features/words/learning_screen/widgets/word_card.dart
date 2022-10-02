@@ -30,7 +30,7 @@ class WordCard extends StatelessWidget {
                   child: Container(
                     foregroundDecoration: state.isCurrentWordFirst
                         ? BoxDecoration(
-                            color: Theme.of(context).errorColor,
+                            color: Theme.of(context).colorScheme.error,
                             backgroundBlendMode: BlendMode.lighten,
                           )
                         : null,
@@ -61,7 +61,7 @@ class WordCard extends StatelessWidget {
                           children: [
                             Text(
                               state.currentWord.word, //'developer',
-                              style: Theme.of(context).textTheme.headline3,
+                              style: Theme.of(context).textTheme.displaySmall,
                             ),
                             //),
                           ],
@@ -72,7 +72,7 @@ class WordCard extends StatelessWidget {
                         fit: BoxFit.fitWidth,
                         child: Text(
                           state.currentWord.translate, //'розробник',
-                          style: Theme.of(context).textTheme.headline4,
+                          style: Theme.of(context).textTheme.headlineMedium,
                           maxLines: 2,
                           textAlign: TextAlign.center,
                         ),
@@ -88,7 +88,7 @@ class WordCard extends StatelessWidget {
                   child: Container(
                     foregroundDecoration: state.isCurrentWordLast
                         ? BoxDecoration(
-                            color: Theme.of(context).errorColor,
+                            color: Theme.of(context).colorScheme.error,
                             backgroundBlendMode: BlendMode.lighten,
                           )
                         : null,
