@@ -7,6 +7,7 @@ You can also learn about 300 phrases and sentences that will be useful in the IT
 
 Every day 10 random English words  and phrases are chosen from a base. 
 For them, you can view the translation and listen to the pronunciation. 
+
 ![](https://github.com/dariagorlova/english_for_it/blob/master/doc/word1.png)|
 ![](https://github.com/dariagorlova/english_for_it/blob/master/doc/phrase1.gif)
 
