@@ -33,10 +33,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) => MaterialApp.router(
         title: 'English for IT',
         theme: ThemeData(
-          primarySwatch: Colors.purple,
           textTheme: GoogleFonts.pattayaTextTheme(),
-          backgroundColor: const Color.fromARGB(255, 242, 211, 248),
-          errorColor: Colors.grey,
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
               textStyle: TextStyle(
@@ -47,6 +44,11 @@ class MyApp extends StatelessWidget {
               ),
             ),
           ),
+          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.purple)
+              .copyWith(
+                background: const Color.fromARGB(255, 242, 211, 248),
+              )
+              .copyWith(error: Colors.grey),
         ),
         routeInformationProvider: _router.routeInformationProvider,
         routeInformationParser: _router.routeInformationParser,

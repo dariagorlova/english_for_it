@@ -40,7 +40,7 @@ class _SearchWordState extends State<SearchWordView> {
       final snackBar = SnackBar(
         content: Text(
           'This word is not in the dictionary!',
-          style: Theme.of(context).textTheme.headline6?.copyWith(
+          style: Theme.of(context).textTheme.titleLarge?.copyWith(
                 color: Theme.of(context).cardColor,
               ),
         ),
@@ -58,7 +58,7 @@ class _SearchWordState extends State<SearchWordView> {
     final heightScreen = MediaQuery.of(context).size.height;
     final widthScreen = MediaQuery.of(context).size.width;
     final screenOrientation = MediaQuery.of(context).orientation;
-    print('height: $heightScreen, width: $widthScreen');
+    //print('height: $heightScreen, width: $widthScreen');
     return Scaffold(
       appBar: AppBar(
         title: const Text('Find translation'),
@@ -87,7 +87,7 @@ class _SearchWordState extends State<SearchWordView> {
                     children: [
                       Text(
                         'Word in English:',
-                        style: Theme.of(context).textTheme.headline6?.copyWith(
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
                               color: Theme.of(context).primaryColor,
                             ),
                       ),
@@ -95,7 +95,7 @@ class _SearchWordState extends State<SearchWordView> {
                         children: [
                           Expanded(
                             child: TextField(
-                              style: Theme.of(context).textTheme.headline5,
+                              style: Theme.of(context).textTheme.headlineSmall,
                               controller: _wordController,
                             ),
                           ),
@@ -113,7 +113,7 @@ class _SearchWordState extends State<SearchWordView> {
                       ),
                       Text(
                         'Ukrainian Translation:',
-                        style: Theme.of(context).textTheme.headline6?.copyWith(
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
                               color: Theme.of(context).primaryColor,
                             ),
                       ),
@@ -131,7 +131,7 @@ class _SearchWordState extends State<SearchWordView> {
                           padding: const EdgeInsets.all(5),
                           child: Text(
                             translationText,
-                            style: Theme.of(context).textTheme.headline5,
+                            style: Theme.of(context).textTheme.headlineSmall,
                           ),
                         ),
                       ),

@@ -17,11 +17,11 @@ class FlagButton extends StatelessWidget {
       icon: pState.displayInEnglish
           ? Text(
               '🇺🇦',
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headlineMedium,
             )
           : Text(
               '🇺🇸',
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
       onPressed: () {
         context.read<PhrasesCubit>().changeLanguage();

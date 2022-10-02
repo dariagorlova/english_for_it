@@ -29,11 +29,11 @@ Feature: Start of application
     And I tap {0} item
     And I wait for {1} seconds
     Then I see {'Find translation'} text
-    # And I see {'Word in English:'} text
-    #When I enter {'wine'} text into text field
-    #And I tap {Icons.search} icon
-    #And I wait
-    #Then I see {'вино'} text
+    And I see {'Word in English:'} text
+    When I enter {'bug'} text into text field
+    And I tap {Icons.search} icon
+    And I wait
+    Then I see {'помилка'} text
         
 
 

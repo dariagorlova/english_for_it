@@ -1,7 +1,7 @@
 //import 'package:english_for_it/core/service/daily_words_repository.dart';
 //import 'package:english_for_it/core/service/dbase_service.dart';
 import 'package:english_for_it/core/service/daily_repository.dart';
-import 'package:english_for_it/core/service/vocabulary.dart';
+//import 'package:english_for_it/core/service/vocabulary.dart';
 import 'package:english_for_it/features/start_screen/search_word/cubit/search_cubit.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';

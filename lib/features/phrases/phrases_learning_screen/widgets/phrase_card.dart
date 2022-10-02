@@ -36,7 +36,7 @@ class _PhraseCardState extends State<PhraseCard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: BlocConsumer<PhrasesCubit, PhrasesState>(
         listener: (context, state) => debugPrint(state.isLoading.toString()),
         builder: (context, state) {
@@ -76,7 +76,8 @@ class _PhraseCardState extends State<PhraseCard> {
                                 next: nextBtn,
                                 textWidget: Text(
                                   state.byAnotherWords,
-                                  style: Theme.of(context).textTheme.headline3,
+                                  style:
+                                      Theme.of(context).textTheme.displaySmall,
                                   textAlign: TextAlign.center,
                                 ),
                               )
@@ -102,13 +103,13 @@ class _PhraseCardState extends State<PhraseCard> {
                                             text: state.sentence[0],
                                             style: Theme.of(context)
                                                 .textTheme
-                                                .headline3,
+                                                .displaySmall,
                                             children: <TextSpan>[
                                               TextSpan(
                                                 text: state.sentence[1],
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .headline3
+                                                    .displaySmall
                                                     ?.copyWith(
                                                       fontWeight:
                                                           FontWeight.bold,
@@ -118,7 +119,7 @@ class _PhraseCardState extends State<PhraseCard> {
                                                 text: state.sentence[2],
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .headline3,
+                                                    .displaySmall,
                                               ),
                                             ],
                                           ),
@@ -127,7 +128,7 @@ class _PhraseCardState extends State<PhraseCard> {
                                           state.sentenceTranslation,
                                           style: Theme.of(context)
                                               .textTheme
-                                              .headline3,
+                                              .displaySmall,
                                           textAlign: TextAlign.center,
                                         ),
                                 ),

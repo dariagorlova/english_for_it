@@ -33,7 +33,7 @@ class TestingView extends StatelessWidget {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height * 0.4;
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
         title: const Text('Testing daily phrases'),
         actions: [
@@ -65,7 +65,7 @@ class TestingView extends StatelessWidget {
                           child: Center(
                             child: Text(
                               state.currentPhrase,
-                              style: Theme.of(context).textTheme.headline3,
+                              style: Theme.of(context).textTheme.displaySmall,
                               textAlign: TextAlign.center,
                             ),
                           ),

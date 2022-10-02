@@ -21,6 +21,13 @@ DailyRepository getWordsRepository() {
       OneWord(word: 'deadline', translate: 'крайній термін'),
     ];
   });
+  when(mock.getAllWords).thenAnswer((_) async {
+    return const [
+      OneWord(word: 'developer', translate: 'розробниця'),
+      OneWord(word: 'computer', translate: 'компʼютер'),
+      OneWord(word: 'bug', translate: 'помилка'),
+    ];
+  });
   when(mock.getDailyPhrases).thenAnswer((_) async {
     return const [
       Phrase(

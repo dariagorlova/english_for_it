@@ -36,7 +36,7 @@ class _CongratulationScreenState extends State<CongratulationScreen> {
       alignment: Alignment.topCenter,
       children: [
         Scaffold(
-          backgroundColor: Theme.of(context).backgroundColor,
+          backgroundColor: Theme.of(context).colorScheme.background,
           appBar: AppBar(
             actions: [
               IconButton(
@@ -58,7 +58,7 @@ class _CongratulationScreenState extends State<CongratulationScreen> {
                   Text(
                     'Congratulation! You passed the test!',
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.headline3,
+                    style: Theme.of(context).textTheme.displaySmall,
                   ),
                   const SizedBox(
                     height: 50,
@@ -66,7 +66,7 @@ class _CongratulationScreenState extends State<CongratulationScreen> {
                   Text(
                     '${widget.times} times you answered incorrectly',
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.headline5,
+                    style: Theme.of(context).textTheme.headlineSmall,
                   ),
                   const SizedBox(
                     height: 30,
@@ -80,7 +80,7 @@ class _CongratulationScreenState extends State<CongratulationScreen> {
                         Text(
                           'Maybe you need to go over the words again?',
                           textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.headline5,
+                          style: Theme.of(context).textTheme.headlineSmall,
                         ),
                         ElevatedButton(
                           onPressed: () {
@@ -95,7 +95,7 @@ class _CongratulationScreenState extends State<CongratulationScreen> {
                   else
                     Text(
                       'Great job!',
-                      style: Theme.of(context).textTheme.headline4,
+                      style: Theme.of(context).textTheme.headlineMedium,
                     ),
                 ],
               ),
