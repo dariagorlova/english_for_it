@@ -1,3 +1,4 @@
+import 'package:english_for_it/features/phrases/phrases_learning_screen/widgets/phrase_card.dart';
 import 'package:english_for_it/features/phrases/phrases_learning_screen/widgets/speak_off_button.dart';
 import 'package:english_for_it/features/phrases/phrases_learning_screen/widgets/speak_on_button.dart';
 import 'package:flutter/material.dart';
@@ -11,9 +12,11 @@ class OneSideCard extends StatelessWidget {
     required this.next,
     required this.language,
     required this.textToSpeak,
+    required this.cardStatus,
   });
   final Widget textWidget;
   final bool inEnglish;
+  final CardStatus cardStatus;
   final VoidCallback language;
   final String textToSpeak;
   final VoidCallback previous;
@@ -61,6 +64,7 @@ class OneSideCard extends StatelessWidget {
                 NavigationButton(
                   icon: Icons.arrow_back_ios,
                   navigationFunction: previous,
+                  mustBeBlocked: cardStatus == CardStatus.first,
                 ),
                 const SizedBox(
                   width: 10,
@@ -68,6 +72,7 @@ class OneSideCard extends StatelessWidget {
                 NavigationButton(
                   icon: Icons.arrow_forward_ios,
                   navigationFunction: next,
+                  mustBeBlocked: cardStatus == CardStatus.last,
                 ),
               ],
             ),
@@ -81,39 +86,41 @@ class OneSideCard extends StatelessWidget {
 class NavigationButton extends StatelessWidget {
   const NavigationButton({
     super.key,
-    //required this.mustBeBlocked,
+    required this.mustBeBlocked,
     required this.navigationFunction,
     required this.icon,
   });
 
-  //final bool mustBeBlocked;
+  final bool mustBeBlocked;
   final VoidCallback navigationFunction;
   final IconData icon;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Theme.of(context).canvasColor,
-          boxShadow: [
-            BoxShadow(color: Theme.of(context).dividerColor, spreadRadius: 3),
-          ],
-        ),
-        // foregroundDecoration: mustBeBlocked
-        //     ? BoxDecoration(
-        //         color: Theme.of(context).errorColor,
-        //         backgroundBlendMode: BlendMode.lighten,
-        //       )
-        //     : null,
-        child: InkWell(
-          onTap: navigationFunction,
-          child: Padding(
-            padding: const EdgeInsets.all(4),
-            child: Icon(
-              icon, //Icons.arrow_back_ios,
-              size: 40,
+      child: Container(
+        foregroundDecoration: mustBeBlocked
+            ? BoxDecoration(
+                color: Theme.of(context).colorScheme.error,
+                backgroundBlendMode: BlendMode.lighten,
+              )
+            : null,
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Theme.of(context).canvasColor,
+            boxShadow: [
+              BoxShadow(color: Theme.of(context).dividerColor, spreadRadius: 3),
+            ],
+          ),
+          child: InkWell(
+            onTap: navigationFunction,
+            child: Padding(
+              padding: const EdgeInsets.all(4),
+              child: Icon(
+                icon, //Icons.arrow_back_ios,
+                size: 40,
+              ),
             ),
           ),
         ),
