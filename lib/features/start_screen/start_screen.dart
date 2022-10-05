@@ -34,7 +34,7 @@ class _StartScreenState extends State<StartScreen> with WidgetsBindingObserver {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.background,
-        foregroundColor: Theme.of(context).primaryColor,
+        foregroundColor: Theme.of(context).colorScheme.primary,
         elevation: 0,
       ),
       drawer: Drawer(
@@ -44,7 +44,7 @@ class _StartScreenState extends State<StartScreen> with WidgetsBindingObserver {
           children: [
             DrawerHeader(
               decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
+                color: Theme.of(context).colorScheme.primary,
               ),
               child: Text(
                 'Improve Your English Level',

@@ -49,7 +49,7 @@ class PhraseChoiseCard extends StatelessWidget {
                       fontSize: 23,
                       color: isAnswerTried
                           ? Theme.of(context).colorScheme.error
-                          : Theme.of(context).primaryColor,
+                          : Theme.of(context).colorScheme.primary,
                     ),
                     children: <TextSpan>[
                       TextSpan(
@@ -59,7 +59,7 @@ class PhraseChoiseCard extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                           color: isAnswerTried
                               ? Theme.of(context).colorScheme.error
-                              : Theme.of(context).primaryColor,
+                              : Theme.of(context).colorScheme.primary,
                         ),
                       ),
                       TextSpan(
@@ -68,7 +68,7 @@ class PhraseChoiseCard extends StatelessWidget {
                           fontSize: 23,
                           color: isAnswerTried
                               ? Theme.of(context).colorScheme.error
-                              : Theme.of(context).primaryColor,
+                              : Theme.of(context).colorScheme.primary,
                         ),
                       ),
                     ],

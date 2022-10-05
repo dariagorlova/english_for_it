@@ -88,7 +88,7 @@ class _SearchWordState extends State<SearchWordView> {
                       Text(
                         'Word in English:',
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                              color: Theme.of(context).primaryColor,
+                              color: Theme.of(context).colorScheme.primary,
                             ),
                       ),
                       Row(
@@ -101,7 +101,7 @@ class _SearchWordState extends State<SearchWordView> {
                           ),
                           IconButton(
                             icon: const Icon(Icons.search),
-                            color: Theme.of(context).primaryColor,
+                            color: Theme.of(context).colorScheme.primary,
                             onPressed: _searchWord,
                           ),
                         ],
@@ -114,7 +114,7 @@ class _SearchWordState extends State<SearchWordView> {
                       Text(
                         'Ukrainian Translation:',
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                              color: Theme.of(context).primaryColor,
+                              color: Theme.of(context).colorScheme.primary,
                             ),
                       ),
                       Container(
