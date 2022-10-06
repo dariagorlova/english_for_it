@@ -21,13 +21,6 @@ class _StartScreenState extends State<StartScreen> with WidgetsBindingObserver {
     super.dispose();
   }
 
-  // @override
-  // void didChangeAppLifecycleState(AppLifecycleState state) {
-  //   if (state == AppLifecycleState.resumed) {
-  //     FlutterAppBadger.removeBadge();
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -126,20 +119,7 @@ class VerticalView extends StatelessWidget {
           width: widthScreen / 2,
           child: ElevatedButton(
             onPressed: () {
-              //   async {
-              // await FlutterNotification.instance.cancelNotification();
-              // await FlutterNotification.instance.requestPermissions();
-              // final now = tz.TZDateTime.now(tz.local);
-              // await FlutterNotification.instance.registerMessage(
-              //   //hour: now.hour,
-              //   hour: now.hour + 24,
-              //   minutes: now.minute,
-              //   message: 'Time to English practice!',
-              // );
-              //
-              // if (mounted) {
               context.go('/learning');
-              //}
             },
             child: Text(
               'learn words',
