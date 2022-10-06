@@ -3,8 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 
 Future<void> iSeePhraseWithColor(
   WidgetTester tester,
-  Color color,
   int count,
+  Color color,
 ) async {
   expect(
     find.byWidgetPredicate(

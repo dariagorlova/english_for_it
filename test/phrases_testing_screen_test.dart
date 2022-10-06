@@ -11,8 +11,9 @@ import './step/i_see_text.dart';
 import './step/i_see_phrase.dart';
 import './step/i_tap_phrase.dart';
 import './step/i_see_phrase_with_color.dart';
-import './step/i_dont_see_text.dart';
+import './step/i_dont_see_phrase.dart';
 import './step/i_tap_icon.dart';
+import './step/i_dont_see_text.dart';
 
 void main() {
   Future<void> bddSetUp(WidgetTester tester) async {
@@ -31,22 +32,22 @@ void main() {
     });
     testWidgets('''As User I see another variants''', (tester) async {
       await bddSetUp(tester);
-      await iSeePhrase(tester, 'He has a background in industrial design.');
-      await iSeePhrase(tester, 'My perspective on this is different.');
-      await iSeePhrase(tester, 'We designed a robust architecture.');
+      await iSeePhrase(tester, 'He has extraordinary coding abilities.');
+      await iSeePhrase(tester, 'He came up with a brilliant plan.');
+      await iSeePhrase(tester, 'We are a customer-centric company.');
     });
     testWidgets('''As User I'm making the wrong choice''', (tester) async {
       await bddSetUp(tester);
-      await iTapPhrase(tester, 'He has a background in industrial design.');
+      await iTapPhrase(tester, 'He came up with a brilliant plan.');
       await iSeePhraseWithColor(tester, 1, Colors.grey);
-      await iTapPhrase(tester, 'My perspective on this is different.');
+      await iTapPhrase(tester, 'He has extraordinary coding abilities.');
       await iSeePhraseWithColor(tester, 2, Colors.grey);
     });
     testWidgets('''As User I'm be very good at the right choice''', (tester) async {
       await bddSetUp(tester);
-      await iTapText(tester, "He's proficient in Java.");
+      await iTapPhrase(tester, "He's proficient in Java.");
       await iWait(tester);
-      await iDontSeeText(tester, "He's proficient in Java.");
+      await iDontSeePhrase(tester, "He's proficient in Java.");
       await iSeeText(tester, 'have experience doing something');
     });
     testWidgets('''As User I want to return to learning phrases''', (tester) async {

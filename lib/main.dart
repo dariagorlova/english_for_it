@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
               ),
             ),
           ),
-          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.purple)
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.purple)
               .copyWith(
                 background: const Color.fromARGB(255, 242, 211, 248),
               )

@@ -34,7 +34,7 @@ class ChoiseCard extends StatelessWidget {
                 fontSize: 35,
                 color: isAnswerTried
                     ? Theme.of(context).colorScheme.error
-                    : Theme.of(context).primaryColor,
+                    : Theme.of(context).colorScheme.primary,
               ),
             ),
             //),
