@@ -1,4 +1,5 @@
 import 'package:english_for_it/core/model/phrase.dart';
+import 'package:english_for_it/features/phrases/phrases_learning_screen/widgets/phrase_card.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'phrases_state.freezed.dart';
@@ -27,6 +28,16 @@ extension XPhrasesState on PhrasesState {
 
   bool get isCurrentPhraseLast =>
       indexCurrenPhrase == (dailyPhrases.length - 1);
+
+  CardStatus get cardStatus {
+    if (isCurrentPhraseFirst) {
+      return CardStatus.first;
+    } else if (isCurrentPhraseLast) {
+      return CardStatus.last;
+    } else {
+      return CardStatus.intermediate;
+    }
+  }
 
   bool get isLoading => dailyPhrases.isEmpty;
 }

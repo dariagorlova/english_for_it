@@ -31,10 +31,10 @@ Feature: Testing knowledge (make pairs)
         And I tap {'помилка'} text
         Then I see card  with {Colors.red.shade300} color {2} times
 
-    Scenario: As User I make right choice all time
-        Then I tap correct pairs all times
-        And I wait
-        Then I see {'Congratulation! You passed the test!'} text
+    #Scenario: As User I make right choice all time
+    #    Then I tap correct pairs all times
+    #    And I wait
+    #    Then I see {'Congratulation! You passed the test!'} text
 
     Scenario: As User I want to return to learning words
         Then I tap {Icons.menu_book} icon

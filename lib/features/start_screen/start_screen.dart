@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_badger/flutter_app_badger.dart';
 import 'package:go_router/go_router.dart';
 
 class StartScreen extends StatefulWidget {
@@ -23,18 +22,11 @@ class _StartScreenState extends State<StartScreen> with WidgetsBindingObserver {
   }
 
   @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.resumed) {
-      FlutterAppBadger.removeBadge();
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.background,
-        foregroundColor: Theme.of(context).primaryColor,
+        foregroundColor: Theme.of(context).colorScheme.primary,
         elevation: 0,
       ),
       drawer: Drawer(
@@ -44,7 +36,7 @@ class _StartScreenState extends State<StartScreen> with WidgetsBindingObserver {
           children: [
             DrawerHeader(
               decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
+                color: Theme.of(context).colorScheme.primary,
               ),
               child: Text(
                 'Improve Your English Level',
@@ -127,20 +119,7 @@ class VerticalView extends StatelessWidget {
           width: widthScreen / 2,
           child: ElevatedButton(
             onPressed: () {
-              //   async {
-              // await FlutterNotification.instance.cancelNotification();
-              // await FlutterNotification.instance.requestPermissions();
-              // final now = tz.TZDateTime.now(tz.local);
-              // await FlutterNotification.instance.registerMessage(
-              //   //hour: now.hour,
-              //   hour: now.hour + 24,
-              //   minutes: now.minute,
-              //   message: 'Time to English practice!',
-              // );
-              //
-              // if (mounted) {
               context.go('/learning');
-              //}
             },
             child: Text(
               'learn words',

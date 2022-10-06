@@ -5,6 +5,8 @@ import 'package:english_for_it/features/phrases/phrases_learning_screen/widgets/
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+enum CardStatus { first, intermediate, last }
+
 class PhraseCard extends StatefulWidget {
   const PhraseCard({super.key});
 
@@ -80,6 +82,7 @@ class _PhraseCardState extends State<PhraseCard> {
                                       Theme.of(context).textTheme.displaySmall,
                                   textAlign: TextAlign.center,
                                 ),
+                                cardStatus: state.cardStatus,
                               )
                             : Transform(
                                 alignment: Alignment.center,
@@ -131,6 +134,7 @@ class _PhraseCardState extends State<PhraseCard> {
                                               .displaySmall,
                                           textAlign: TextAlign.center,
                                         ),
+                                  cardStatus: state.cardStatus,
                                 ),
                               ),
                       ),

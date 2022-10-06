@@ -28,13 +28,6 @@ class SearchCubit extends Cubit<SearchState> {
   }
 
   String translate(String word) {
-    // return state.words
-    //     .firstWhere(
-    //       (element) => element.word == word,
-    //       orElse: () => const OneWord(word: '', translate: ''),
-    //     )
-    //     .translate;
-
     for (final w in state.words) {
       if (w.word.contains(word)) {
         return w.translate;
