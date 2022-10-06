@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_badger/flutter_app_badger.dart';
 import 'package:go_router/go_router.dart';
 
 class StartScreen extends StatefulWidget {
@@ -22,12 +21,12 @@ class _StartScreenState extends State<StartScreen> with WidgetsBindingObserver {
     super.dispose();
   }
 
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.resumed) {
-      FlutterAppBadger.removeBadge();
-    }
-  }
+  // @override
+  // void didChangeAppLifecycleState(AppLifecycleState state) {
+  //   if (state == AppLifecycleState.resumed) {
+  //     FlutterAppBadger.removeBadge();
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {

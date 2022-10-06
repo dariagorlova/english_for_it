@@ -9,7 +9,6 @@ import './step/i_tap_text.dart';
 import './step/i_wait.dart';
 import './step/i_see_text.dart';
 import './step/i_see_card_with_color_times.dart';
-import './step/i_tap_correct_pairs_all_times.dart';
 import './step/i_tap_icon.dart';
 
 void main() {
@@ -49,12 +48,6 @@ void main() {
       await iTapText(tester, 'developer');
       await iTapText(tester, 'помилка');
       await iSeeCardWithColorTimes(tester, Colors.red.shade300, 2);
-    });
-    testWidgets('''As User I make right choice all time''', (tester) async {
-      await bddSetUp(tester);
-      await iTapCorrectPairsAllTimes(tester);
-      await iWait(tester);
-      await iSeeText(tester, 'Congratulation! You passed the test!');
     });
     testWidgets('''As User I want to return to learning words''', (tester) async {
       await bddSetUp(tester);
