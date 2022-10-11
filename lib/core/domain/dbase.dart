@@ -6,8 +6,10 @@ import 'package:english_for_it/core/model/phrase.dart';
 import 'package:english_for_it/core/model/word_translation_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:injectable/injectable.dart';
 import 'package:sqflite/sqflite.dart';
 
+@injectable
 class DbStorage {
   late Database _database;
 
