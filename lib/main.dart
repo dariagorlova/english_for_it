@@ -11,8 +11,9 @@ import 'package:english_for_it/features/start_screen/start_screen.dart';
 import 'package:english_for_it/features/words/learning_screen/learning_screen.dart';
 import 'package:english_for_it/features/words/make_pair_screen/make_pair_screen.dart';
 import 'package:english_for_it/features/words/testing_screen.dart/testing_screen.dart';
+import 'package:english_for_it/routes/app_router.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+//import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:injectable/injectable.dart';
 
@@ -50,69 +51,71 @@ class MyApp extends StatelessWidget {
               )
               .copyWith(error: Colors.grey),
         ),
-        routeInformationProvider: _router.routeInformationProvider,
-        routeInformationParser: _router.routeInformationParser,
-        routerDelegate: _router.routerDelegate,
+        // routeInformationProvider: _router.routeInformationProvider,
+        // routeInformationParser: _router.routeInformationParser,
+        // routerDelegate: _router.routerDelegate,
+        routeInformationParser: getIt<AppRouter>().defaultRouteParser(),
+        routerDelegate: getIt<AppRouter>().delegate(),
       );
 
-  final _router = GoRouter(
-    routes: <GoRoute>[
-      GoRoute(
-        path: '/',
-        builder: (context, state) => const StartScreen(),
-      ),
-      GoRoute(
-        path: '/learning',
-        builder: (context, state) => const LearningScreen(),
-      ),
-      GoRoute(
-        path: '/learningPhrases',
-        builder: (context, state) => const PhrasesScreen(),
-      ),
-      GoRoute(
-        path: '/testingPhrases',
-        builder: (context, state) => PhrasesTestingScreen(
-          phrases: state.extra! as List<Phrase>,
-        ),
-      ),
-      GoRoute(
-        path: '/testing',
-        builder: (context, state) => TestingScreen(
-          words: state.extra! as List<OneWord>,
-          variantOfTest: 0,
-        ),
-      ),
-      GoRoute(
-        path: '/testingUA',
-        builder: (context, state) => TestingScreen(
-          words: state.extra! as List<OneWord>,
-          variantOfTest: 1,
-        ),
-      ),
-      GoRoute(
-        path: '/makePairs',
-        builder: (context, state) => MakePairScreen(
-          words: state.extra! as List<OneWord>,
-        ),
-      ),
-      GoRoute(
-        path: '/congratulation',
-        builder: (context, state) {
-          final number = state.queryParams['times'];
-          final num = int.parse(number!);
-          return CongratulationScreen(
-            times: num,
-          );
-        },
-      ),
-      GoRoute(
-        path: '/searchWord',
-        builder: (context, state) => const SearchWord(),
-      ),
-      GoRoute(
-        path: '/irregularVerbs',
-        builder: (context, state) => const IrregularVerbsScreen(),
-      ),
-    ],
-  );
+  // final _router = GoRouter(
+  //   routes: <GoRoute>[
+  //     GoRoute(
+  //       path: '/',
+  //       builder: (context, state) => const StartScreen(),
+  //     ),
+  //     GoRoute(
+  //       path: '/learning',
+  //       builder: (context, state) => const LearningScreen(),
+  //     ),
+  //     GoRoute(
+  //       path: '/learningPhrases',
+  //       builder: (context, state) => const PhrasesScreen(),
+  //     ),
+  //     GoRoute(
+  //       path: '/testingPhrases',
+  //       builder: (context, state) => PhrasesTestingScreen(
+  //         phrases: state.extra! as List<Phrase>,
+  //       ),
+  //     ),
+  //     GoRoute(
+  //       path: '/testing',
+  //       builder: (context, state) => TestingScreen(
+  //         words: state.extra! as List<OneWord>,
+  //         variantOfTest: 0,
+  //       ),
+  //     ),
+  //     GoRoute(
+  //       path: '/testingUA',
+  //       builder: (context, state) => TestingScreen(
+  //         words: state.extra! as List<OneWord>,
+  //         variantOfTest: 1,
+  //       ),
+  //     ),
+  //     GoRoute(
+  //       path: '/makePairs',
+  //       builder: (context, state) => MakePairScreen(
+  //         words: state.extra! as List<OneWord>,
+  //       ),
+  //     ),
+  //     GoRoute(
+  //       path: '/congratulation',
+  //       builder: (context, state) {
+  //         final number = state.queryParams['times'];
+  //         final num = int.parse(number!);
+  //         return CongratulationScreen(
+  //           times: num,
+  //         );
+  //       },
+  //     ),
+  //     GoRoute(
+  //       path: '/searchWord',
+  //       builder: (context, state) => const SearchWordScreen(),
+  //     ),
+  //     GoRoute(
+  //       path: '/irregularVerbs',
+  //       builder: (context, state) => const IrregularVerbsScreen(),
+  //     ),
+  //   ],
+  // );
 }

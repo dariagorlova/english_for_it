@@ -1,5 +1,7 @@
+import 'package:english_for_it/features/start_screen/search_word/cubit/search_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+//import 'package:go_router/go_router.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({super.key});
@@ -54,7 +56,7 @@ class _StartScreenState extends State<StartScreen> with WidgetsBindingObserver {
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
               onTap: () {
-                context.go('/searchWord');
+                //context.go('/searchWord');
                 Navigator.pop(context);
               },
             ),
@@ -67,7 +69,7 @@ class _StartScreenState extends State<StartScreen> with WidgetsBindingObserver {
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
               onTap: () {
-                context.go('/irregularVerbs');
+                //context.go('/irregularVerbs');
                 Navigator.pop(context);
               },
             ),
@@ -118,8 +120,9 @@ class VerticalView extends StatelessWidget {
         SizedBox(
           width: widthScreen / 2,
           child: ElevatedButton(
-            onPressed: () {
-              context.go('/learning');
+            onPressed: () async {
+              //context.go('/learning');
+              await context.read<SearchCubit>().goLearnWords();
             },
             child: Text(
               'learn words',
@@ -133,8 +136,9 @@ class VerticalView extends StatelessWidget {
         SizedBox(
           width: widthScreen / 2,
           child: ElevatedButton(
-            onPressed: () {
-              context.go('/learningPhrases');
+            onPressed: () async {
+              //context.go('/learningPhrases');
+              await context.read<SearchCubit>().goLearnPhrases();
             },
             child: Text(
               'learn phrases',
@@ -180,8 +184,9 @@ class HorizontalView extends StatelessWidget {
             SizedBox(
               width: widthScreen / 4,
               child: ElevatedButton(
-                onPressed: () {
-                  context.go('/learning');
+                onPressed: () async {
+                  //context.go('/learning');
+                  await context.read<SearchCubit>().goLearnWords();
                 },
                 child: Text(
                   'learn words',
@@ -195,8 +200,9 @@ class HorizontalView extends StatelessWidget {
             SizedBox(
               width: widthScreen / 4,
               child: ElevatedButton(
-                onPressed: () {
-                  context.go('/learningPhrases');
+                onPressed: () async {
+                  //context.go('/learningPhrases');
+                  await context.read<SearchCubit>().goLearnPhrases();
                 },
                 child: Text(
                   'learn phrases',

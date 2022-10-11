@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:english_for_it/core/service/daily_repository.dart';
+import 'package:english_for_it/core/service/navigator.dart';
 import 'package:english_for_it/features/start_screen/search_word/cubit/search_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -8,6 +9,7 @@ import 'package:injectable/injectable.dart';
 class SearchCubit extends Cubit<SearchState> {
   SearchCubit(
     this._currentWordRepository,
+    this._router,
   ) : super(
           const SearchState(
             words: [],
@@ -17,6 +19,7 @@ class SearchCubit extends Cubit<SearchState> {
   }
 
   final DailyRepository _currentWordRepository;
+  final EnglishNavigator _router;
 
   Future<void> getAllWords() async {
     final words = await _currentWordRepository.getAllWords();
@@ -34,5 +37,13 @@ class SearchCubit extends Cubit<SearchState> {
       }
     }
     return '';
+  }
+
+  Future<void> goLearnWords() async {
+    await _router.openLearningWordsScreen();
+  }
+
+  Future<void> goLearnPhrases() async {
+    await _router.openLearningPhrasesScreen();
   }
 }
