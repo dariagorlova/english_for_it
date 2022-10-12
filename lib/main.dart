@@ -1,19 +1,8 @@
 import 'package:english_for_it/core/domain/shared_prefs_helper.dart';
-import 'package:english_for_it/core/model/one_word.dart';
-import 'package:english_for_it/core/model/phrase.dart';
+
 import 'package:english_for_it/di/injection.dart';
-import 'package:english_for_it/features/congratulation_screen/congratulation_screen.dart';
-import 'package:english_for_it/features/phrases/phrases_learning_screen/phrases_screen.dart';
-import 'package:english_for_it/features/phrases/phrases_testing_screen/phrases_testing_screen.dart';
-import 'package:english_for_it/features/start_screen/irregular_verbs_screen.dart';
-import 'package:english_for_it/features/start_screen/search_word/search_word_screen.dart';
-import 'package:english_for_it/features/start_screen/start_screen.dart';
-import 'package:english_for_it/features/words/learning_screen/learning_screen.dart';
-import 'package:english_for_it/features/words/make_pair_screen/make_pair_screen.dart';
-import 'package:english_for_it/features/words/testing_screen.dart/testing_screen.dart';
 import 'package:english_for_it/routes/app_router.dart';
 import 'package:flutter/material.dart';
-//import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:injectable/injectable.dart';
 
@@ -22,11 +11,11 @@ async {
   WidgetsFlutterBinding.ensureInitialized();
   await SharedPrefs.init();
   configureInjection(Environment.prod);
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({
+  const MyApp({
     super.key,
   });
 
