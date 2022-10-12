@@ -3,7 +3,6 @@ import 'package:english_for_it/features/start_screen/search_word/cubit/search_cu
 import 'package:english_for_it/features/start_screen/search_word/cubit/search_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
 class SearchWordScreen extends StatelessWidget {
   const SearchWordScreen({super.key});

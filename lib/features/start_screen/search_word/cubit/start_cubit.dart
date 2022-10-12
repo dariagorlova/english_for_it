@@ -9,7 +9,7 @@ class StartCubit extends Cubit<StartState> {
     this._router,
   ) : super(
           const StartState(),
-        ) {}
+        );
 
   final EnglishNavigator _router;
 
