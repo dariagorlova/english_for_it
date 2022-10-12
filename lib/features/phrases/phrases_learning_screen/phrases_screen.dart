@@ -29,7 +29,7 @@ class PhrasesScreenView extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              context.read<PhrasesCubit>().backToStart(context);
+              context.read<PhrasesCubit>().backToStart();
             },
             icon: const Icon(
               Icons.home,
@@ -82,7 +82,7 @@ class VerticalView extends StatelessWidget {
         ElevatedButton(
           onPressed: () {
             //context.go('/testingPhrases');
-            context.read<PhrasesCubit>().goToTest(context);
+            context.read<PhrasesCubit>().goToTest();
           },
           child: Text(
             'Test the learned',
@@ -122,7 +122,7 @@ class HorizontalView extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 //context.go('/testingPhrases');
-                context.read<PhrasesCubit>().goToTest(context);
+                context.read<PhrasesCubit>().goToTest();
               },
               child: Text(
                 'Test the learned',

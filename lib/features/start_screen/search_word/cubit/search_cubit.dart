@@ -39,11 +39,25 @@ class SearchCubit extends Cubit<SearchState> {
     return '';
   }
 
-  Future<void> goLearnWords() async {
-    await _router.openLearningWordsScreen();
+  Future<void> goToStart() async {
+    _router.startApp();
   }
 
-  Future<void> goLearnPhrases() async {
-    await _router.openLearningPhrasesScreen();
-  }
+  // Future<void> goLearnWords() async {
+  //   await _router.openLearningWordsScreen();
+  // }
+
+  // Future<void> goLearnPhrases() async {
+  //   await _router.openLearningPhrasesScreen();
+  // }
+
+  // Future<void> goSearchWord() async {
+  //   await _router.openSearchWordScreen();
+  //   _router.pop();
+  // }
+
+  // Future<void> goToIrregularVerbs() async {
+  //   await _router.openIrregularVerbsScreen();
+  //   _router.pop();
+  // }
 }

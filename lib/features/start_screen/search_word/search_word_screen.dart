@@ -65,7 +65,8 @@ class _SearchWordState extends State<SearchWordView> {
         actions: [
           IconButton(
             onPressed: () {
-              context.go('/');
+              //context.go('/');
+              context.read<SearchCubit>().goToStart();
             },
             icon: const Icon(
               Icons.menu_book,

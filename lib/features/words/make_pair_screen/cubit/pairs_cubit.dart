@@ -1,5 +1,6 @@
 import 'package:english_for_it/core/model/one_word.dart';
 import 'package:english_for_it/core/model/word_with_answers.dart';
+import 'package:english_for_it/core/service/navigator.dart';
 import 'package:english_for_it/features/words/make_pair_screen/cubit/pairs_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,6 +11,7 @@ import 'package:injectable/injectable.dart';
 class PairsCubit extends Cubit<PairsState> {
   PairsCubit(
     @factoryParam List<OneWord> words,
+    this._router,
   ) : super(
           const PairsState(
             wordsOnTheLeft: [],
@@ -21,6 +23,8 @@ class PairsCubit extends Cubit<PairsState> {
         ) {
     init(words);
   }
+
+  final EnglishNavigator _router;
 
   void init(List<OneWord> dailyWords) {
     if (dailyWords.isEmpty) return;
@@ -334,7 +338,8 @@ class PairsCubit extends Cubit<PairsState> {
     }
   }
 
-  void backToLearn(BuildContext context) {
-    context.go('/learning');
+  void backToLearn() {
+    //context.go('/learning');
+    _router.startApp();
   }
 }

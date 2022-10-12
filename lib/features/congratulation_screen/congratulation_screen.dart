@@ -1,13 +1,20 @@
 import 'dart:math';
 
 import 'package:confetti/confetti.dart';
+import 'package:english_for_it/features/phrases/phrases_learning_screen/cubit/phrases_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+//import 'package:go_router/go_router.dart';
 
 class CongratulationScreen extends StatefulWidget {
-  const CongratulationScreen({required this.times, super.key});
+  const CongratulationScreen({
+    required this.numberOfWrongAnswers,
+    super.key,
+    //required this.router,
+  });
 
-  final int times;
+  final int numberOfWrongAnswers;
+  //final EnglishNavigator router;
 
   @override
   State<CongratulationScreen> createState() => _CongratulationScreenState();
@@ -41,7 +48,8 @@ class _CongratulationScreenState extends State<CongratulationScreen> {
             actions: [
               IconButton(
                 onPressed: () {
-                  context.go('/');
+                  //context.go('/');
+                  context.read<PhrasesCubit>().backToStart();
                 },
                 icon: const Icon(
                   Icons.menu_book,
@@ -64,14 +72,14 @@ class _CongratulationScreenState extends State<CongratulationScreen> {
                     height: 50,
                   ),
                   Text(
-                    '${widget.times} times you answered incorrectly',
+                    '''${widget.numberOfWrongAnswers} times you answered incorrectly''',
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.headlineSmall,
                   ),
                   const SizedBox(
                     height: 30,
                   ),
-                  if (widget.times > 3)
+                  if (widget.numberOfWrongAnswers > 3)
                     Column(
                       children: [
                         const SizedBox(
@@ -84,7 +92,8 @@ class _CongratulationScreenState extends State<CongratulationScreen> {
                         ),
                         ElevatedButton(
                           onPressed: () {
-                            context.push('/learning');
+                            //context.push('/learning');
+                            context.read<PhrasesCubit>().backToStart();
                           },
                           child: const Text(
                             'back to learning',

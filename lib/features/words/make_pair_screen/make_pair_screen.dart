@@ -38,7 +38,7 @@ class MakePairsView extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              context.read<PairsCubit>().backToLearn(context);
+              context.read<PairsCubit>().backToLearn();
             },
             icon: const Icon(
               Icons.menu_book,
