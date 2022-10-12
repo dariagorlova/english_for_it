@@ -340,6 +340,6 @@ class PairsCubit extends Cubit<PairsState> {
 
   void backToLearn() {
     //context.go('/learning');
-    _router.startApp();
+    _router.openLearningWordsScreen();
   }
 }
