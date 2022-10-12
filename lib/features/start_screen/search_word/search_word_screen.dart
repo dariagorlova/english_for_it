@@ -3,10 +3,9 @@ import 'package:english_for_it/features/start_screen/search_word/cubit/search_cu
 import 'package:english_for_it/features/start_screen/search_word/cubit/search_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
-class SearchWord extends StatelessWidget {
-  const SearchWord({super.key});
+class SearchWordScreen extends StatelessWidget {
+  const SearchWordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +64,8 @@ class _SearchWordState extends State<SearchWordView> {
         actions: [
           IconButton(
             onPressed: () {
-              context.go('/');
+              //context.go('/');
+              context.read<SearchCubit>().goToStart();
             },
             icon: const Icon(
               Icons.menu_book,

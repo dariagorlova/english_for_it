@@ -1,11 +1,14 @@
 import 'package:english_for_it/core/service/daily_repository.dart';
+import 'package:english_for_it/core/service/navigator.dart';
 import 'package:english_for_it/features/words/make_pair_screen/cubit/pairs_cubit.dart';
+import 'package:english_for_it/routes/app_router.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
 class MockDailyRepository extends Mock implements DailyRepository {}
 
 void main() {
+  final router = AppRouter();
   final mockWordsRepository = MockDailyRepository();
   when(mockWordsRepository.getDailyWords).thenAnswer((_) async {
     return const [
@@ -25,7 +28,10 @@ void main() {
   late final PairsCubit sut;
   setUp(() async {
     final words = await mockWordsRepository.getDailyWords();
-    sut = PairsCubit(words);
+    sut = PairsCubit(
+      words,
+      EnglishNavigator(router),
+    );
   });
 
   group('Search cubit tests', () {

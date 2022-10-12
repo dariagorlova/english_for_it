@@ -39,7 +39,7 @@ class TestingView extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              context.read<TestingCubit>().backToLearn(context);
+              context.read<TestingCubit>().backToLearn();
             },
             icon: const Icon(
               Icons.menu_book,

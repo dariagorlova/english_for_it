@@ -1,25 +1,25 @@
 import 'dart:async';
 import 'package:english_for_it/core/service/daily_repository.dart';
+import 'package:english_for_it/core/service/navigator.dart';
 import 'package:english_for_it/features/phrases/phrases_learning_screen/cubit/phrases_state.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
 class PhrasesCubit extends Cubit<PhrasesState> {
   PhrasesCubit(
     this._currentWordRepository,
+    this._router,
     //) : super(const PhrasesState(dailyPhrases: [], textForDisplay: [])) {
   ) : super(const PhrasesState(dailyPhrases: [], sentences: [])) {
     unawaited(getDailyPhrases());
   }
 
   final DailyRepository _currentWordRepository;
+  final EnglishNavigator _router;
 
   Future<void> getDailyPhrases() async {
     final phrases = await _currentWordRepository.getDailyPhrases();
-    //final text = <String>[phrases.first.byAnotherWords, '', ''];
 
     // fill list with sentences
     final allSentences = <List<String>>[];
@@ -32,7 +32,6 @@ class PhrasesCubit extends Cubit<PhrasesState> {
     emit(
       PhrasesState(
         dailyPhrases: phrases,
-        //textForDisplay: text,
         sentences: allSentences,
       ),
     );
@@ -96,7 +95,6 @@ class PhrasesCubit extends Cubit<PhrasesState> {
         displayInEnglish: true,
       ),
     );
-    //_changeTextForDisplay();
   }
 
   void prevPhrase() {
@@ -113,7 +111,6 @@ class PhrasesCubit extends Cubit<PhrasesState> {
         displayInEnglish: true,
       ),
     );
-    //_changeTextForDisplay();
   }
 
   // void _changeTextForDisplay() {
@@ -140,12 +137,10 @@ class PhrasesCubit extends Cubit<PhrasesState> {
 
   void changeLanguage() {
     emit(state.copyWith(displayInEnglish: !state.displayInEnglish));
-    //_changeTextForDisplay();
   }
 
   void changePhraseView() {
     emit(state.copyWith(sentenceDisplayed: !state.sentenceDisplayed));
-    //_changeTextForDisplay();
   }
 
   String getProgressText() {
@@ -153,11 +148,13 @@ class PhrasesCubit extends Cubit<PhrasesState> {
     return res;
   }
 
-  void goToTest(BuildContext context) {
-    context.go('/testingPhrases', extra: state.dailyPhrases);
+  void goToTest() {
+    //context.go('/testingPhrases', extra: state.dailyPhrases);
+    _router.openTestingPhrasesScreen(state.dailyPhrases);
   }
 
-  void backToStart(BuildContext context) {
-    context.go('/');
+  void backToStart() {
+    //context.go('/');
+    _router.startApp();
   }
 }

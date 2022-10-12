@@ -1,14 +1,29 @@
+import 'package:english_for_it/di/injection.dart';
+import 'package:english_for_it/features/start_screen/search_word/cubit/start_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class StartScreen extends StatefulWidget {
+class StartScreen extends StatelessWidget {
   const StartScreen({super.key});
 
   @override
-  State<StartScreen> createState() => _StartScreenState();
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => getIt<StartCubit>(),
+      child: const StartScreenView(),
+    );
+  }
 }
 
-class _StartScreenState extends State<StartScreen> with WidgetsBindingObserver {
+class StartScreenView extends StatefulWidget {
+  const StartScreenView({super.key});
+
+  @override
+  State<StartScreenView> createState() => _StartScreenState();
+}
+
+class _StartScreenState extends State<StartScreenView>
+    with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
@@ -53,9 +68,9 @@ class _StartScreenState extends State<StartScreen> with WidgetsBindingObserver {
                 'Translator',
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
-              onTap: () {
-                context.go('/searchWord');
-                Navigator.pop(context);
+              onTap: () async {
+                //context.go('/searchWord');
+                await context.read<StartCubit>().goSearchWord();
               },
             ),
             ListTile(
@@ -66,9 +81,9 @@ class _StartScreenState extends State<StartScreen> with WidgetsBindingObserver {
                 'Irregular Verbs',
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
-              onTap: () {
-                context.go('/irregularVerbs');
-                Navigator.pop(context);
+              onTap: () async {
+                //context.go('/irregularVerbs');
+                await context.read<StartCubit>().goToIrregularVerbs();
               },
             ),
           ],
@@ -118,8 +133,9 @@ class VerticalView extends StatelessWidget {
         SizedBox(
           width: widthScreen / 2,
           child: ElevatedButton(
-            onPressed: () {
-              context.go('/learning');
+            onPressed: () async {
+              //context.go('/learning');
+              await context.read<StartCubit>().goLearnWords();
             },
             child: Text(
               'learn words',
@@ -133,8 +149,9 @@ class VerticalView extends StatelessWidget {
         SizedBox(
           width: widthScreen / 2,
           child: ElevatedButton(
-            onPressed: () {
-              context.go('/learningPhrases');
+            onPressed: () async {
+              //context.go('/learningPhrases');
+              await context.read<StartCubit>().goLearnPhrases();
             },
             child: Text(
               'learn phrases',
@@ -180,8 +197,9 @@ class HorizontalView extends StatelessWidget {
             SizedBox(
               width: widthScreen / 4,
               child: ElevatedButton(
-                onPressed: () {
-                  context.go('/learning');
+                onPressed: () async {
+                  //context.go('/learning');
+                  await context.read<StartCubit>().goLearnWords();
                 },
                 child: Text(
                   'learn words',
@@ -195,8 +213,9 @@ class HorizontalView extends StatelessWidget {
             SizedBox(
               width: widthScreen / 4,
               child: ElevatedButton(
-                onPressed: () {
-                  context.go('/learningPhrases');
+                onPressed: () async {
+                  //context.go('/learningPhrases');
+                  await context.read<StartCubit>().goLearnPhrases();
                 },
                 child: Text(
                   'learn phrases',

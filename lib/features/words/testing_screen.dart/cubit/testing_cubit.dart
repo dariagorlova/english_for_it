@@ -1,10 +1,10 @@
 import 'dart:math';
 import 'package:english_for_it/core/model/one_word.dart';
 import 'package:english_for_it/core/model/word_with_answers.dart';
+import 'package:english_for_it/core/service/navigator.dart';
 import 'package:english_for_it/features/words/testing_screen.dart/cubit/testing_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
@@ -13,6 +13,7 @@ class TestingCubit extends Cubit<TestingState> {
     @Named('translates_seed') int translatesSeed,
     @factoryParam List<OneWord> words,
     @factoryParam int variantENtoUA,
+    this._router,
   )   : _random = Random(translatesSeed),
         super(
           const TestingState(
@@ -26,6 +27,7 @@ class TestingCubit extends Cubit<TestingState> {
   }
 
   final Random _random;
+  final EnglishNavigator _router;
 
   void init(List<OneWord> dailyWords) {
     if (dailyWords.isEmpty) return;
@@ -135,7 +137,8 @@ class TestingCubit extends Cubit<TestingState> {
           );
         } else {
           final numberOfFails = state.numberOfFails;
-          context.go('/congratulation?times=$numberOfFails');
+          //context.go('/congratulation?times=$numberOfFails');
+          _router.openCongratulationsScreen(numberOfFails);
 
           emit(
             state.copyWith(
@@ -150,7 +153,8 @@ class TestingCubit extends Cubit<TestingState> {
     }
   }
 
-  void backToLearn(BuildContext context) {
-    context.push('/learning');
+  void backToLearn() {
+    //context.push('/learning');
+    _router.openLearningWordsScreen();
   }
 }
