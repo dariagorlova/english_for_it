@@ -7,7 +7,7 @@ import '../utils/mock_repository.dart';
 Future<void> theAppIsRunning(WidgetTester tester) async {
   await di.getIt.reset();
   di.configureInjection(Environment.test);
-  await tester.pumpWidget(MyApp());
+  await tester.pumpWidget(const MyApp());
   await tester.pumpAndSettle();
 
   di.getIt
@@ -15,6 +15,5 @@ Future<void> theAppIsRunning(WidgetTester tester) async {
     ..registerFactory<int>(() => 0, instanceName: 'seed')
     ..registerFactory<int>(() => 1, instanceName: 'translates_seed')
     ..registerSingleton(getWordsRepository())
-    //..registerSingleton(getPhrasesRepository())
     ..allowReassignment = false;
 }
