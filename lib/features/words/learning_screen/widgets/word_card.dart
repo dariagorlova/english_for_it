@@ -12,7 +12,11 @@ class WordCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final heightScreen = MediaQuery.of(context).size.height;
-    final widthScreen = MediaQuery.of(context).size.width;
+    var widthScreen = MediaQuery.of(context).size.width;
+    if (widthScreen > 1000) {
+      // WebApp
+      widthScreen = 413;
+    }
     final btnSize = MediaQuery.of(context).orientation == Orientation.portrait
         ? heightScreen / 20
         : widthScreen / 20;

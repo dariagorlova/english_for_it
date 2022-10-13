@@ -49,9 +49,11 @@ class MakePairsView extends StatelessWidget {
       body: SafeArea(
         child: BlocBuilder<PairsCubit, PairsState>(
           builder: (context, state) {
-            return MediaQuery.of(context).orientation == Orientation.portrait
+            return MediaQuery.of(context).size.width > 1000 // WebApp
                 ? VerticalView(pState: state)
-                : HorizontalView(pState: state);
+                : MediaQuery.of(context).orientation == Orientation.portrait
+                    ? VerticalView(pState: state)
+                    : HorizontalView(pState: state);
           },
         ),
       ),
@@ -69,12 +71,16 @@ class VerticalView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final columnHeight = MediaQuery.of(context).size.height - 30;
-    final columnWidth = MediaQuery.of(context).size.width / 2;
+    final heightScreen = MediaQuery.of(context).size.height;
+    var widthScreen = MediaQuery.of(context).size.width;
+    if (widthScreen > 1000) {
+      // WebApp
+      widthScreen = 410;
+    }
+    final columnHeight = heightScreen - 30;
+    final columnWidth = widthScreen / 2;
     final textHeight =
-        MediaQuery.of(context).size.height > MediaQuery.of(context).size.width
-            ? MediaQuery.of(context).size.height / 36
-            : MediaQuery.of(context).size.width / 36;
+        heightScreen > widthScreen ? heightScreen / 36 : widthScreen / 36;
     //print('height: $columnHeight, weidth: $columnWidth');
     return Row(
       children: [

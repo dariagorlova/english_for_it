@@ -42,9 +42,11 @@ class LearningView extends StatelessWidget {
       ),
       body: SafeArea(
         child: Center(
-          child: MediaQuery.of(context).orientation == Orientation.portrait
+          child: MediaQuery.of(context).size.width > 1000 // WebApp
               ? const VerticalView()
-              : const HorizontalView(),
+              : MediaQuery.of(context).orientation == Orientation.portrait
+                  ? const VerticalView()
+                  : const HorizontalView(),
         ),
       ),
     );
@@ -58,6 +60,13 @@ class VerticalView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final heightScreen = MediaQuery.of(context).size.height;
+    var widthScreen = MediaQuery.of(context).size.width;
+    if (widthScreen > 1000) {
+      // WebApp
+      widthScreen = 413;
+    }
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -74,7 +83,7 @@ class VerticalView extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.5,
+          height: heightScreen * 0.5,
           child: const Padding(
             padding: EdgeInsets.all(15),
             child: WordCard(),
@@ -84,17 +93,17 @@ class VerticalView extends StatelessWidget {
         TestProgramButton(
           title: 'Translate EN to UA',
           index: 0,
-          buttonWidth: MediaQuery.of(context).size.width / 1.5,
+          buttonWidth: widthScreen / 1.5,
         ),
         TestProgramButton(
           title: 'Translate UA to EN',
           index: 1,
-          buttonWidth: MediaQuery.of(context).size.width / 1.5,
+          buttonWidth: widthScreen / 1.5,
         ),
         TestProgramButton(
           title: 'Make pairs',
           index: 2,
-          buttonWidth: MediaQuery.of(context).size.width / 1.5,
+          buttonWidth: widthScreen / 1.5,
         ),
       ],
     );

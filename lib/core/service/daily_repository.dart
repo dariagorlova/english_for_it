@@ -4,10 +4,17 @@ import 'package:english_for_it/core/model/phrase.dart';
 import 'package:english_for_it/core/service/dbase_service.dart';
 import 'package:injectable/injectable.dart';
 
+abstract class Repository {
+  Future<List<OneWord>> getDailyWords();
+  Future<List<OneWord>> getAllWords();
+  Future<List<Phrase>> getDailyPhrases();
+}
+
 @injectable
-class DailyRepository {
+class DailyRepository implements Repository {
   DailyRepository();
 
+  @override
   Future<List<OneWord>> getDailyWords() async {
     final list2 = <OneWord>[];
     final dbase = DbaseServiceImpl(
@@ -26,6 +33,7 @@ class DailyRepository {
     return list2;
   }
 
+  @override
   Future<List<OneWord>> getAllWords() async {
     final dbase = DbaseServiceImpl(
       isPermissionsGranted: await DbaseServiceImpl.checkPermissions(),
@@ -38,6 +46,7 @@ class DailyRepository {
     return res;
   }
 
+  @override
   Future<List<Phrase>> getDailyPhrases() async {
     final list2 = <Phrase>[];
     final dbase = DbaseServiceImpl(

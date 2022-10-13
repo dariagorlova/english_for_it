@@ -69,7 +69,6 @@ class _StartScreenState extends State<StartScreenView>
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
               onTap: () async {
-                //context.go('/searchWord');
                 await context.read<StartCubit>().goSearchWord();
               },
             ),
@@ -82,7 +81,6 @@ class _StartScreenState extends State<StartScreenView>
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
               onTap: () async {
-                //context.go('/irregularVerbs');
                 await context.read<StartCubit>().goToIrregularVerbs();
               },
             ),
@@ -90,12 +88,18 @@ class _StartScreenState extends State<StartScreenView>
         ),
       ),
       backgroundColor: Theme.of(context).colorScheme.background,
-      body: Padding(
-        padding: EdgeInsets.all(MediaQuery.of(context).size.width / 30),
-        child: Center(
-          child: MediaQuery.of(context).orientation == Orientation.portrait
-              ? const VerticalView()
-              : const HorizontalView(),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Center(
+              child: MediaQuery.of(context).size.width > 1000 // WebApp
+                  ? const VerticalView()
+                  : MediaQuery.of(context).orientation == Orientation.portrait
+                      ? const VerticalView()
+                      : const HorizontalView(),
+            ),
+          ),
         ),
       ),
     );
@@ -110,7 +114,12 @@ class VerticalView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final heightScreen = MediaQuery.of(context).size.height;
-    final widthScreen = MediaQuery.of(context).size.width;
+    var widthScreen = MediaQuery.of(context).size.width;
+    if (widthScreen > 1000) {
+      // WebApp
+      widthScreen = 413;
+    }
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
@@ -146,6 +155,9 @@ class VerticalView extends StatelessWidget {
             ),
           ),
         ),
+        const SizedBox(
+          height: 10,
+        ),
         SizedBox(
           width: widthScreen / 2,
           child: ElevatedButton(
@@ -178,7 +190,7 @@ class HorizontalView extends StatelessWidget {
       children: [
         Image.asset(
           'assets/images/meeting.png',
-          width: widthScreen / 2.5,
+          width: widthScreen / 3,
         ),
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -209,6 +221,9 @@ class HorizontalView extends StatelessWidget {
                       ?.copyWith(color: Theme.of(context).cardColor),
                 ),
               ),
+            ),
+            const SizedBox(
+              height: 10,
             ),
             SizedBox(
               width: widthScreen / 4,

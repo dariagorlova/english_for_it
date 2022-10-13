@@ -4,7 +4,6 @@ import 'package:english_for_it/core/service/navigator.dart';
 import 'package:english_for_it/features/words/make_pair_screen/cubit/pairs_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
@@ -324,7 +323,8 @@ class PairsCubit extends Cubit<PairsState> {
     if (state.wordsOnTheLeft
         .every((element) => element.state == WordState.correctly)) {
       final numberOfFails = state.numberOfFails;
-      context.go('/congratulation?times=$numberOfFails');
+      //context.go('/congratulation?times=$numberOfFails');
+      _router.openCongratulationsScreen(numberOfFails);
 
       emit(
         state.copyWith(

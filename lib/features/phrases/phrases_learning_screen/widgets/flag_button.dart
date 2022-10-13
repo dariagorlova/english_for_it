@@ -14,14 +14,15 @@ class FlagButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
+      padding: EdgeInsets.zero,
       icon: pState.displayInEnglish
           ? Text(
               '🇺🇦',
-              style: Theme.of(context).textTheme.headlineMedium,
+              style: Theme.of(context).textTheme.headlineSmall,
             )
           : Text(
               '🇺🇸',
-              style: Theme.of(context).textTheme.headlineMedium,
+              style: Theme.of(context).textTheme.headlineSmall,
             ),
       onPressed: () {
         context.read<PhrasesCubit>().changeLanguage();

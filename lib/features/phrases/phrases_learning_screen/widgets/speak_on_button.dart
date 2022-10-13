@@ -81,9 +81,17 @@ class _SpeakButtonState extends State<SpeakButton> {
 
   @override
   Widget build(BuildContext context) {
-    final iconSize = MediaQuery.of(context).orientation == Orientation.portrait
-        ? MediaQuery.of(context).size.height / 25
-        : MediaQuery.of(context).size.width / 25;
+    final heightScreen = MediaQuery.of(context).size.height;
+    final widthScreen = MediaQuery.of(context).size.width;
+    var iconSize = 35.0;
+    if (widthScreen > 1000) {
+      // WebApp
+      iconSize = heightScreen / 25;
+    } else if (MediaQuery.of(context).orientation == Orientation.portrait) {
+      iconSize = heightScreen / 25;
+    } else {
+      iconSize = widthScreen / 25;
+    }
 
     return Align(
       alignment: Alignment.topRight,
