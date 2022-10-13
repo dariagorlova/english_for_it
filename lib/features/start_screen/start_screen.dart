@@ -69,7 +69,6 @@ class _StartScreenState extends State<StartScreenView>
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
               onTap: () async {
-                //context.go('/searchWord');
                 await context.read<StartCubit>().goSearchWord();
               },
             ),
@@ -82,7 +81,6 @@ class _StartScreenState extends State<StartScreenView>
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
               onTap: () async {
-                //context.go('/irregularVerbs');
                 await context.read<StartCubit>().goToIrregularVerbs();
               },
             ),
@@ -93,16 +91,13 @@ class _StartScreenState extends State<StartScreenView>
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding:
-                EdgeInsets.all(20), //MediaQuery.of(context).size.width / 30),
+            padding: const EdgeInsets.all(20),
             child: Center(
-              child: //VerticalView(),
-                  MediaQuery.of(context).size.width > 1000 // WebApp
+              child: MediaQuery.of(context).size.width > 1000 // WebApp
+                  ? const VerticalView()
+                  : MediaQuery.of(context).orientation == Orientation.portrait
                       ? const VerticalView()
-                      : MediaQuery.of(context).orientation ==
-                              Orientation.portrait
-                          ? const VerticalView()
-                          : const HorizontalView(),
+                      : const HorizontalView(),
             ),
           ),
         ),
