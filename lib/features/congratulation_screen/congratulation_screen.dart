@@ -1,26 +1,40 @@
 import 'dart:math';
-
 import 'package:confetti/confetti.dart';
-import 'package:english_for_it/features/phrases/phrases_learning_screen/cubit/phrases_cubit.dart';
+import 'package:english_for_it/di/injection.dart';
+import 'package:english_for_it/features/start_screen/search_word/cubit/start_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-//import 'package:go_router/go_router.dart';
 
-class CongratulationScreen extends StatefulWidget {
-  const CongratulationScreen({
+class CongratulationScreen extends StatelessWidget {
+  const CongratulationScreen({required this.numberOfWrongAnswers, super.key});
+
+  final int numberOfWrongAnswers;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => getIt<StartCubit>(),
+      child: CongratulationScreenView(
+        numberOfWrongAnswers: numberOfWrongAnswers,
+      ),
+    );
+  }
+}
+
+class CongratulationScreenView extends StatefulWidget {
+  const CongratulationScreenView({
     required this.numberOfWrongAnswers,
     super.key,
-    //required this.router,
   });
 
   final int numberOfWrongAnswers;
-  //final EnglishNavigator router;
 
   @override
-  State<CongratulationScreen> createState() => _CongratulationScreenState();
+  State<CongratulationScreenView> createState() =>
+      _CongratulationScreenViewState();
 }
 
-class _CongratulationScreenState extends State<CongratulationScreen> {
+class _CongratulationScreenViewState extends State<CongratulationScreenView> {
   late ConfettiController controller;
   late bool isPlaying = false;
 
@@ -49,10 +63,10 @@ class _CongratulationScreenState extends State<CongratulationScreen> {
               IconButton(
                 onPressed: () {
                   //context.go('/');
-                  context.read<PhrasesCubit>().backToStart();
+                  context.read<StartCubit>().goToStart();
                 },
                 icon: const Icon(
-                  Icons.menu_book,
+                  Icons.home,
                 ),
               ),
             ],
@@ -92,8 +106,7 @@ class _CongratulationScreenState extends State<CongratulationScreen> {
                         ),
                         ElevatedButton(
                           onPressed: () {
-                            //context.push('/learning');
-                            context.read<PhrasesCubit>().backToStart();
+                            context.read<StartCubit>().goToStart();
                           },
                           child: const Text(
                             'back to learning',

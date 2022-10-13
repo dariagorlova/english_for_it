@@ -30,4 +30,8 @@ class StartCubit extends Cubit<StartState> {
     await _router.openIrregularVerbsScreen();
     _router.pop();
   }
+
+  Future<void> goToStart() async {
+    _router.startApp();
+  }
 }

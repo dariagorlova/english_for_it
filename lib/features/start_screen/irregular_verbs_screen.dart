@@ -1,6 +1,5 @@
 import 'package:english_for_it/features/start_screen/verb_data.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class IrregularVerbsScreen extends StatelessWidget {
   const IrregularVerbsScreen({super.key});
@@ -10,16 +9,16 @@ class IrregularVerbsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Common Irregular Verbs in English'),
-        actions: [
-          IconButton(
-            onPressed: () {
-              context.go('/');
-            },
-            icon: const Icon(
-              Icons.home,
-            ),
-          ),
-        ],
+        // actions: [
+        //   IconButton(
+        //     onPressed: () {
+        //       //context.go('/');
+        //       },
+        //     icon: const Icon(
+        //       Icons.home,
+        //     ),
+        //   ),
+        // ],
       ),
       body: const IrregulaerVerbsScreenView(),
     );
