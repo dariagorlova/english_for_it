@@ -18,7 +18,7 @@ class SearchCubit extends Cubit<SearchState> {
     unawaited(getAllWords());
   }
 
-  final DailyRepository _currentWordRepository;
+  final Repository _currentWordRepository;
   final EnglishNavigator _router;
 
   Future<void> getAllWords() async {
