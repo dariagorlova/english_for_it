@@ -75,7 +75,7 @@ class VerticalView extends StatelessWidget {
     var widthScreen = MediaQuery.of(context).size.width;
     if (widthScreen > 1000) {
       // WebApp
-      widthScreen = 413;
+      widthScreen = 410;
     }
     final columnHeight = heightScreen - 30;
     final columnWidth = widthScreen / 2;

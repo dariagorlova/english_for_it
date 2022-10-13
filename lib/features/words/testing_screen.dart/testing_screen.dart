@@ -49,7 +49,7 @@ class TestingView extends StatelessWidget {
       ),
       body: SafeArea(
         child: MediaQuery.of(context).size.width > 1000 //WebApp
-            ? const HorizontalView()
+            ? const VerticalView()
             : MediaQuery.of(context).orientation == Orientation.portrait
                 ? const VerticalView()
                 : const HorizontalView(),

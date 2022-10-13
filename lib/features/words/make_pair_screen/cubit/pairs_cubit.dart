@@ -324,7 +324,8 @@ class PairsCubit extends Cubit<PairsState> {
     if (state.wordsOnTheLeft
         .every((element) => element.state == WordState.correctly)) {
       final numberOfFails = state.numberOfFails;
-      context.go('/congratulation?times=$numberOfFails');
+      //context.go('/congratulation?times=$numberOfFails');
+      _router.openCongratulationsScreen(numberOfFails);
 
       emit(
         state.copyWith(
