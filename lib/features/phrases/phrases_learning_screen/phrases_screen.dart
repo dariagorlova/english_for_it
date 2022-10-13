@@ -39,9 +39,11 @@ class PhrasesScreenView extends StatelessWidget {
       ),
       body: SafeArea(
         child: Center(
-          child: MediaQuery.of(context).orientation == Orientation.portrait
+          child: MediaQuery.of(context).size.width > 1000 // WebApp
               ? const VerticalView()
-              : const HorizontalView(),
+              : MediaQuery.of(context).orientation == Orientation.portrait
+                  ? const VerticalView()
+                  : const HorizontalView(),
         ),
       ),
     );
@@ -55,6 +57,12 @@ class VerticalView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final heightScreen = MediaQuery.of(context).size.height;
+    var widthScreen = MediaQuery.of(context).size.width;
+    if (widthScreen > 1000) {
+      // WebApp
+      widthScreen = 413;
+    }
     return Column(
       children: [
         Padding(
@@ -70,15 +78,12 @@ class VerticalView extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.7,
+          height: heightScreen * 0.7,
           child: const Padding(
             padding: EdgeInsets.all(15),
             child: PhraseCard(),
           ),
         ),
-        // SizedBox(
-        //   height: MediaQuery.of(context).size.height * 0.2,
-        // ),
         ElevatedButton(
           onPressed: () {
             //context.go('/testingPhrases');

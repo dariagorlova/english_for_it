@@ -48,9 +48,11 @@ class TestingView extends StatelessWidget {
         ],
       ),
       body: SafeArea(
-        child: MediaQuery.of(context).orientation == Orientation.portrait
-            ? const VerticalView()
-            : const HorizontalView(),
+        child: MediaQuery.of(context).size.width > 1000 //WebApp
+            ? const HorizontalView()
+            : MediaQuery.of(context).orientation == Orientation.portrait
+                ? const VerticalView()
+                : const HorizontalView(),
       ),
     );
   }
@@ -63,7 +65,13 @@ class VerticalView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height * 0.4;
+    final heightScreen = MediaQuery.of(context).size.height;
+    var widthScreen = MediaQuery.of(context).size.width;
+    if (widthScreen > 1000) {
+      // WebApp
+      widthScreen = 413;
+    }
+    final height = heightScreen * 0.4;
     return Center(
       child: BlocBuilder<TestingCubit, TestingState>(
         builder: (context, state) {
@@ -99,7 +107,7 @@ class VerticalView extends StatelessWidget {
                         return ChoiseCard(
                           number: index,
                           title: state.currentWordAnswers[index],
-                          width: MediaQuery.of(context).size.width * 0.35,
+                          width: widthScreen * 0.35,
                         );
                       },
                     ),
