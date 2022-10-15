@@ -17,6 +17,11 @@ class PhraseChoiseCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var answerLength = 0;
+    for (final s in title) {
+      answerLength += s.length;
+    }
+    final isLongString = answerLength > 60;
     return SizedBox(
       height: height, //60,
       child: InkWell(
@@ -39,38 +44,40 @@ class PhraseChoiseCard extends StatelessWidget {
               //         : Theme.of(context).primaryColor,
               //   ),
               // ),
-              child: RichText(
-                maxLines: 6,
-                textAlign: TextAlign.center,
-                text: TextSpan(
-                  text: title[0],
-                  style: TextStyle(
-                    fontSize: 23,
-                    color: isAnswerTried
-                        ? Theme.of(context).colorScheme.error
-                        : Theme.of(context).colorScheme.primary,
+              child: Center(
+                child: RichText(
+                  maxLines: 6,
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    text: title[0],
+                    style: TextStyle(
+                      fontSize: isLongString ? 19 : 21,
+                      color: isAnswerTried
+                          ? Theme.of(context).colorScheme.error
+                          : Theme.of(context).colorScheme.primary,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: title[1],
+                        style: TextStyle(
+                          fontSize: isLongString ? 19 : 21,
+                          fontWeight: FontWeight.bold,
+                          color: isAnswerTried
+                              ? Theme.of(context).colorScheme.error
+                              : Theme.of(context).colorScheme.primary,
+                        ),
+                      ),
+                      TextSpan(
+                        text: title[2],
+                        style: TextStyle(
+                          fontSize: isLongString ? 19 : 21,
+                          color: isAnswerTried
+                              ? Theme.of(context).colorScheme.error
+                              : Theme.of(context).colorScheme.primary,
+                        ),
+                      ),
+                    ],
                   ),
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: title[1],
-                      style: TextStyle(
-                        fontSize: 23,
-                        fontWeight: FontWeight.bold,
-                        color: isAnswerTried
-                            ? Theme.of(context).colorScheme.error
-                            : Theme.of(context).colorScheme.primary,
-                      ),
-                    ),
-                    TextSpan(
-                      text: title[2],
-                      style: TextStyle(
-                        fontSize: 23,
-                        color: isAnswerTried
-                            ? Theme.of(context).colorScheme.error
-                            : Theme.of(context).colorScheme.primary,
-                      ),
-                    ),
-                  ],
                 ),
               ),
             ),

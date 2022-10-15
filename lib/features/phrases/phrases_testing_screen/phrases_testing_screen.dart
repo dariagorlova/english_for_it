@@ -48,51 +48,53 @@ class TestingView extends StatelessWidget {
         ],
       ),
       body: SafeArea(
-        child: Center(
-          child: BlocBuilder<PhrasesTestingCubit, PhrasesTestingState>(
-            builder: (context, state) {
-              return Column(
-                children: [
-                  if (state.isLoading)
-                    const Text('Loading')
-                  else ...[
-                    SizedBox(
-                      height: height * 0.8,
-                      child: Padding(
-                        padding: const EdgeInsets.all(15),
-                        child: Card(
-                          elevation: 4,
-                          child: Center(
-                            child: Text(
-                              state.currentPhrase,
-                              style: Theme.of(context).textTheme.displaySmall,
-                              textAlign: TextAlign.center,
+        child: SingleChildScrollView(
+          child: Center(
+            child: BlocBuilder<PhrasesTestingCubit, PhrasesTestingState>(
+              builder: (context, state) {
+                return Column(
+                  children: [
+                    if (state.isLoading)
+                      const Text('Loading')
+                    else ...[
+                      SizedBox(
+                        height: height * 0.8,
+                        child: Padding(
+                          padding: const EdgeInsets.all(15),
+                          child: Card(
+                            elevation: 4,
+                            child: Center(
+                              child: Text(
+                                state.currentPhrase,
+                                style: Theme.of(context).textTheme.displaySmall,
+                                textAlign: TextAlign.center,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    //const Spacer(),
-                    SizedBox(
-                      height: height * 1.25,
-                      child: Padding(
-                        padding: const EdgeInsets.all(15),
-                        child: ListView.builder(
-                          itemCount: state.currentPhraseAnswers.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return PhraseChoiseCard(
-                              height: height * 1.25 / 5,
-                              number: index,
-                              title: state.currentPhraseAnswers[index],
-                            );
-                          },
+                      //const Spacer(),
+                      SizedBox(
+                        height: height * 1.25,
+                        child: Padding(
+                          padding: const EdgeInsets.all(15),
+                          child: ListView.builder(
+                            itemCount: state.currentPhraseAnswers.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return PhraseChoiseCard(
+                                height: height * 1.25 / 5,
+                                number: index,
+                                title: state.currentPhraseAnswers[index],
+                              );
+                            },
+                          ),
                         ),
                       ),
-                    ),
+                    ],
                   ],
-                ],
-              );
-            },
+                );
+              },
+            ),
           ),
         ),
       ),

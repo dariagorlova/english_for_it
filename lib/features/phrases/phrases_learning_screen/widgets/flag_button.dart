@@ -16,14 +16,24 @@ class FlagButton extends StatelessWidget {
     return IconButton(
       padding: EdgeInsets.zero,
       icon: pState.displayInEnglish
-          ? Text(
-              '🇺🇦',
-              style: Theme.of(context).textTheme.headlineSmall,
+          ? Image.asset(
+              'assets/images/gb.png',
+              //width: 15,
+              //height: 10,
             )
-          : Text(
-              '🇺🇸',
-              style: Theme.of(context).textTheme.headlineSmall,
+          : Image.asset(
+              'assets/images/ua.png',
+              //width: MediaQuery.of(context).size.width - 10,
+              //height: MediaQuery.of(context).size.height / 3.5,
             ),
+      // ? Text(
+      //     '🇺🇦',
+      //     style: Theme.of(context).textTheme.headlineSmall,
+      //   )
+      // : Text(
+      //     '🇺🇸',
+      //     style: Theme.of(context).textTheme.headlineSmall,
+      //   ),
       onPressed: () {
         context.read<PhrasesCubit>().changeLanguage();
       },
