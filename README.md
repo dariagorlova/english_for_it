@@ -10,6 +10,7 @@ For them, you can view the translation and listen to the pronunciation.
 
 ![](https://raw.githubusercontent.com/dariagorlova/english_for_it/master/doc/word1.png)
 ![](https://raw.githubusercontent.com/dariagorlova/english_for_it/master/doc/phrase1.gif)
+<img src="https://raw.githubusercontent.com/dariagorlova/english_for_it/master/doc/phrase1.gif" width="150" height="300" />
 
 It is possible to test knowledge with a variety of tests.
 
