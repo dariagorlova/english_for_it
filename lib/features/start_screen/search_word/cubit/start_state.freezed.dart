@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'start_state.dart';
 
@@ -21,40 +21,40 @@ mixin _$StartState {}
 abstract class $StartStateCopyWith<$Res> {
   factory $StartStateCopyWith(
           StartState value, $Res Function(StartState) then) =
-      _$StartStateCopyWithImpl<$Res>;
+      _$StartStateCopyWithImpl<$Res, StartState>;
 }
 
 /// @nodoc
-class _$StartStateCopyWithImpl<$Res> implements $StartStateCopyWith<$Res> {
+class _$StartStateCopyWithImpl<$Res, $Val extends StartState>
+    implements $StartStateCopyWith<$Res> {
   _$StartStateCopyWithImpl(this._value, this._then);
 
-  final StartState _value;
   // ignore: unused_field
-  final $Res Function(StartState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
-abstract class _$$_StartStateCopyWith<$Res> {
-  factory _$$_StartStateCopyWith(
-          _$_StartState value, $Res Function(_$_StartState) then) =
-      __$$_StartStateCopyWithImpl<$Res>;
+abstract class _$$StartStateImplCopyWith<$Res> {
+  factory _$$StartStateImplCopyWith(
+          _$StartStateImpl value, $Res Function(_$StartStateImpl) then) =
+      __$$StartStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_StartStateCopyWithImpl<$Res> extends _$StartStateCopyWithImpl<$Res>
-    implements _$$_StartStateCopyWith<$Res> {
-  __$$_StartStateCopyWithImpl(
-      _$_StartState _value, $Res Function(_$_StartState) _then)
-      : super(_value, (v) => _then(v as _$_StartState));
-
-  @override
-  _$_StartState get _value => super._value as _$_StartState;
+class __$$StartStateImplCopyWithImpl<$Res>
+    extends _$StartStateCopyWithImpl<$Res, _$StartStateImpl>
+    implements _$$StartStateImplCopyWith<$Res> {
+  __$$StartStateImplCopyWithImpl(
+      _$StartStateImpl _value, $Res Function(_$StartStateImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_StartState implements _StartState {
-  const _$_StartState();
+class _$StartStateImpl implements _StartState {
+  const _$StartStateImpl();
 
   @override
   String toString() {
@@ -64,7 +64,7 @@ class _$_StartState implements _StartState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_StartState);
+        (other.runtimeType == runtimeType && other is _$StartStateImpl);
   }
 
   @override
@@ -72,5 +72,5 @@ class _$_StartState implements _StartState {
 }
 
 abstract class _StartState implements StartState {
-  const factory _StartState() = _$_StartState;
+  const factory _StartState() = _$StartStateImpl;
 }

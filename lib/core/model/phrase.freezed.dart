@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'phrase.dart';
 
@@ -30,7 +30,8 @@ mixin _$Phrase {
 /// @nodoc
 abstract class $PhraseCopyWith<$Res> {
   factory $PhraseCopyWith(Phrase value, $Res Function(Phrase) then) =
-      _$PhraseCopyWithImpl<$Res>;
+      _$PhraseCopyWithImpl<$Res, Phrase>;
+  @useResult
   $Res call(
       {int newId,
       String phrase,
@@ -41,56 +42,61 @@ abstract class $PhraseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PhraseCopyWithImpl<$Res> implements $PhraseCopyWith<$Res> {
+class _$PhraseCopyWithImpl<$Res, $Val extends Phrase>
+    implements $PhraseCopyWith<$Res> {
   _$PhraseCopyWithImpl(this._value, this._then);
 
-  final Phrase _value;
   // ignore: unused_field
-  final $Res Function(Phrase) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? newId = freezed,
-    Object? phrase = freezed,
-    Object? byAnotherWords = freezed,
-    Object? sentence = freezed,
-    Object? byAnotherWordsTranslation = freezed,
-    Object? sentenceTranslation = freezed,
+    Object? newId = null,
+    Object? phrase = null,
+    Object? byAnotherWords = null,
+    Object? sentence = null,
+    Object? byAnotherWordsTranslation = null,
+    Object? sentenceTranslation = null,
   }) {
     return _then(_value.copyWith(
-      newId: newId == freezed
+      newId: null == newId
           ? _value.newId
           : newId // ignore: cast_nullable_to_non_nullable
               as int,
-      phrase: phrase == freezed
+      phrase: null == phrase
           ? _value.phrase
           : phrase // ignore: cast_nullable_to_non_nullable
               as String,
-      byAnotherWords: byAnotherWords == freezed
+      byAnotherWords: null == byAnotherWords
           ? _value.byAnotherWords
           : byAnotherWords // ignore: cast_nullable_to_non_nullable
               as String,
-      sentence: sentence == freezed
+      sentence: null == sentence
           ? _value.sentence
           : sentence // ignore: cast_nullable_to_non_nullable
               as String,
-      byAnotherWordsTranslation: byAnotherWordsTranslation == freezed
+      byAnotherWordsTranslation: null == byAnotherWordsTranslation
           ? _value.byAnotherWordsTranslation
           : byAnotherWordsTranslation // ignore: cast_nullable_to_non_nullable
               as String,
-      sentenceTranslation: sentenceTranslation == freezed
+      sentenceTranslation: null == sentenceTranslation
           ? _value.sentenceTranslation
           : sentenceTranslation // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_PhraseCopyWith<$Res> implements $PhraseCopyWith<$Res> {
-  factory _$$_PhraseCopyWith(_$_Phrase value, $Res Function(_$_Phrase) then) =
-      __$$_PhraseCopyWithImpl<$Res>;
+abstract class _$$PhraseImplCopyWith<$Res> implements $PhraseCopyWith<$Res> {
+  factory _$$PhraseImplCopyWith(
+          _$PhraseImpl value, $Res Function(_$PhraseImpl) then) =
+      __$$PhraseImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int newId,
       String phrase,
@@ -101,45 +107,45 @@ abstract class _$$_PhraseCopyWith<$Res> implements $PhraseCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_PhraseCopyWithImpl<$Res> extends _$PhraseCopyWithImpl<$Res>
-    implements _$$_PhraseCopyWith<$Res> {
-  __$$_PhraseCopyWithImpl(_$_Phrase _value, $Res Function(_$_Phrase) _then)
-      : super(_value, (v) => _then(v as _$_Phrase));
+class __$$PhraseImplCopyWithImpl<$Res>
+    extends _$PhraseCopyWithImpl<$Res, _$PhraseImpl>
+    implements _$$PhraseImplCopyWith<$Res> {
+  __$$PhraseImplCopyWithImpl(
+      _$PhraseImpl _value, $Res Function(_$PhraseImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_Phrase get _value => super._value as _$_Phrase;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? newId = freezed,
-    Object? phrase = freezed,
-    Object? byAnotherWords = freezed,
-    Object? sentence = freezed,
-    Object? byAnotherWordsTranslation = freezed,
-    Object? sentenceTranslation = freezed,
+    Object? newId = null,
+    Object? phrase = null,
+    Object? byAnotherWords = null,
+    Object? sentence = null,
+    Object? byAnotherWordsTranslation = null,
+    Object? sentenceTranslation = null,
   }) {
-    return _then(_$_Phrase(
-      newId: newId == freezed
+    return _then(_$PhraseImpl(
+      newId: null == newId
           ? _value.newId
           : newId // ignore: cast_nullable_to_non_nullable
               as int,
-      phrase: phrase == freezed
+      phrase: null == phrase
           ? _value.phrase
           : phrase // ignore: cast_nullable_to_non_nullable
               as String,
-      byAnotherWords: byAnotherWords == freezed
+      byAnotherWords: null == byAnotherWords
           ? _value.byAnotherWords
           : byAnotherWords // ignore: cast_nullable_to_non_nullable
               as String,
-      sentence: sentence == freezed
+      sentence: null == sentence
           ? _value.sentence
           : sentence // ignore: cast_nullable_to_non_nullable
               as String,
-      byAnotherWordsTranslation: byAnotherWordsTranslation == freezed
+      byAnotherWordsTranslation: null == byAnotherWordsTranslation
           ? _value.byAnotherWordsTranslation
           : byAnotherWordsTranslation // ignore: cast_nullable_to_non_nullable
               as String,
-      sentenceTranslation: sentenceTranslation == freezed
+      sentenceTranslation: null == sentenceTranslation
           ? _value.sentenceTranslation
           : sentenceTranslation // ignore: cast_nullable_to_non_nullable
               as String,
@@ -149,8 +155,8 @@ class __$$_PhraseCopyWithImpl<$Res> extends _$PhraseCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Phrase implements _Phrase {
-  const _$_Phrase(
+class _$PhraseImpl implements _Phrase {
+  const _$PhraseImpl(
       {this.newId = -1,
       this.phrase = '',
       this.byAnotherWords = '',
@@ -186,32 +192,29 @@ class _$_Phrase implements _Phrase {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Phrase &&
-            const DeepCollectionEquality().equals(other.newId, newId) &&
-            const DeepCollectionEquality().equals(other.phrase, phrase) &&
-            const DeepCollectionEquality()
-                .equals(other.byAnotherWords, byAnotherWords) &&
-            const DeepCollectionEquality().equals(other.sentence, sentence) &&
-            const DeepCollectionEquality().equals(
-                other.byAnotherWordsTranslation, byAnotherWordsTranslation) &&
-            const DeepCollectionEquality()
-                .equals(other.sentenceTranslation, sentenceTranslation));
+            other is _$PhraseImpl &&
+            (identical(other.newId, newId) || other.newId == newId) &&
+            (identical(other.phrase, phrase) || other.phrase == phrase) &&
+            (identical(other.byAnotherWords, byAnotherWords) ||
+                other.byAnotherWords == byAnotherWords) &&
+            (identical(other.sentence, sentence) ||
+                other.sentence == sentence) &&
+            (identical(other.byAnotherWordsTranslation,
+                    byAnotherWordsTranslation) ||
+                other.byAnotherWordsTranslation == byAnotherWordsTranslation) &&
+            (identical(other.sentenceTranslation, sentenceTranslation) ||
+                other.sentenceTranslation == sentenceTranslation));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(newId),
-      const DeepCollectionEquality().hash(phrase),
-      const DeepCollectionEquality().hash(byAnotherWords),
-      const DeepCollectionEquality().hash(sentence),
-      const DeepCollectionEquality().hash(byAnotherWordsTranslation),
-      const DeepCollectionEquality().hash(sentenceTranslation));
+  int get hashCode => Object.hash(runtimeType, newId, phrase, byAnotherWords,
+      sentence, byAnotherWordsTranslation, sentenceTranslation);
 
   @JsonKey(ignore: true)
   @override
-  _$$_PhraseCopyWith<_$_Phrase> get copyWith =>
-      __$$_PhraseCopyWithImpl<_$_Phrase>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$PhraseImplCopyWith<_$PhraseImpl> get copyWith =>
+      __$$PhraseImplCopyWithImpl<_$PhraseImpl>(this, _$identity);
 }
 
 abstract class _Phrase implements Phrase {
@@ -221,7 +224,7 @@ abstract class _Phrase implements Phrase {
       final String byAnotherWords,
       final String sentence,
       final String byAnotherWordsTranslation,
-      final String sentenceTranslation}) = _$_Phrase;
+      final String sentenceTranslation}) = _$PhraseImpl;
 
   @override
   int get newId;
@@ -237,6 +240,6 @@ abstract class _Phrase implements Phrase {
   String get sentenceTranslation;
   @override
   @JsonKey(ignore: true)
-  _$$_PhraseCopyWith<_$_Phrase> get copyWith =>
+  _$$PhraseImplCopyWith<_$PhraseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

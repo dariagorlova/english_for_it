@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:english_for_it/features/start_screen/verb_data.dart';
 import 'package:flutter/material.dart';
 
+@RoutePage()
 class IrregularVerbsScreen extends StatelessWidget {
   const IrregularVerbsScreen({super.key});
 

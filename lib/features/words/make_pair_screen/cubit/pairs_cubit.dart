@@ -12,13 +12,7 @@ class PairsCubit extends Cubit<PairsState> {
     @factoryParam List<OneWord> words,
     this._router,
   ) : super(
-          const PairsState(
-            wordsOnTheLeft: [],
-            wordsOnTheRight: [],
-            currentPair: [],
-            isFirstWordInPairInEN: true,
-            numberOfWrongAttempts: 0,
-          ),
+          const PairsState(),
         ) {
     init(words);
   }
@@ -31,7 +25,11 @@ class PairsCubit extends Cubit<PairsState> {
     final leftList = <WordWithState>[];
     dailyWords
         .map(
-          (w) => leftList.add(WordWithState(word: w, state: WordState.initial)),
+          (w) => leftList.add(
+            WordWithState(
+              word: w,
+            ),
+          ),
         )
         .toList();
     leftList.shuffle();
@@ -39,8 +37,11 @@ class PairsCubit extends Cubit<PairsState> {
     final rightList = <WordWithState>[];
     dailyWords
         .map(
-          (w) =>
-              rightList.add(WordWithState(word: w, state: WordState.initial)),
+          (w) => rightList.add(
+            WordWithState(
+              word: w,
+            ),
+          ),
         )
         .toList();
     rightList.shuffle();
@@ -54,9 +55,7 @@ class PairsCubit extends Cubit<PairsState> {
   }
 
   Color getColorCardByIndex(int index, int numCol) {
-    final wordState = numCol == 0
-        ? state.stateOfWordInEN(index)
-        : state.stateOfWordInUA(index);
+    final wordState = numCol == 0 ? state.stateOfWordInEN(index) : state.stateOfWordInUA(index);
     switch (wordState) {
       case WordState.checking:
         return Colors.blue.shade200;
@@ -72,18 +71,15 @@ class PairsCubit extends Cubit<PairsState> {
   void checkPair(int index, int numCol) {
     final isLeftColumn = numCol == 0;
 
-    final stateOfWord = isLeftColumn
-        ? state.stateOfWordInEN(index)
-        : state.stateOfWordInUA(index);
+    final stateOfWord = isLeftColumn ? state.stateOfWordInEN(index) : state.stateOfWordInUA(index);
 
     if (stateOfWord == WordState.correctly) {
       return;
     }
 
     // word which we tap on screen
-    final word = isLeftColumn
-        ? state.wordInENColumn(index).word
-        : state.wordInUAColumn(index).translate;
+    final word =
+        isLeftColumn ? state.wordInENColumn(index).word : state.wordInUAColumn(index).translate;
     if (state.isPairEmpty) {
       addFirstPartOfPair(word, index, numCol);
     } else {
@@ -91,9 +87,8 @@ class PairsCubit extends Cubit<PairsState> {
         updateFirstPartOfPair(word, index);
       } else {
         // translation for word which we tap on screen
-        final translation = isLeftColumn
-            ? state.wordInENColumn(index).translate
-            : state.wordInUAColumn(index).word;
+        final translation =
+            isLeftColumn ? state.wordInENColumn(index).translate : state.wordInUAColumn(index).word;
         if (state.curPair.first == translation) {
           foundCorrectPair();
         } else {
@@ -109,7 +104,11 @@ class PairsCubit extends Cubit<PairsState> {
     final listOp = <WordWithState>[];
     for (final w in oppositeList) {
       if (w.state == WordState.wrong) {
-        listOp.add(WordWithState(word: w.word, state: WordState.initial));
+        listOp.add(
+          WordWithState(
+            word: w.word,
+          ),
+        );
       } else {
         listOp.add(w);
       }
@@ -130,7 +129,6 @@ class PairsCubit extends Cubit<PairsState> {
           list2.add(
             WordWithState(
               word: curList[i].word,
-              state: WordState.initial,
             ),
           );
         } else {
@@ -161,11 +159,9 @@ class PairsCubit extends Cubit<PairsState> {
   }
 
   void updateFirstPartOfPair(String word, int index) {
-    final curList =
-        state.isFirstWordInPairInEN ? state.leftColumn : state.rightColumn;
+    final curList = state.isFirstWordInPairInEN ? state.leftColumn : state.rightColumn;
     //final list2 = [...curList]..[index].state = WordState.checking;
-    final oldInd =
-        curList.indexWhere((element) => element.state == WordState.checking);
+    final oldInd = curList.indexWhere((element) => element.state == WordState.checking);
     final list2 = <WordWithState>[];
     for (var i = 0; i < curList.length; i++) {
       if (i == index) {
@@ -179,7 +175,6 @@ class PairsCubit extends Cubit<PairsState> {
         list2.add(
           WordWithState(
             word: curList[i].word,
-            state: WordState.initial,
           ),
         );
       } else {
@@ -208,8 +203,7 @@ class PairsCubit extends Cubit<PairsState> {
   }
 
   bool isWordsInPairInSameColumn(int numCol) {
-    if (((numCol == 0) && (state.isWordInEN)) ||
-        ((numCol == 1) && (!state.isWordInEN))) {
+    if (((numCol == 0) && (state.isWordInEN)) || ((numCol == 1) && (!state.isWordInEN))) {
       return true;
     } else {
       return false;
@@ -259,7 +253,6 @@ class PairsCubit extends Cubit<PairsState> {
         wordsOnTheLeft: listLeft,
         wordsOnTheRight: listRight,
         currentPair: <String>[],
-        isFirstWordInPairInEN: true,
         numberOfWrongAttempts: state.numberOfFails,
       ),
     );
@@ -311,7 +304,6 @@ class PairsCubit extends Cubit<PairsState> {
         wordsOnTheLeft: listLeft,
         wordsOnTheRight: listRight,
         currentPair: <String>[],
-        isFirstWordInPairInEN: true,
         numberOfWrongAttempts: newNumOfFails,
       ),
     );
@@ -320,8 +312,7 @@ class PairsCubit extends Cubit<PairsState> {
 
   void endGame(BuildContext context) {
     // any word in wordsOnTheLeft and wordsOnTheRight has state.tried
-    if (state.wordsOnTheLeft
-        .every((element) => element.state == WordState.correctly)) {
+    if (state.wordsOnTheLeft.every((element) => element.state == WordState.correctly)) {
       final numberOfFails = state.numberOfFails;
       //context.go('/congratulation?times=$numberOfFails');
       _router.openCongratulationsScreen(numberOfFails);

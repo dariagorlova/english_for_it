@@ -16,14 +16,14 @@ import './step/i_tap_icon.dart';
 import './step/i_dont_see_text.dart';
 
 void main() {
-  Future<void> bddSetUp(WidgetTester tester) async {
-    await theAppIsRunning(tester);
-    await iTapText(tester, 'learn phrases');
-    await iWait(tester);
-    await iTapText(tester, 'Test the learned');
-    await iWait(tester);
-  }
   group('''Testing knowledge (choose the correct pair 'sentence-by_another_words')''', () {
+    Future<void> bddSetUp(WidgetTester tester) async {
+      await theAppIsRunning(tester);
+      await iTapText(tester, 'learn phrases');
+      await iWait(tester);
+      await iTapText(tester, 'Test the learned');
+      await iWait(tester);
+    }
     testWidgets('''As User I want to see first sentence and answers''', (tester) async {
       await bddSetUp(tester);
       await iSeeText(tester, 'Testing daily phrases');

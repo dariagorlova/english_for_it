@@ -4,7 +4,9 @@ import 'package:injectable/injectable.dart';
 
 final GetIt getIt = GetIt.instance;
 
-@injectableInit
-GetIt configureInjection(String environment) {
-  return $initGetIt(getIt, environment: environment);
-}
+@InjectableInit(
+  initializerName: 'init',
+  preferRelativeImports: true,
+  asExtension: true,
+)
+void configureDependencies({String? env}) => getIt.init(environment: env,);

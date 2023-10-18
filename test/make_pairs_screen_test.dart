@@ -12,14 +12,14 @@ import './step/i_see_card_with_color_times.dart';
 import './step/i_tap_icon.dart';
 
 void main() {
-  Future<void> bddSetUp(WidgetTester tester) async {
-    await theAppIsRunning(tester);
-    await iTapText(tester, 'learn words');
-    await iWait(tester);
-    await iTapText(tester, 'Make pairs');
-    await iWait(tester);
-  }
   group('''Testing knowledge (make pairs)''', () {
+    Future<void> bddSetUp(WidgetTester tester) async {
+      await theAppIsRunning(tester);
+      await iTapText(tester, 'learn words');
+      await iWait(tester);
+      await iTapText(tester, 'Make pairs');
+      await iWait(tester);
+    }
     testWidgets('''As User I want to see all words with translate''', (tester) async {
       await bddSetUp(tester);
       await iSeeText(tester, 'Make pairs');

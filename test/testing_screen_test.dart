@@ -13,14 +13,14 @@ import './step/i_dont_see_text.dart';
 import './step/i_tap_icon.dart';
 
 void main() {
-  Future<void> bddSetUp(WidgetTester tester) async {
-    await theAppIsRunning(tester);
-    await iTapText(tester, 'learn words');
-    await iWait(tester);
-    await iTapText(tester, 'Translate EN to UA');
-    await iWait(tester);
-  }
   group('''Testing knowledge (choose the correcct translation of the English word)''', () {
+    Future<void> bddSetUp(WidgetTester tester) async {
+      await theAppIsRunning(tester);
+      await iTapText(tester, 'learn words');
+      await iWait(tester);
+      await iTapText(tester, 'Translate EN to UA');
+      await iWait(tester);
+    }
     testWidgets('''As User I want to see first word and answers''', (tester) async {
       await bddSetUp(tester);
       await iSeeText(tester, 'Testing daily words');

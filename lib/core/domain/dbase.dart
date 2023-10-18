@@ -26,8 +26,7 @@ class DbStorage {
       }
       // copy from assets initial base
       final data = await rootBundle.load('assets/dictionary.db');
-      final bytes =
-          data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+      final bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
       await File(path).writeAsBytes(bytes, flush: true);
     }
 
@@ -80,8 +79,7 @@ class DbStorage {
 
   Future<bool> deleteWord(int id) async {
     if (id != -1) {
-      final result = await _database
-          .delete('Vocabulary', where: 'id = ?', whereArgs: [id]);
+      final result = await _database.delete('Vocabulary', where: 'id = ?', whereArgs: [id]);
       if (result != 0) return true;
     }
     return false;
@@ -152,7 +150,6 @@ class DbStorage {
     final list = await _database.rawQuery('SELECT * FROM Phrases');
     if (list.length < index) {
       return const Phrase(
-        newId: -1,
         phrase: 'phrase was not found',
         byAnotherWords: 'phrase was not found',
         sentence: 'phrase was not found',
@@ -165,8 +162,7 @@ class DbStorage {
       phrase: list[index - 1]['phrase']! as String,
       byAnotherWords: list[index - 1]['by_another_words']! as String,
       sentence: list[index - 1]['sentence']! as String,
-      byAnotherWordsTranslation:
-          list[index - 1]['by_another_words_translation']! as String,
+      byAnotherWordsTranslation: list[index - 1]['by_another_words_translation']! as String,
       sentenceTranslation: list[index - 1]['sentence_translation']! as String,
     );
 
@@ -192,8 +188,7 @@ class DbStorage {
           phrase: list[index]['phrase']! as String,
           byAnotherWords: list[index]['by_another_words']! as String,
           sentence: list[index]['sentence']! as String,
-          byAnotherWordsTranslation:
-              list[index]['by_another_words_translation']! as String,
+          byAnotherWordsTranslation: list[index]['by_another_words_translation']! as String,
           sentenceTranslation: list[index]['sentence_translation']! as String,
         ),
       );

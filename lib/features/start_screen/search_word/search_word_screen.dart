@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:english_for_it/di/injection.dart';
 import 'package:english_for_it/features/start_screen/search_word/cubit/search_cubit.dart';
 import 'package:english_for_it/features/start_screen/search_word/cubit/search_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+@RoutePage()
 class SearchWordScreen extends StatelessWidget {
   const SearchWordScreen({super.key});
 

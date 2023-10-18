@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:english_for_it/core/model/phrase.dart';
 import 'package:english_for_it/di/injection.dart';
 import 'package:english_for_it/features/phrases/phrases_testing_screen/cubit/phrases_testing_cubit.dart';
@@ -7,6 +8,7 @@ import 'package:english_for_it/features/phrases/phrases_testing_screen/widgets/p
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+@RoutePage()
 class PhrasesTestingScreen extends StatelessWidget {
   const PhrasesTestingScreen({
     super.key,

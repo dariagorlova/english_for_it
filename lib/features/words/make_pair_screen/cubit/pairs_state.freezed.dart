@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'pairs_state.dart';
 
@@ -31,7 +31,8 @@ mixin _$PairsState {
 abstract class $PairsStateCopyWith<$Res> {
   factory $PairsStateCopyWith(
           PairsState value, $Res Function(PairsState) then) =
-      _$PairsStateCopyWithImpl<$Res>;
+      _$PairsStateCopyWithImpl<$Res, PairsState>;
+  @useResult
   $Res call(
       {List<WordWithState> wordsOnTheLeft,
       List<WordWithState> wordsOnTheRight,
@@ -41,53 +42,57 @@ abstract class $PairsStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PairsStateCopyWithImpl<$Res> implements $PairsStateCopyWith<$Res> {
+class _$PairsStateCopyWithImpl<$Res, $Val extends PairsState>
+    implements $PairsStateCopyWith<$Res> {
   _$PairsStateCopyWithImpl(this._value, this._then);
 
-  final PairsState _value;
   // ignore: unused_field
-  final $Res Function(PairsState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? wordsOnTheLeft = freezed,
-    Object? wordsOnTheRight = freezed,
-    Object? currentPair = freezed,
-    Object? isFirstWordInPairInEN = freezed,
-    Object? numberOfWrongAttempts = freezed,
+    Object? wordsOnTheLeft = null,
+    Object? wordsOnTheRight = null,
+    Object? currentPair = null,
+    Object? isFirstWordInPairInEN = null,
+    Object? numberOfWrongAttempts = null,
   }) {
     return _then(_value.copyWith(
-      wordsOnTheLeft: wordsOnTheLeft == freezed
+      wordsOnTheLeft: null == wordsOnTheLeft
           ? _value.wordsOnTheLeft
           : wordsOnTheLeft // ignore: cast_nullable_to_non_nullable
               as List<WordWithState>,
-      wordsOnTheRight: wordsOnTheRight == freezed
+      wordsOnTheRight: null == wordsOnTheRight
           ? _value.wordsOnTheRight
           : wordsOnTheRight // ignore: cast_nullable_to_non_nullable
               as List<WordWithState>,
-      currentPair: currentPair == freezed
+      currentPair: null == currentPair
           ? _value.currentPair
           : currentPair // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      isFirstWordInPairInEN: isFirstWordInPairInEN == freezed
+      isFirstWordInPairInEN: null == isFirstWordInPairInEN
           ? _value.isFirstWordInPairInEN
           : isFirstWordInPairInEN // ignore: cast_nullable_to_non_nullable
               as bool,
-      numberOfWrongAttempts: numberOfWrongAttempts == freezed
+      numberOfWrongAttempts: null == numberOfWrongAttempts
           ? _value.numberOfWrongAttempts
           : numberOfWrongAttempts // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_PairsStateCopyWith<$Res>
+abstract class _$$PairsStateImplCopyWith<$Res>
     implements $PairsStateCopyWith<$Res> {
-  factory _$$_PairsStateCopyWith(
-          _$_PairsState value, $Res Function(_$_PairsState) then) =
-      __$$_PairsStateCopyWithImpl<$Res>;
+  factory _$$PairsStateImplCopyWith(
+          _$PairsStateImpl value, $Res Function(_$PairsStateImpl) then) =
+      __$$PairsStateImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {List<WordWithState> wordsOnTheLeft,
       List<WordWithState> wordsOnTheRight,
@@ -97,41 +102,40 @@ abstract class _$$_PairsStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PairsStateCopyWithImpl<$Res> extends _$PairsStateCopyWithImpl<$Res>
-    implements _$$_PairsStateCopyWith<$Res> {
-  __$$_PairsStateCopyWithImpl(
-      _$_PairsState _value, $Res Function(_$_PairsState) _then)
-      : super(_value, (v) => _then(v as _$_PairsState));
+class __$$PairsStateImplCopyWithImpl<$Res>
+    extends _$PairsStateCopyWithImpl<$Res, _$PairsStateImpl>
+    implements _$$PairsStateImplCopyWith<$Res> {
+  __$$PairsStateImplCopyWithImpl(
+      _$PairsStateImpl _value, $Res Function(_$PairsStateImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_PairsState get _value => super._value as _$_PairsState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? wordsOnTheLeft = freezed,
-    Object? wordsOnTheRight = freezed,
-    Object? currentPair = freezed,
-    Object? isFirstWordInPairInEN = freezed,
-    Object? numberOfWrongAttempts = freezed,
+    Object? wordsOnTheLeft = null,
+    Object? wordsOnTheRight = null,
+    Object? currentPair = null,
+    Object? isFirstWordInPairInEN = null,
+    Object? numberOfWrongAttempts = null,
   }) {
-    return _then(_$_PairsState(
-      wordsOnTheLeft: wordsOnTheLeft == freezed
+    return _then(_$PairsStateImpl(
+      wordsOnTheLeft: null == wordsOnTheLeft
           ? _value._wordsOnTheLeft
           : wordsOnTheLeft // ignore: cast_nullable_to_non_nullable
               as List<WordWithState>,
-      wordsOnTheRight: wordsOnTheRight == freezed
+      wordsOnTheRight: null == wordsOnTheRight
           ? _value._wordsOnTheRight
           : wordsOnTheRight // ignore: cast_nullable_to_non_nullable
               as List<WordWithState>,
-      currentPair: currentPair == freezed
+      currentPair: null == currentPair
           ? _value._currentPair
           : currentPair // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      isFirstWordInPairInEN: isFirstWordInPairInEN == freezed
+      isFirstWordInPairInEN: null == isFirstWordInPairInEN
           ? _value.isFirstWordInPairInEN
           : isFirstWordInPairInEN // ignore: cast_nullable_to_non_nullable
               as bool,
-      numberOfWrongAttempts: numberOfWrongAttempts == freezed
+      numberOfWrongAttempts: null == numberOfWrongAttempts
           ? _value.numberOfWrongAttempts
           : numberOfWrongAttempts // ignore: cast_nullable_to_non_nullable
               as int,
@@ -141,8 +145,8 @@ class __$$_PairsStateCopyWithImpl<$Res> extends _$PairsStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PairsState implements _PairsState {
-  const _$_PairsState(
+class _$PairsStateImpl implements _PairsState {
+  const _$PairsStateImpl(
       {final List<WordWithState> wordsOnTheLeft = const [],
       final List<WordWithState> wordsOnTheRight = const [],
       final List<String> currentPair = const [],
@@ -156,6 +160,7 @@ class _$_PairsState implements _PairsState {
   @override
   @JsonKey()
   List<WordWithState> get wordsOnTheLeft {
+    if (_wordsOnTheLeft is EqualUnmodifiableListView) return _wordsOnTheLeft;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_wordsOnTheLeft);
   }
@@ -164,6 +169,7 @@ class _$_PairsState implements _PairsState {
   @override
   @JsonKey()
   List<WordWithState> get wordsOnTheRight {
+    if (_wordsOnTheRight is EqualUnmodifiableListView) return _wordsOnTheRight;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_wordsOnTheRight);
   }
@@ -172,6 +178,7 @@ class _$_PairsState implements _PairsState {
   @override
   @JsonKey()
   List<String> get currentPair {
+    if (_currentPair is EqualUnmodifiableListView) return _currentPair;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_currentPair);
   }
@@ -192,17 +199,17 @@ class _$_PairsState implements _PairsState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PairsState &&
+            other is _$PairsStateImpl &&
             const DeepCollectionEquality()
                 .equals(other._wordsOnTheLeft, _wordsOnTheLeft) &&
             const DeepCollectionEquality()
                 .equals(other._wordsOnTheRight, _wordsOnTheRight) &&
             const DeepCollectionEquality()
                 .equals(other._currentPair, _currentPair) &&
-            const DeepCollectionEquality()
-                .equals(other.isFirstWordInPairInEN, isFirstWordInPairInEN) &&
-            const DeepCollectionEquality()
-                .equals(other.numberOfWrongAttempts, numberOfWrongAttempts));
+            (identical(other.isFirstWordInPairInEN, isFirstWordInPairInEN) ||
+                other.isFirstWordInPairInEN == isFirstWordInPairInEN) &&
+            (identical(other.numberOfWrongAttempts, numberOfWrongAttempts) ||
+                other.numberOfWrongAttempts == numberOfWrongAttempts));
   }
 
   @override
@@ -211,13 +218,14 @@ class _$_PairsState implements _PairsState {
       const DeepCollectionEquality().hash(_wordsOnTheLeft),
       const DeepCollectionEquality().hash(_wordsOnTheRight),
       const DeepCollectionEquality().hash(_currentPair),
-      const DeepCollectionEquality().hash(isFirstWordInPairInEN),
-      const DeepCollectionEquality().hash(numberOfWrongAttempts));
+      isFirstWordInPairInEN,
+      numberOfWrongAttempts);
 
   @JsonKey(ignore: true)
   @override
-  _$$_PairsStateCopyWith<_$_PairsState> get copyWith =>
-      __$$_PairsStateCopyWithImpl<_$_PairsState>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$PairsStateImplCopyWith<_$PairsStateImpl> get copyWith =>
+      __$$PairsStateImplCopyWithImpl<_$PairsStateImpl>(this, _$identity);
 }
 
 abstract class _PairsState implements PairsState {
@@ -226,7 +234,7 @@ abstract class _PairsState implements PairsState {
       final List<WordWithState> wordsOnTheRight,
       final List<String> currentPair,
       final bool isFirstWordInPairInEN,
-      final int numberOfWrongAttempts}) = _$_PairsState;
+      final int numberOfWrongAttempts}) = _$PairsStateImpl;
 
   @override
   List<WordWithState> get wordsOnTheLeft;
@@ -240,6 +248,6 @@ abstract class _PairsState implements PairsState {
   int get numberOfWrongAttempts;
   @override
   @JsonKey(ignore: true)
-  _$$_PairsStateCopyWith<_$_PairsState> get copyWith =>
+  _$$PairsStateImplCopyWith<_$PairsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

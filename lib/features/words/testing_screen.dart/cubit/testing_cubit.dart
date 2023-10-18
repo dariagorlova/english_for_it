@@ -16,12 +16,7 @@ class TestingCubit extends Cubit<TestingState> {
     this._router,
   )   : _random = Random(translatesSeed),
         super(
-          const TestingState(
-            wordsWithAnswers: [],
-            indexCurrentWord: 0,
-            answerTried: [],
-            numberOfWrongAttempts: 0,
-          ),
+          const TestingState(),
         ) {
     variantENtoUA == 0 ? init(words) : initUA(words);
   }

@@ -31,7 +31,6 @@ DailyRepository getWordsRepository() {
   when(mock.getDailyPhrases).thenAnswer((_) async {
     return const [
       Phrase(
-        newId: -1,
         phrase: 'proficient',
         byAnotherWords: 'be very good at',
         sentence: "He's proficient in Java.",
@@ -39,7 +38,6 @@ DailyRepository getWordsRepository() {
         sentenceTranslation: 'Він досконало володіє Java.',
       ),
       Phrase(
-        newId: -1,
         phrase: 'has a background',
         byAnotherWords: 'have experience doing something',
         sentence: 'He has a background in industrial design.',
@@ -47,7 +45,6 @@ DailyRepository getWordsRepository() {
         sentenceTranslation: 'Він має досвід промислового дизайну.',
       ),
       Phrase(
-        newId: -1,
         phrase: 'perspective',
         byAnotherWords: 'opinion/position',
         sentence: 'My perspective on this is different.',
@@ -55,7 +52,6 @@ DailyRepository getWordsRepository() {
         sentenceTranslation: 'Моя точка зору на це інша.',
       ),
       Phrase(
-        newId: -1,
         phrase: 'robust',
         byAnotherWords: 'very solid',
         sentence: 'We designed a robust architecture.',
@@ -63,7 +59,6 @@ DailyRepository getWordsRepository() {
         sentenceTranslation: 'Ми розробили надійну архітектуру.',
       ),
       Phrase(
-        newId: -1,
         phrase: 'extraordinary',
         byAnotherWords: 'great/remarkable',
         sentence: 'He has extraordinary coding abilities.',
@@ -71,7 +66,6 @@ DailyRepository getWordsRepository() {
         sentenceTranslation: 'Він має надзвичайні здібності до кодування.',
       ),
       Phrase(
-        newId: -1,
         phrase: 'customer-centric',
         byAnotherWords: 'prioritizing the customers',
         sentence: 'We are a customer-centric company.',
@@ -79,7 +73,6 @@ DailyRepository getWordsRepository() {
         sentenceTranslation: 'Ми клієнтоорієнтована компанія.',
       ),
       Phrase(
-        newId: -1,
         phrase: 'bring to the table',
         byAnotherWords: 'contribute',
         sentence: 'What does he bring to the table?',
@@ -87,7 +80,6 @@ DailyRepository getWordsRepository() {
         sentenceTranslation: 'Чому він сприяє?',
       ),
       Phrase(
-        newId: -1,
         phrase: 'came up',
         byAnotherWords: 'invent/think of',
         sentence: 'He came up with a brilliant plan.',
@@ -95,16 +87,13 @@ DailyRepository getWordsRepository() {
         sentenceTranslation: 'Він придумав геніальний план.',
       ),
       Phrase(
-        newId: -1,
         phrase: 'fit my needs',
         byAnotherWords: 'be useful for your particular case',
         sentence: "This service doesn't fit my needs.",
-        byAnotherWordsTranslation:
-            'бути корисним для вашого конкретного випадку',
+        byAnotherWordsTranslation: 'бути корисним для вашого конкретного випадку',
         sentenceTranslation: 'Ця послуга не відповідає моїм потребам.',
       ),
       Phrase(
-        newId: -1,
         phrase: 'eliminated',
         byAnotherWords: 'remove/get rid of',
         sentence: "We've eliminated a few major issues.",

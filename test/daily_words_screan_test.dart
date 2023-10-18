@@ -13,12 +13,12 @@ import './step/i_dont_see_text.dart';
 import './step/i_tap_icon_times.dart';
 
 void main() {
-  Future<void> bddSetUp(WidgetTester tester) async {
-    await theAppIsRunning(tester);
-    await iTapText(tester, 'learn words');
-    await iWait(tester);
-  }
   group('''Learning words''', () {
+    Future<void> bddSetUp(WidgetTester tester) async {
+      await theAppIsRunning(tester);
+      await iTapText(tester, 'learn words');
+      await iWait(tester);
+    }
     testWidgets('''As User I want to see first word''', (tester) async {
       await bddSetUp(tester);
       await iSeeText(tester, 'Words for Today');

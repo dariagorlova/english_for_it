@@ -1,10 +1,12 @@
 import 'dart:math';
+import 'package:auto_route/auto_route.dart';
 import 'package:confetti/confetti.dart';
 import 'package:english_for_it/di/injection.dart';
 import 'package:english_for_it/features/start_screen/search_word/cubit/start_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+@RoutePage()
 class CongratulationScreen extends StatelessWidget {
   const CongratulationScreen({required this.numberOfWrongAnswers, super.key});
 

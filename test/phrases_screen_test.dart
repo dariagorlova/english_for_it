@@ -17,12 +17,12 @@ import './step/millisecond_elapsed.dart';
 import './step/i_see_phrase.dart';
 
 void main() {
-  Future<void> bddSetUp(WidgetTester tester) async {
-    await theAppIsRunning(tester);
-    await iTapText(tester, 'learn phrases');
-    await iWait(tester);
-  }
   group('''Learning phrases''', () {
+    Future<void> bddSetUp(WidgetTester tester) async {
+      await theAppIsRunning(tester);
+      await iTapText(tester, 'learn phrases');
+      await iWait(tester);
+    }
     testWidgets('''As User I want to see first phrase''', (tester) async {
       await bddSetUp(tester);
       await iSeeText(tester, 'Phrases for Today');

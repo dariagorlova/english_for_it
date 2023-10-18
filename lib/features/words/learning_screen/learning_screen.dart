@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:english_for_it/di/injection.dart';
 import 'package:english_for_it/features/words/learning_screen/cubit/learning_cubit.dart';
 import 'package:english_for_it/features/words/learning_screen/cubit/learning_state.dart';
@@ -6,6 +7,7 @@ import 'package:english_for_it/features/words/learning_screen/widgets/word_card.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+@RoutePage()
 class LearningScreen extends StatelessWidget {
   const LearningScreen({super.key});
 

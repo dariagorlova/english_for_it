@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'phrase_with_answers.dart';
 
@@ -29,81 +29,83 @@ mixin _$PhraseWithAnswers {
 abstract class $PhraseWithAnswersCopyWith<$Res> {
   factory $PhraseWithAnswersCopyWith(
           PhraseWithAnswers value, $Res Function(PhraseWithAnswers) then) =
-      _$PhraseWithAnswersCopyWithImpl<$Res>;
+      _$PhraseWithAnswersCopyWithImpl<$Res, PhraseWithAnswers>;
+  @useResult
   $Res call(
       {String phrase, List<List<String>> answers, int indexOfCorrectAnswer});
 }
 
 /// @nodoc
-class _$PhraseWithAnswersCopyWithImpl<$Res>
+class _$PhraseWithAnswersCopyWithImpl<$Res, $Val extends PhraseWithAnswers>
     implements $PhraseWithAnswersCopyWith<$Res> {
   _$PhraseWithAnswersCopyWithImpl(this._value, this._then);
 
-  final PhraseWithAnswers _value;
   // ignore: unused_field
-  final $Res Function(PhraseWithAnswers) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? phrase = freezed,
-    Object? answers = freezed,
-    Object? indexOfCorrectAnswer = freezed,
+    Object? phrase = null,
+    Object? answers = null,
+    Object? indexOfCorrectAnswer = null,
   }) {
     return _then(_value.copyWith(
-      phrase: phrase == freezed
+      phrase: null == phrase
           ? _value.phrase
           : phrase // ignore: cast_nullable_to_non_nullable
               as String,
-      answers: answers == freezed
+      answers: null == answers
           ? _value.answers
           : answers // ignore: cast_nullable_to_non_nullable
               as List<List<String>>,
-      indexOfCorrectAnswer: indexOfCorrectAnswer == freezed
+      indexOfCorrectAnswer: null == indexOfCorrectAnswer
           ? _value.indexOfCorrectAnswer
           : indexOfCorrectAnswer // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_PhraseWithAnswersCopyWith<$Res>
+abstract class _$$PhraseWithAnswersImplCopyWith<$Res>
     implements $PhraseWithAnswersCopyWith<$Res> {
-  factory _$$_PhraseWithAnswersCopyWith(_$_PhraseWithAnswers value,
-          $Res Function(_$_PhraseWithAnswers) then) =
-      __$$_PhraseWithAnswersCopyWithImpl<$Res>;
+  factory _$$PhraseWithAnswersImplCopyWith(_$PhraseWithAnswersImpl value,
+          $Res Function(_$PhraseWithAnswersImpl) then) =
+      __$$PhraseWithAnswersImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String phrase, List<List<String>> answers, int indexOfCorrectAnswer});
 }
 
 /// @nodoc
-class __$$_PhraseWithAnswersCopyWithImpl<$Res>
-    extends _$PhraseWithAnswersCopyWithImpl<$Res>
-    implements _$$_PhraseWithAnswersCopyWith<$Res> {
-  __$$_PhraseWithAnswersCopyWithImpl(
-      _$_PhraseWithAnswers _value, $Res Function(_$_PhraseWithAnswers) _then)
-      : super(_value, (v) => _then(v as _$_PhraseWithAnswers));
+class __$$PhraseWithAnswersImplCopyWithImpl<$Res>
+    extends _$PhraseWithAnswersCopyWithImpl<$Res, _$PhraseWithAnswersImpl>
+    implements _$$PhraseWithAnswersImplCopyWith<$Res> {
+  __$$PhraseWithAnswersImplCopyWithImpl(_$PhraseWithAnswersImpl _value,
+      $Res Function(_$PhraseWithAnswersImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_PhraseWithAnswers get _value => super._value as _$_PhraseWithAnswers;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? phrase = freezed,
-    Object? answers = freezed,
-    Object? indexOfCorrectAnswer = freezed,
+    Object? phrase = null,
+    Object? answers = null,
+    Object? indexOfCorrectAnswer = null,
   }) {
-    return _then(_$_PhraseWithAnswers(
-      phrase: phrase == freezed
+    return _then(_$PhraseWithAnswersImpl(
+      phrase: null == phrase
           ? _value.phrase
           : phrase // ignore: cast_nullable_to_non_nullable
               as String,
-      answers: answers == freezed
+      answers: null == answers
           ? _value._answers
           : answers // ignore: cast_nullable_to_non_nullable
               as List<List<String>>,
-      indexOfCorrectAnswer: indexOfCorrectAnswer == freezed
+      indexOfCorrectAnswer: null == indexOfCorrectAnswer
           ? _value.indexOfCorrectAnswer
           : indexOfCorrectAnswer // ignore: cast_nullable_to_non_nullable
               as int,
@@ -113,8 +115,8 @@ class __$$_PhraseWithAnswersCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PhraseWithAnswers implements _PhraseWithAnswers {
-  const _$_PhraseWithAnswers(
+class _$PhraseWithAnswersImpl implements _PhraseWithAnswers {
+  const _$PhraseWithAnswersImpl(
       {this.phrase = '',
       final List<List<String>> answers = const [],
       this.indexOfCorrectAnswer = 0})
@@ -127,6 +129,7 @@ class _$_PhraseWithAnswers implements _PhraseWithAnswers {
   @override
   @JsonKey()
   List<List<String>> get answers {
+    if (_answers is EqualUnmodifiableListView) return _answers;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_answers);
   }
@@ -144,24 +147,22 @@ class _$_PhraseWithAnswers implements _PhraseWithAnswers {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PhraseWithAnswers &&
-            const DeepCollectionEquality().equals(other.phrase, phrase) &&
+            other is _$PhraseWithAnswersImpl &&
+            (identical(other.phrase, phrase) || other.phrase == phrase) &&
             const DeepCollectionEquality().equals(other._answers, _answers) &&
-            const DeepCollectionEquality()
-                .equals(other.indexOfCorrectAnswer, indexOfCorrectAnswer));
+            (identical(other.indexOfCorrectAnswer, indexOfCorrectAnswer) ||
+                other.indexOfCorrectAnswer == indexOfCorrectAnswer));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(phrase),
-      const DeepCollectionEquality().hash(_answers),
-      const DeepCollectionEquality().hash(indexOfCorrectAnswer));
+  int get hashCode => Object.hash(runtimeType, phrase,
+      const DeepCollectionEquality().hash(_answers), indexOfCorrectAnswer);
 
   @JsonKey(ignore: true)
   @override
-  _$$_PhraseWithAnswersCopyWith<_$_PhraseWithAnswers> get copyWith =>
-      __$$_PhraseWithAnswersCopyWithImpl<_$_PhraseWithAnswers>(
+  @pragma('vm:prefer-inline')
+  _$$PhraseWithAnswersImplCopyWith<_$PhraseWithAnswersImpl> get copyWith =>
+      __$$PhraseWithAnswersImplCopyWithImpl<_$PhraseWithAnswersImpl>(
           this, _$identity);
 }
 
@@ -169,7 +170,7 @@ abstract class _PhraseWithAnswers implements PhraseWithAnswers {
   const factory _PhraseWithAnswers(
       {final String phrase,
       final List<List<String>> answers,
-      final int indexOfCorrectAnswer}) = _$_PhraseWithAnswers;
+      final int indexOfCorrectAnswer}) = _$PhraseWithAnswersImpl;
 
   @override
   String get phrase;
@@ -179,6 +180,6 @@ abstract class _PhraseWithAnswers implements PhraseWithAnswers {
   int get indexOfCorrectAnswer;
   @override
   @JsonKey(ignore: true)
-  _$$_PhraseWithAnswersCopyWith<_$_PhraseWithAnswers> get copyWith =>
+  _$$PhraseWithAnswersImplCopyWith<_$PhraseWithAnswersImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

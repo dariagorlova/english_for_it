@@ -16,19 +16,34 @@ import 'package:injectable/injectable.dart';
 part 'app_router.gr.dart';
 
 @lazySingleton
-@MaterialAutoRouter(
-  replaceInRouteName: 'Screen,Route',
-  routes: <AutoRoute>[
-    AutoRoute<void>(page: StartScreen, initial: true),
-    AutoRoute<void>(page: LearningScreen),
-    AutoRoute<void>(page: PhrasesScreen),
-    AutoRoute<void>(page: PhrasesTestingScreen),
-    AutoRoute<void>(page: PhrasesTestingScreen),
-    AutoRoute<void>(page: TestingScreen),
-    AutoRoute<void>(page: MakePairScreen),
-    AutoRoute<void>(page: CongratulationScreen),
-    AutoRoute<void>(page: SearchWordScreen),
-    AutoRoute<void>(page: IrregularVerbsScreen),
-  ],
-)
-class AppRouter extends _$AppRouter {}
+// @MaterialAutoRouter(
+//   replaceInRouteName: 'Screen,Route',
+//   routes: <AutoRoute>[
+//     AutoRoute<void>(page: StartScreen, initial: true),
+//     AutoRoute<void>(page: LearningScreen),
+//     AutoRoute<void>(page: PhrasesScreen),
+//     AutoRoute<void>(page: PhrasesTestingScreen),
+//     AutoRoute<void>(page: PhrasesTestingScreen),
+//     AutoRoute<void>(page: TestingScreen),
+//     AutoRoute<void>(page: MakePairScreen),
+//     AutoRoute<void>(page: CongratulationScreen),
+//     AutoRoute<void>(page: SearchWordScreen),
+//     AutoRoute<void>(page: IrregularVerbsScreen),
+//   ],
+// )
+// class AppRouter extends _$AppRouter {}
+@AutoRouterConfig(replaceInRouteName: 'Screen,Route')
+class AppRouter extends _$AppRouter {
+  @override
+  List<AutoRoute> get routes => <AutoRoute>[
+        AutoRoute(page: StartRoute.page, initial: true),
+        AutoRoute(page: LearningRoute.page),
+        AutoRoute(page: PhrasesRoute.page),
+        AutoRoute(page: PhrasesTestingRoute.page),
+        AutoRoute(page: TestingRoute.page),
+        AutoRoute(page: MakePairRoute.page),
+        AutoRoute(page: CongratulationRoute.page),
+        AutoRoute(page: SearchWordRoute.page),
+        AutoRoute(page: IrregularVerbsRoute.page),
+      ];
+}

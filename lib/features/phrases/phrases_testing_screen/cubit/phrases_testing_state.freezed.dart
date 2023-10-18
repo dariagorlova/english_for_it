@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'phrases_testing_state.dart';
 
@@ -31,7 +31,8 @@ mixin _$PhrasesTestingState {
 abstract class $PhrasesTestingStateCopyWith<$Res> {
   factory $PhrasesTestingStateCopyWith(
           PhrasesTestingState value, $Res Function(PhrasesTestingState) then) =
-      _$PhrasesTestingStateCopyWithImpl<$Res>;
+      _$PhrasesTestingStateCopyWithImpl<$Res, PhrasesTestingState>;
+  @useResult
   $Res call(
       {List<PhraseWithAnswers> phrasesWithAnswers,
       int indexCurrentPhrase,
@@ -40,49 +41,52 @@ abstract class $PhrasesTestingStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PhrasesTestingStateCopyWithImpl<$Res>
+class _$PhrasesTestingStateCopyWithImpl<$Res, $Val extends PhrasesTestingState>
     implements $PhrasesTestingStateCopyWith<$Res> {
   _$PhrasesTestingStateCopyWithImpl(this._value, this._then);
 
-  final PhrasesTestingState _value;
   // ignore: unused_field
-  final $Res Function(PhrasesTestingState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? phrasesWithAnswers = freezed,
-    Object? indexCurrentPhrase = freezed,
-    Object? answerTried = freezed,
-    Object? numberOfWrongAttempts = freezed,
+    Object? phrasesWithAnswers = null,
+    Object? indexCurrentPhrase = null,
+    Object? answerTried = null,
+    Object? numberOfWrongAttempts = null,
   }) {
     return _then(_value.copyWith(
-      phrasesWithAnswers: phrasesWithAnswers == freezed
+      phrasesWithAnswers: null == phrasesWithAnswers
           ? _value.phrasesWithAnswers
           : phrasesWithAnswers // ignore: cast_nullable_to_non_nullable
               as List<PhraseWithAnswers>,
-      indexCurrentPhrase: indexCurrentPhrase == freezed
+      indexCurrentPhrase: null == indexCurrentPhrase
           ? _value.indexCurrentPhrase
           : indexCurrentPhrase // ignore: cast_nullable_to_non_nullable
               as int,
-      answerTried: answerTried == freezed
+      answerTried: null == answerTried
           ? _value.answerTried
           : answerTried // ignore: cast_nullable_to_non_nullable
               as List<bool>,
-      numberOfWrongAttempts: numberOfWrongAttempts == freezed
+      numberOfWrongAttempts: null == numberOfWrongAttempts
           ? _value.numberOfWrongAttempts
           : numberOfWrongAttempts // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_PhrasesTestingStateCopyWith<$Res>
+abstract class _$$PhrasesTestingStateImplCopyWith<$Res>
     implements $PhrasesTestingStateCopyWith<$Res> {
-  factory _$$_PhrasesTestingStateCopyWith(_$_PhrasesTestingState value,
-          $Res Function(_$_PhrasesTestingState) then) =
-      __$$_PhrasesTestingStateCopyWithImpl<$Res>;
+  factory _$$PhrasesTestingStateImplCopyWith(_$PhrasesTestingStateImpl value,
+          $Res Function(_$PhrasesTestingStateImpl) then) =
+      __$$PhrasesTestingStateImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {List<PhraseWithAnswers> phrasesWithAnswers,
       int indexCurrentPhrase,
@@ -91,37 +95,35 @@ abstract class _$$_PhrasesTestingStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PhrasesTestingStateCopyWithImpl<$Res>
-    extends _$PhrasesTestingStateCopyWithImpl<$Res>
-    implements _$$_PhrasesTestingStateCopyWith<$Res> {
-  __$$_PhrasesTestingStateCopyWithImpl(_$_PhrasesTestingState _value,
-      $Res Function(_$_PhrasesTestingState) _then)
-      : super(_value, (v) => _then(v as _$_PhrasesTestingState));
+class __$$PhrasesTestingStateImplCopyWithImpl<$Res>
+    extends _$PhrasesTestingStateCopyWithImpl<$Res, _$PhrasesTestingStateImpl>
+    implements _$$PhrasesTestingStateImplCopyWith<$Res> {
+  __$$PhrasesTestingStateImplCopyWithImpl(_$PhrasesTestingStateImpl _value,
+      $Res Function(_$PhrasesTestingStateImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_PhrasesTestingState get _value => super._value as _$_PhrasesTestingState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? phrasesWithAnswers = freezed,
-    Object? indexCurrentPhrase = freezed,
-    Object? answerTried = freezed,
-    Object? numberOfWrongAttempts = freezed,
+    Object? phrasesWithAnswers = null,
+    Object? indexCurrentPhrase = null,
+    Object? answerTried = null,
+    Object? numberOfWrongAttempts = null,
   }) {
-    return _then(_$_PhrasesTestingState(
-      phrasesWithAnswers: phrasesWithAnswers == freezed
+    return _then(_$PhrasesTestingStateImpl(
+      phrasesWithAnswers: null == phrasesWithAnswers
           ? _value._phrasesWithAnswers
           : phrasesWithAnswers // ignore: cast_nullable_to_non_nullable
               as List<PhraseWithAnswers>,
-      indexCurrentPhrase: indexCurrentPhrase == freezed
+      indexCurrentPhrase: null == indexCurrentPhrase
           ? _value.indexCurrentPhrase
           : indexCurrentPhrase // ignore: cast_nullable_to_non_nullable
               as int,
-      answerTried: answerTried == freezed
+      answerTried: null == answerTried
           ? _value._answerTried
           : answerTried // ignore: cast_nullable_to_non_nullable
               as List<bool>,
-      numberOfWrongAttempts: numberOfWrongAttempts == freezed
+      numberOfWrongAttempts: null == numberOfWrongAttempts
           ? _value.numberOfWrongAttempts
           : numberOfWrongAttempts // ignore: cast_nullable_to_non_nullable
               as int,
@@ -131,8 +133,8 @@ class __$$_PhrasesTestingStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PhrasesTestingState implements _PhrasesTestingState {
-  const _$_PhrasesTestingState(
+class _$PhrasesTestingStateImpl implements _PhrasesTestingState {
+  const _$PhrasesTestingStateImpl(
       {final List<PhraseWithAnswers> phrasesWithAnswers = const [],
       this.indexCurrentPhrase = 0,
       final List<bool> answerTried = const [],
@@ -144,6 +146,8 @@ class _$_PhrasesTestingState implements _PhrasesTestingState {
   @override
   @JsonKey()
   List<PhraseWithAnswers> get phrasesWithAnswers {
+    if (_phrasesWithAnswers is EqualUnmodifiableListView)
+      return _phrasesWithAnswers;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_phrasesWithAnswers);
   }
@@ -155,6 +159,7 @@ class _$_PhrasesTestingState implements _PhrasesTestingState {
   @override
   @JsonKey()
   List<bool> get answerTried {
+    if (_answerTried is EqualUnmodifiableListView) return _answerTried;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_answerTried);
   }
@@ -172,29 +177,30 @@ class _$_PhrasesTestingState implements _PhrasesTestingState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PhrasesTestingState &&
+            other is _$PhrasesTestingStateImpl &&
             const DeepCollectionEquality()
                 .equals(other._phrasesWithAnswers, _phrasesWithAnswers) &&
-            const DeepCollectionEquality()
-                .equals(other.indexCurrentPhrase, indexCurrentPhrase) &&
+            (identical(other.indexCurrentPhrase, indexCurrentPhrase) ||
+                other.indexCurrentPhrase == indexCurrentPhrase) &&
             const DeepCollectionEquality()
                 .equals(other._answerTried, _answerTried) &&
-            const DeepCollectionEquality()
-                .equals(other.numberOfWrongAttempts, numberOfWrongAttempts));
+            (identical(other.numberOfWrongAttempts, numberOfWrongAttempts) ||
+                other.numberOfWrongAttempts == numberOfWrongAttempts));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_phrasesWithAnswers),
-      const DeepCollectionEquality().hash(indexCurrentPhrase),
+      indexCurrentPhrase,
       const DeepCollectionEquality().hash(_answerTried),
-      const DeepCollectionEquality().hash(numberOfWrongAttempts));
+      numberOfWrongAttempts);
 
   @JsonKey(ignore: true)
   @override
-  _$$_PhrasesTestingStateCopyWith<_$_PhrasesTestingState> get copyWith =>
-      __$$_PhrasesTestingStateCopyWithImpl<_$_PhrasesTestingState>(
+  @pragma('vm:prefer-inline')
+  _$$PhrasesTestingStateImplCopyWith<_$PhrasesTestingStateImpl> get copyWith =>
+      __$$PhrasesTestingStateImplCopyWithImpl<_$PhrasesTestingStateImpl>(
           this, _$identity);
 }
 
@@ -203,7 +209,7 @@ abstract class _PhrasesTestingState implements PhrasesTestingState {
       {final List<PhraseWithAnswers> phrasesWithAnswers,
       final int indexCurrentPhrase,
       final List<bool> answerTried,
-      final int numberOfWrongAttempts}) = _$_PhrasesTestingState;
+      final int numberOfWrongAttempts}) = _$PhrasesTestingStateImpl;
 
   @override
   List<PhraseWithAnswers> get phrasesWithAnswers;
@@ -215,6 +221,6 @@ abstract class _PhrasesTestingState implements PhrasesTestingState {
   int get numberOfWrongAttempts;
   @override
   @JsonKey(ignore: true)
-  _$$_PhrasesTestingStateCopyWith<_$_PhrasesTestingState> get copyWith =>
+  _$$PhrasesTestingStateImplCopyWith<_$PhrasesTestingStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

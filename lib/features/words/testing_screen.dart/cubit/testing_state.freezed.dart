@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'testing_state.dart';
 
@@ -31,7 +31,8 @@ mixin _$TestingState {
 abstract class $TestingStateCopyWith<$Res> {
   factory $TestingStateCopyWith(
           TestingState value, $Res Function(TestingState) then) =
-      _$TestingStateCopyWithImpl<$Res>;
+      _$TestingStateCopyWithImpl<$Res, TestingState>;
+  @useResult
   $Res call(
       {List<WordWithAnswers> wordsWithAnswers,
       int indexCurrentWord,
@@ -40,48 +41,52 @@ abstract class $TestingStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TestingStateCopyWithImpl<$Res> implements $TestingStateCopyWith<$Res> {
+class _$TestingStateCopyWithImpl<$Res, $Val extends TestingState>
+    implements $TestingStateCopyWith<$Res> {
   _$TestingStateCopyWithImpl(this._value, this._then);
 
-  final TestingState _value;
   // ignore: unused_field
-  final $Res Function(TestingState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? wordsWithAnswers = freezed,
-    Object? indexCurrentWord = freezed,
-    Object? answerTried = freezed,
-    Object? numberOfWrongAttempts = freezed,
+    Object? wordsWithAnswers = null,
+    Object? indexCurrentWord = null,
+    Object? answerTried = null,
+    Object? numberOfWrongAttempts = null,
   }) {
     return _then(_value.copyWith(
-      wordsWithAnswers: wordsWithAnswers == freezed
+      wordsWithAnswers: null == wordsWithAnswers
           ? _value.wordsWithAnswers
           : wordsWithAnswers // ignore: cast_nullable_to_non_nullable
               as List<WordWithAnswers>,
-      indexCurrentWord: indexCurrentWord == freezed
+      indexCurrentWord: null == indexCurrentWord
           ? _value.indexCurrentWord
           : indexCurrentWord // ignore: cast_nullable_to_non_nullable
               as int,
-      answerTried: answerTried == freezed
+      answerTried: null == answerTried
           ? _value.answerTried
           : answerTried // ignore: cast_nullable_to_non_nullable
               as List<bool>,
-      numberOfWrongAttempts: numberOfWrongAttempts == freezed
+      numberOfWrongAttempts: null == numberOfWrongAttempts
           ? _value.numberOfWrongAttempts
           : numberOfWrongAttempts // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_TestingStateCopyWith<$Res>
+abstract class _$$TestingStateImplCopyWith<$Res>
     implements $TestingStateCopyWith<$Res> {
-  factory _$$_TestingStateCopyWith(
-          _$_TestingState value, $Res Function(_$_TestingState) then) =
-      __$$_TestingStateCopyWithImpl<$Res>;
+  factory _$$TestingStateImplCopyWith(
+          _$TestingStateImpl value, $Res Function(_$TestingStateImpl) then) =
+      __$$TestingStateImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {List<WordWithAnswers> wordsWithAnswers,
       int indexCurrentWord,
@@ -90,37 +95,35 @@ abstract class _$$_TestingStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TestingStateCopyWithImpl<$Res>
-    extends _$TestingStateCopyWithImpl<$Res>
-    implements _$$_TestingStateCopyWith<$Res> {
-  __$$_TestingStateCopyWithImpl(
-      _$_TestingState _value, $Res Function(_$_TestingState) _then)
-      : super(_value, (v) => _then(v as _$_TestingState));
+class __$$TestingStateImplCopyWithImpl<$Res>
+    extends _$TestingStateCopyWithImpl<$Res, _$TestingStateImpl>
+    implements _$$TestingStateImplCopyWith<$Res> {
+  __$$TestingStateImplCopyWithImpl(
+      _$TestingStateImpl _value, $Res Function(_$TestingStateImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_TestingState get _value => super._value as _$_TestingState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? wordsWithAnswers = freezed,
-    Object? indexCurrentWord = freezed,
-    Object? answerTried = freezed,
-    Object? numberOfWrongAttempts = freezed,
+    Object? wordsWithAnswers = null,
+    Object? indexCurrentWord = null,
+    Object? answerTried = null,
+    Object? numberOfWrongAttempts = null,
   }) {
-    return _then(_$_TestingState(
-      wordsWithAnswers: wordsWithAnswers == freezed
+    return _then(_$TestingStateImpl(
+      wordsWithAnswers: null == wordsWithAnswers
           ? _value._wordsWithAnswers
           : wordsWithAnswers // ignore: cast_nullable_to_non_nullable
               as List<WordWithAnswers>,
-      indexCurrentWord: indexCurrentWord == freezed
+      indexCurrentWord: null == indexCurrentWord
           ? _value.indexCurrentWord
           : indexCurrentWord // ignore: cast_nullable_to_non_nullable
               as int,
-      answerTried: answerTried == freezed
+      answerTried: null == answerTried
           ? _value._answerTried
           : answerTried // ignore: cast_nullable_to_non_nullable
               as List<bool>,
-      numberOfWrongAttempts: numberOfWrongAttempts == freezed
+      numberOfWrongAttempts: null == numberOfWrongAttempts
           ? _value.numberOfWrongAttempts
           : numberOfWrongAttempts // ignore: cast_nullable_to_non_nullable
               as int,
@@ -130,8 +133,8 @@ class __$$_TestingStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TestingState implements _TestingState {
-  const _$_TestingState(
+class _$TestingStateImpl implements _TestingState {
+  const _$TestingStateImpl(
       {final List<WordWithAnswers> wordsWithAnswers = const [],
       this.indexCurrentWord = 0,
       final List<bool> answerTried = const [],
@@ -143,6 +146,8 @@ class _$_TestingState implements _TestingState {
   @override
   @JsonKey()
   List<WordWithAnswers> get wordsWithAnswers {
+    if (_wordsWithAnswers is EqualUnmodifiableListView)
+      return _wordsWithAnswers;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_wordsWithAnswers);
   }
@@ -154,6 +159,7 @@ class _$_TestingState implements _TestingState {
   @override
   @JsonKey()
   List<bool> get answerTried {
+    if (_answerTried is EqualUnmodifiableListView) return _answerTried;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_answerTried);
   }
@@ -171,29 +177,30 @@ class _$_TestingState implements _TestingState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TestingState &&
+            other is _$TestingStateImpl &&
             const DeepCollectionEquality()
                 .equals(other._wordsWithAnswers, _wordsWithAnswers) &&
-            const DeepCollectionEquality()
-                .equals(other.indexCurrentWord, indexCurrentWord) &&
+            (identical(other.indexCurrentWord, indexCurrentWord) ||
+                other.indexCurrentWord == indexCurrentWord) &&
             const DeepCollectionEquality()
                 .equals(other._answerTried, _answerTried) &&
-            const DeepCollectionEquality()
-                .equals(other.numberOfWrongAttempts, numberOfWrongAttempts));
+            (identical(other.numberOfWrongAttempts, numberOfWrongAttempts) ||
+                other.numberOfWrongAttempts == numberOfWrongAttempts));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_wordsWithAnswers),
-      const DeepCollectionEquality().hash(indexCurrentWord),
+      indexCurrentWord,
       const DeepCollectionEquality().hash(_answerTried),
-      const DeepCollectionEquality().hash(numberOfWrongAttempts));
+      numberOfWrongAttempts);
 
   @JsonKey(ignore: true)
   @override
-  _$$_TestingStateCopyWith<_$_TestingState> get copyWith =>
-      __$$_TestingStateCopyWithImpl<_$_TestingState>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$TestingStateImplCopyWith<_$TestingStateImpl> get copyWith =>
+      __$$TestingStateImplCopyWithImpl<_$TestingStateImpl>(this, _$identity);
 }
 
 abstract class _TestingState implements TestingState {
@@ -201,7 +208,7 @@ abstract class _TestingState implements TestingState {
       {final List<WordWithAnswers> wordsWithAnswers,
       final int indexCurrentWord,
       final List<bool> answerTried,
-      final int numberOfWrongAttempts}) = _$_TestingState;
+      final int numberOfWrongAttempts}) = _$TestingStateImpl;
 
   @override
   List<WordWithAnswers> get wordsWithAnswers;
@@ -213,6 +220,6 @@ abstract class _TestingState implements TestingState {
   int get numberOfWrongAttempts;
   @override
   @JsonKey(ignore: true)
-  _$$_TestingStateCopyWith<_$_TestingState> get copyWith =>
+  _$$TestingStateImplCopyWith<_$TestingStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

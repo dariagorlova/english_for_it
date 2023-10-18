@@ -15,10 +15,10 @@ import './step/i_tap_item.dart';
 import './step/i_enter_text_into_text_field.dart';
 
 void main() {
-  Future<void> bddSetUp(WidgetTester tester) async {
-    await theAppIsRunning(tester);
-  }
   group('''Start of application''', () {
+    Future<void> bddSetUp(WidgetTester tester) async {
+      await theAppIsRunning(tester);
+    }
     testWidgets('''As a User I want to see motivational text and buttons for start''', (tester) async {
       await bddSetUp(tester);
       await iSeeText(tester, 'Today is an excellent day to learn something new!');

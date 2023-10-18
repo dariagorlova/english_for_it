@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'phrases_state.dart';
 
@@ -31,7 +31,8 @@ mixin _$PhrasesState {
 abstract class $PhrasesStateCopyWith<$Res> {
   factory $PhrasesStateCopyWith(
           PhrasesState value, $Res Function(PhrasesState) then) =
-      _$PhrasesStateCopyWithImpl<$Res>;
+      _$PhrasesStateCopyWithImpl<$Res, PhrasesState>;
+  @useResult
   $Res call(
       {List<Phrase> dailyPhrases,
       List<List<String>> sentences,
@@ -41,53 +42,57 @@ abstract class $PhrasesStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PhrasesStateCopyWithImpl<$Res> implements $PhrasesStateCopyWith<$Res> {
+class _$PhrasesStateCopyWithImpl<$Res, $Val extends PhrasesState>
+    implements $PhrasesStateCopyWith<$Res> {
   _$PhrasesStateCopyWithImpl(this._value, this._then);
 
-  final PhrasesState _value;
   // ignore: unused_field
-  final $Res Function(PhrasesState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? dailyPhrases = freezed,
-    Object? sentences = freezed,
-    Object? indexCurrenPhrase = freezed,
-    Object? displayInEnglish = freezed,
-    Object? sentenceDisplayed = freezed,
+    Object? dailyPhrases = null,
+    Object? sentences = null,
+    Object? indexCurrenPhrase = null,
+    Object? displayInEnglish = null,
+    Object? sentenceDisplayed = null,
   }) {
     return _then(_value.copyWith(
-      dailyPhrases: dailyPhrases == freezed
+      dailyPhrases: null == dailyPhrases
           ? _value.dailyPhrases
           : dailyPhrases // ignore: cast_nullable_to_non_nullable
               as List<Phrase>,
-      sentences: sentences == freezed
+      sentences: null == sentences
           ? _value.sentences
           : sentences // ignore: cast_nullable_to_non_nullable
               as List<List<String>>,
-      indexCurrenPhrase: indexCurrenPhrase == freezed
+      indexCurrenPhrase: null == indexCurrenPhrase
           ? _value.indexCurrenPhrase
           : indexCurrenPhrase // ignore: cast_nullable_to_non_nullable
               as int,
-      displayInEnglish: displayInEnglish == freezed
+      displayInEnglish: null == displayInEnglish
           ? _value.displayInEnglish
           : displayInEnglish // ignore: cast_nullable_to_non_nullable
               as bool,
-      sentenceDisplayed: sentenceDisplayed == freezed
+      sentenceDisplayed: null == sentenceDisplayed
           ? _value.sentenceDisplayed
           : sentenceDisplayed // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_PhrasesStateCopyWith<$Res>
+abstract class _$$PhrasesStateImplCopyWith<$Res>
     implements $PhrasesStateCopyWith<$Res> {
-  factory _$$_PhrasesStateCopyWith(
-          _$_PhrasesState value, $Res Function(_$_PhrasesState) then) =
-      __$$_PhrasesStateCopyWithImpl<$Res>;
+  factory _$$PhrasesStateImplCopyWith(
+          _$PhrasesStateImpl value, $Res Function(_$PhrasesStateImpl) then) =
+      __$$PhrasesStateImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {List<Phrase> dailyPhrases,
       List<List<String>> sentences,
@@ -97,42 +102,40 @@ abstract class _$$_PhrasesStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PhrasesStateCopyWithImpl<$Res>
-    extends _$PhrasesStateCopyWithImpl<$Res>
-    implements _$$_PhrasesStateCopyWith<$Res> {
-  __$$_PhrasesStateCopyWithImpl(
-      _$_PhrasesState _value, $Res Function(_$_PhrasesState) _then)
-      : super(_value, (v) => _then(v as _$_PhrasesState));
+class __$$PhrasesStateImplCopyWithImpl<$Res>
+    extends _$PhrasesStateCopyWithImpl<$Res, _$PhrasesStateImpl>
+    implements _$$PhrasesStateImplCopyWith<$Res> {
+  __$$PhrasesStateImplCopyWithImpl(
+      _$PhrasesStateImpl _value, $Res Function(_$PhrasesStateImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_PhrasesState get _value => super._value as _$_PhrasesState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? dailyPhrases = freezed,
-    Object? sentences = freezed,
-    Object? indexCurrenPhrase = freezed,
-    Object? displayInEnglish = freezed,
-    Object? sentenceDisplayed = freezed,
+    Object? dailyPhrases = null,
+    Object? sentences = null,
+    Object? indexCurrenPhrase = null,
+    Object? displayInEnglish = null,
+    Object? sentenceDisplayed = null,
   }) {
-    return _then(_$_PhrasesState(
-      dailyPhrases: dailyPhrases == freezed
+    return _then(_$PhrasesStateImpl(
+      dailyPhrases: null == dailyPhrases
           ? _value._dailyPhrases
           : dailyPhrases // ignore: cast_nullable_to_non_nullable
               as List<Phrase>,
-      sentences: sentences == freezed
+      sentences: null == sentences
           ? _value._sentences
           : sentences // ignore: cast_nullable_to_non_nullable
               as List<List<String>>,
-      indexCurrenPhrase: indexCurrenPhrase == freezed
+      indexCurrenPhrase: null == indexCurrenPhrase
           ? _value.indexCurrenPhrase
           : indexCurrenPhrase // ignore: cast_nullable_to_non_nullable
               as int,
-      displayInEnglish: displayInEnglish == freezed
+      displayInEnglish: null == displayInEnglish
           ? _value.displayInEnglish
           : displayInEnglish // ignore: cast_nullable_to_non_nullable
               as bool,
-      sentenceDisplayed: sentenceDisplayed == freezed
+      sentenceDisplayed: null == sentenceDisplayed
           ? _value.sentenceDisplayed
           : sentenceDisplayed // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -142,8 +145,8 @@ class __$$_PhrasesStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PhrasesState implements _PhrasesState {
-  const _$_PhrasesState(
+class _$PhrasesStateImpl implements _PhrasesState {
+  const _$PhrasesStateImpl(
       {required final List<Phrase> dailyPhrases,
       required final List<List<String>> sentences,
       this.indexCurrenPhrase = 0,
@@ -155,6 +158,7 @@ class _$_PhrasesState implements _PhrasesState {
   final List<Phrase> _dailyPhrases;
   @override
   List<Phrase> get dailyPhrases {
+    if (_dailyPhrases is EqualUnmodifiableListView) return _dailyPhrases;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_dailyPhrases);
   }
@@ -162,6 +166,7 @@ class _$_PhrasesState implements _PhrasesState {
   final List<List<String>> _sentences;
   @override
   List<List<String>> get sentences {
+    if (_sentences is EqualUnmodifiableListView) return _sentences;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_sentences);
   }
@@ -185,17 +190,17 @@ class _$_PhrasesState implements _PhrasesState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PhrasesState &&
+            other is _$PhrasesStateImpl &&
             const DeepCollectionEquality()
                 .equals(other._dailyPhrases, _dailyPhrases) &&
             const DeepCollectionEquality()
                 .equals(other._sentences, _sentences) &&
-            const DeepCollectionEquality()
-                .equals(other.indexCurrenPhrase, indexCurrenPhrase) &&
-            const DeepCollectionEquality()
-                .equals(other.displayInEnglish, displayInEnglish) &&
-            const DeepCollectionEquality()
-                .equals(other.sentenceDisplayed, sentenceDisplayed));
+            (identical(other.indexCurrenPhrase, indexCurrenPhrase) ||
+                other.indexCurrenPhrase == indexCurrenPhrase) &&
+            (identical(other.displayInEnglish, displayInEnglish) ||
+                other.displayInEnglish == displayInEnglish) &&
+            (identical(other.sentenceDisplayed, sentenceDisplayed) ||
+                other.sentenceDisplayed == sentenceDisplayed));
   }
 
   @override
@@ -203,14 +208,15 @@ class _$_PhrasesState implements _PhrasesState {
       runtimeType,
       const DeepCollectionEquality().hash(_dailyPhrases),
       const DeepCollectionEquality().hash(_sentences),
-      const DeepCollectionEquality().hash(indexCurrenPhrase),
-      const DeepCollectionEquality().hash(displayInEnglish),
-      const DeepCollectionEquality().hash(sentenceDisplayed));
+      indexCurrenPhrase,
+      displayInEnglish,
+      sentenceDisplayed);
 
   @JsonKey(ignore: true)
   @override
-  _$$_PhrasesStateCopyWith<_$_PhrasesState> get copyWith =>
-      __$$_PhrasesStateCopyWithImpl<_$_PhrasesState>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$PhrasesStateImplCopyWith<_$PhrasesStateImpl> get copyWith =>
+      __$$PhrasesStateImplCopyWithImpl<_$PhrasesStateImpl>(this, _$identity);
 }
 
 abstract class _PhrasesState implements PhrasesState {
@@ -219,7 +225,7 @@ abstract class _PhrasesState implements PhrasesState {
       required final List<List<String>> sentences,
       final int indexCurrenPhrase,
       final bool displayInEnglish,
-      final bool sentenceDisplayed}) = _$_PhrasesState;
+      final bool sentenceDisplayed}) = _$PhrasesStateImpl;
 
   @override
   List<Phrase> get dailyPhrases;
@@ -233,6 +239,6 @@ abstract class _PhrasesState implements PhrasesState {
   bool get sentenceDisplayed;
   @override
   @JsonKey(ignore: true)
-  _$$_PhrasesStateCopyWith<_$_PhrasesState> get copyWith =>
+  _$$PhrasesStateImplCopyWith<_$PhrasesStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

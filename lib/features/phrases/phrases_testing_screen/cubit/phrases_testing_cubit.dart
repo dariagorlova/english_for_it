@@ -15,12 +15,7 @@ class PhrasesTestingCubit extends Cubit<PhrasesTestingState> {
     this._router,
   )   : _random = Random(translatesSeed),
         super(
-          const PhrasesTestingState(
-            phrasesWithAnswers: [],
-            indexCurrentPhrase: 0,
-            answerTried: [],
-            numberOfWrongAttempts: 0,
-          ),
+          const PhrasesTestingState(),
         ) {
     init(phrases);
   }
@@ -31,25 +26,16 @@ class PhrasesTestingCubit extends Cubit<PhrasesTestingState> {
   void init(List<Phrase> dailyPhrases) {
     if (dailyPhrases.isEmpty) return;
 
-    // final listAnswers = dailyPhrases
-    //     .map(
-    //       (word) => word.sentence,
-    //     )
-    //     .toList();
-
-    // final listAnswersAllPhrases = dailyPhrases;
-
     final phrases = dailyPhrases.map(
       (w) {
         final rightAnswer = _breakStringOnParts(w.sentence, w.phrase);
         final answers = [rightAnswer];
         while (true) {
           final tmpPhrase = _getRandomElement(dailyPhrases);
-          final sentence =
-              _breakStringOnParts(tmpPhrase.sentence, tmpPhrase.phrase);
-          // if (!answers.contains(sentence)) {
-          //   answers.add(sentence);
-          // }
+          final sentence = _breakStringOnParts(
+            tmpPhrase.sentence,
+            tmpPhrase.phrase,
+          );
           var isAnswersContainsSentence = false;
           for (final e in answers) {
             if (e.first == sentence.first) {
@@ -120,8 +106,7 @@ class PhrasesTestingCubit extends Cubit<PhrasesTestingState> {
           : sentence.substring(endIndex, sentence.length).trim();
 
       sentenceBySmallParts[0] = partBeforePhrase; // 'I finally'
-      sentenceBySmallParts[1] =
-          ' $phrase '; // ' applied for ' <- will bold on screen
+      sentenceBySmallParts[1] = ' $phrase '; // ' applied for ' <- will bold on screen
       sentenceBySmallParts[2] = partAfterPhrase; // 'that job'
     }
 

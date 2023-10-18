@@ -10,7 +10,7 @@ void main() //{
 async {
   WidgetsFlutterBinding.ensureInitialized();
   await SharedPrefs.init();
-  configureInjection(Environment.prod);
+  configureDependencies(env: Environment.prod);
   runApp(const MyApp());
 }
 

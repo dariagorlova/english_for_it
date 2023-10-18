@@ -18,13 +18,9 @@ class WordWithAnswers with _$WordWithAnswers {
 class WordWithState with _$WordWithState {
   const factory WordWithState({
     @Default(
-      OneWord(
-        word: '',
-        translate: '',
-      ),
+      OneWord(),
     )
-        OneWord word,
-    @Default(WordState.initial)
-        WordState state,
+    OneWord word,
+    @Default(WordState.initial) WordState state,
   }) = _WordWithState;
 }

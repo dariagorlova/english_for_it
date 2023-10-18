@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'one_word.dart';
 
@@ -26,65 +26,70 @@ mixin _$OneWord {
 /// @nodoc
 abstract class $OneWordCopyWith<$Res> {
   factory $OneWordCopyWith(OneWord value, $Res Function(OneWord) then) =
-      _$OneWordCopyWithImpl<$Res>;
+      _$OneWordCopyWithImpl<$Res, OneWord>;
+  @useResult
   $Res call({String word, String translate});
 }
 
 /// @nodoc
-class _$OneWordCopyWithImpl<$Res> implements $OneWordCopyWith<$Res> {
+class _$OneWordCopyWithImpl<$Res, $Val extends OneWord>
+    implements $OneWordCopyWith<$Res> {
   _$OneWordCopyWithImpl(this._value, this._then);
 
-  final OneWord _value;
   // ignore: unused_field
-  final $Res Function(OneWord) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? word = freezed,
-    Object? translate = freezed,
+    Object? word = null,
+    Object? translate = null,
   }) {
     return _then(_value.copyWith(
-      word: word == freezed
+      word: null == word
           ? _value.word
           : word // ignore: cast_nullable_to_non_nullable
               as String,
-      translate: translate == freezed
+      translate: null == translate
           ? _value.translate
           : translate // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_OneWordCopyWith<$Res> implements $OneWordCopyWith<$Res> {
-  factory _$$_OneWordCopyWith(
-          _$_OneWord value, $Res Function(_$_OneWord) then) =
-      __$$_OneWordCopyWithImpl<$Res>;
+abstract class _$$OneWordImplCopyWith<$Res> implements $OneWordCopyWith<$Res> {
+  factory _$$OneWordImplCopyWith(
+          _$OneWordImpl value, $Res Function(_$OneWordImpl) then) =
+      __$$OneWordImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String word, String translate});
 }
 
 /// @nodoc
-class __$$_OneWordCopyWithImpl<$Res> extends _$OneWordCopyWithImpl<$Res>
-    implements _$$_OneWordCopyWith<$Res> {
-  __$$_OneWordCopyWithImpl(_$_OneWord _value, $Res Function(_$_OneWord) _then)
-      : super(_value, (v) => _then(v as _$_OneWord));
+class __$$OneWordImplCopyWithImpl<$Res>
+    extends _$OneWordCopyWithImpl<$Res, _$OneWordImpl>
+    implements _$$OneWordImplCopyWith<$Res> {
+  __$$OneWordImplCopyWithImpl(
+      _$OneWordImpl _value, $Res Function(_$OneWordImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_OneWord get _value => super._value as _$_OneWord;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? word = freezed,
-    Object? translate = freezed,
+    Object? word = null,
+    Object? translate = null,
   }) {
-    return _then(_$_OneWord(
-      word: word == freezed
+    return _then(_$OneWordImpl(
+      word: null == word
           ? _value.word
           : word // ignore: cast_nullable_to_non_nullable
               as String,
-      translate: translate == freezed
+      translate: null == translate
           ? _value.translate
           : translate // ignore: cast_nullable_to_non_nullable
               as String,
@@ -94,8 +99,8 @@ class __$$_OneWordCopyWithImpl<$Res> extends _$OneWordCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OneWord implements _OneWord {
-  const _$_OneWord({this.word = '', this.translate = ''});
+class _$OneWordImpl implements _OneWord {
+  const _$OneWordImpl({this.word = '', this.translate = ''});
 
   @override
   @JsonKey()
@@ -113,26 +118,25 @@ class _$_OneWord implements _OneWord {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OneWord &&
-            const DeepCollectionEquality().equals(other.word, word) &&
-            const DeepCollectionEquality().equals(other.translate, translate));
+            other is _$OneWordImpl &&
+            (identical(other.word, word) || other.word == word) &&
+            (identical(other.translate, translate) ||
+                other.translate == translate));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(word),
-      const DeepCollectionEquality().hash(translate));
+  int get hashCode => Object.hash(runtimeType, word, translate);
 
   @JsonKey(ignore: true)
   @override
-  _$$_OneWordCopyWith<_$_OneWord> get copyWith =>
-      __$$_OneWordCopyWithImpl<_$_OneWord>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$OneWordImplCopyWith<_$OneWordImpl> get copyWith =>
+      __$$OneWordImplCopyWithImpl<_$OneWordImpl>(this, _$identity);
 }
 
 abstract class _OneWord implements OneWord {
   const factory _OneWord({final String word, final String translate}) =
-      _$_OneWord;
+      _$OneWordImpl;
 
   @override
   String get word;
@@ -140,6 +144,6 @@ abstract class _OneWord implements OneWord {
   String get translate;
   @override
   @JsonKey(ignore: true)
-  _$$_OneWordCopyWith<_$_OneWord> get copyWith =>
+  _$$OneWordImplCopyWith<_$OneWordImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

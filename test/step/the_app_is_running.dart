@@ -6,7 +6,7 @@ import '../utils/mock_repository.dart';
 
 Future<void> theAppIsRunning(WidgetTester tester) async {
   await di.getIt.reset();
-  di.configureInjection(Environment.test);
+  di.configureDependencies(env: Environment.test);
   await tester.pumpWidget(const MyApp());
   await tester.pumpAndSettle();
 

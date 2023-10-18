@@ -11,9 +11,7 @@ class SearchCubit extends Cubit<SearchState> {
     this._currentWordRepository,
     this._router,
   ) : super(
-          const SearchState(
-            words: [],
-          ),
+          const SearchState(),
         ) {
     unawaited(getAllWords());
   }

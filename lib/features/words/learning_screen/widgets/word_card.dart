@@ -39,9 +39,8 @@ class WordCard extends StatelessWidget {
                           )
                         : null,
                     child: InkWell(
-                      onTap: state.isLoading
-                          ? null
-                          : () => context.read<LearningCubit>().prevWord(),
+                      onTap:
+                          state.isLoading ? null : () => context.read<LearningCubit>().prevWord(),
                       child: Icon(
                         Icons.arrow_back_ios,
                         size: btnSize, //heightScreen / 20,
@@ -81,7 +80,7 @@ class WordCard extends StatelessWidget {
                           textAlign: TextAlign.center,
                         ),
                       ),
-                    ]
+                    ],
                   ],
                 ),
               ),
@@ -97,9 +96,8 @@ class WordCard extends StatelessWidget {
                           )
                         : null,
                     child: InkWell(
-                      onTap: state.isLoading
-                          ? null
-                          : () => context.read<LearningCubit>().nextWord(),
+                      onTap:
+                          state.isLoading ? null : () => context.read<LearningCubit>().nextWord(),
                       child: Icon(
                         Icons.arrow_forward_ios,
                         size: btnSize, //heightScreen / 20,

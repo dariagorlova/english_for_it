@@ -127,7 +127,6 @@ class DbaseServiceImpl extends DbaseService {
       return res;
     }
     return const Phrase(
-      newId: -1,
       phrase: 'db connection error',
       byAnotherWords: 'db connection error',
       sentence: 'db connection error',
@@ -161,7 +160,6 @@ class DbaseServiceImpl extends DbaseService {
     } else {
       return <Phrase>[
         const Phrase(
-          newId: -1,
           phrase: 'PERMISSIONS DENIED',
           byAnotherWords: 'PERMISSIONS DENIED',
           sentence: 'PERMISSIONS DENIED',

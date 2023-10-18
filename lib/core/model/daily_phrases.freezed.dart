@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'daily_phrases.dart';
 
@@ -27,58 +27,61 @@ mixin _$DailyPhrases {
 abstract class $DailyPhrasesCopyWith<$Res> {
   factory $DailyPhrasesCopyWith(
           DailyPhrases value, $Res Function(DailyPhrases) then) =
-      _$DailyPhrasesCopyWithImpl<$Res>;
+      _$DailyPhrasesCopyWithImpl<$Res, DailyPhrases>;
+  @useResult
   $Res call({List<Phrase> phrases});
 }
 
 /// @nodoc
-class _$DailyPhrasesCopyWithImpl<$Res> implements $DailyPhrasesCopyWith<$Res> {
+class _$DailyPhrasesCopyWithImpl<$Res, $Val extends DailyPhrases>
+    implements $DailyPhrasesCopyWith<$Res> {
   _$DailyPhrasesCopyWithImpl(this._value, this._then);
 
-  final DailyPhrases _value;
   // ignore: unused_field
-  final $Res Function(DailyPhrases) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? phrases = freezed,
+    Object? phrases = null,
   }) {
     return _then(_value.copyWith(
-      phrases: phrases == freezed
+      phrases: null == phrases
           ? _value.phrases
           : phrases // ignore: cast_nullable_to_non_nullable
               as List<Phrase>,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_DailyPhrasesCopyWith<$Res>
+abstract class _$$DailyPhrasesImplCopyWith<$Res>
     implements $DailyPhrasesCopyWith<$Res> {
-  factory _$$_DailyPhrasesCopyWith(
-          _$_DailyPhrases value, $Res Function(_$_DailyPhrases) then) =
-      __$$_DailyPhrasesCopyWithImpl<$Res>;
+  factory _$$DailyPhrasesImplCopyWith(
+          _$DailyPhrasesImpl value, $Res Function(_$DailyPhrasesImpl) then) =
+      __$$DailyPhrasesImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({List<Phrase> phrases});
 }
 
 /// @nodoc
-class __$$_DailyPhrasesCopyWithImpl<$Res>
-    extends _$DailyPhrasesCopyWithImpl<$Res>
-    implements _$$_DailyPhrasesCopyWith<$Res> {
-  __$$_DailyPhrasesCopyWithImpl(
-      _$_DailyPhrases _value, $Res Function(_$_DailyPhrases) _then)
-      : super(_value, (v) => _then(v as _$_DailyPhrases));
+class __$$DailyPhrasesImplCopyWithImpl<$Res>
+    extends _$DailyPhrasesCopyWithImpl<$Res, _$DailyPhrasesImpl>
+    implements _$$DailyPhrasesImplCopyWith<$Res> {
+  __$$DailyPhrasesImplCopyWithImpl(
+      _$DailyPhrasesImpl _value, $Res Function(_$DailyPhrasesImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_DailyPhrases get _value => super._value as _$_DailyPhrases;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? phrases = freezed,
+    Object? phrases = null,
   }) {
-    return _then(_$_DailyPhrases(
-      phrases: phrases == freezed
+    return _then(_$DailyPhrasesImpl(
+      phrases: null == phrases
           ? _value._phrases
           : phrases // ignore: cast_nullable_to_non_nullable
               as List<Phrase>,
@@ -88,13 +91,14 @@ class __$$_DailyPhrasesCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DailyPhrases implements _DailyPhrases {
-  const _$_DailyPhrases({required final List<Phrase> phrases})
+class _$DailyPhrasesImpl implements _DailyPhrases {
+  const _$DailyPhrasesImpl({required final List<Phrase> phrases})
       : _phrases = phrases;
 
   final List<Phrase> _phrases;
   @override
   List<Phrase> get phrases {
+    if (_phrases is EqualUnmodifiableListView) return _phrases;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_phrases);
   }
@@ -108,7 +112,7 @@ class _$_DailyPhrases implements _DailyPhrases {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DailyPhrases &&
+            other is _$DailyPhrasesImpl &&
             const DeepCollectionEquality().equals(other._phrases, _phrases));
   }
 
@@ -118,18 +122,19 @@ class _$_DailyPhrases implements _DailyPhrases {
 
   @JsonKey(ignore: true)
   @override
-  _$$_DailyPhrasesCopyWith<_$_DailyPhrases> get copyWith =>
-      __$$_DailyPhrasesCopyWithImpl<_$_DailyPhrases>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$DailyPhrasesImplCopyWith<_$DailyPhrasesImpl> get copyWith =>
+      __$$DailyPhrasesImplCopyWithImpl<_$DailyPhrasesImpl>(this, _$identity);
 }
 
 abstract class _DailyPhrases implements DailyPhrases {
   const factory _DailyPhrases({required final List<Phrase> phrases}) =
-      _$_DailyPhrases;
+      _$DailyPhrasesImpl;
 
   @override
   List<Phrase> get phrases;
   @override
   @JsonKey(ignore: true)
-  _$$_DailyPhrasesCopyWith<_$_DailyPhrases> get copyWith =>
+  _$$DailyPhrasesImplCopyWith<_$DailyPhrasesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

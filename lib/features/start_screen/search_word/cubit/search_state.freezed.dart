@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'search_state.dart';
 
@@ -27,57 +27,61 @@ mixin _$SearchState {
 abstract class $SearchStateCopyWith<$Res> {
   factory $SearchStateCopyWith(
           SearchState value, $Res Function(SearchState) then) =
-      _$SearchStateCopyWithImpl<$Res>;
+      _$SearchStateCopyWithImpl<$Res, SearchState>;
+  @useResult
   $Res call({List<OneWord> words});
 }
 
 /// @nodoc
-class _$SearchStateCopyWithImpl<$Res> implements $SearchStateCopyWith<$Res> {
+class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState>
+    implements $SearchStateCopyWith<$Res> {
   _$SearchStateCopyWithImpl(this._value, this._then);
 
-  final SearchState _value;
   // ignore: unused_field
-  final $Res Function(SearchState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? words = freezed,
+    Object? words = null,
   }) {
     return _then(_value.copyWith(
-      words: words == freezed
+      words: null == words
           ? _value.words
           : words // ignore: cast_nullable_to_non_nullable
               as List<OneWord>,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_SearchStateCopyWith<$Res>
+abstract class _$$SearchStateImplCopyWith<$Res>
     implements $SearchStateCopyWith<$Res> {
-  factory _$$_SearchStateCopyWith(
-          _$_SearchState value, $Res Function(_$_SearchState) then) =
-      __$$_SearchStateCopyWithImpl<$Res>;
+  factory _$$SearchStateImplCopyWith(
+          _$SearchStateImpl value, $Res Function(_$SearchStateImpl) then) =
+      __$$SearchStateImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({List<OneWord> words});
 }
 
 /// @nodoc
-class __$$_SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
-    implements _$$_SearchStateCopyWith<$Res> {
-  __$$_SearchStateCopyWithImpl(
-      _$_SearchState _value, $Res Function(_$_SearchState) _then)
-      : super(_value, (v) => _then(v as _$_SearchState));
+class __$$SearchStateImplCopyWithImpl<$Res>
+    extends _$SearchStateCopyWithImpl<$Res, _$SearchStateImpl>
+    implements _$$SearchStateImplCopyWith<$Res> {
+  __$$SearchStateImplCopyWithImpl(
+      _$SearchStateImpl _value, $Res Function(_$SearchStateImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_SearchState get _value => super._value as _$_SearchState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? words = freezed,
+    Object? words = null,
   }) {
-    return _then(_$_SearchState(
-      words: words == freezed
+    return _then(_$SearchStateImpl(
+      words: null == words
           ? _value._words
           : words // ignore: cast_nullable_to_non_nullable
               as List<OneWord>,
@@ -87,13 +91,15 @@ class __$$_SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SearchState implements _SearchState {
-  const _$_SearchState({final List<OneWord> words = const []}) : _words = words;
+class _$SearchStateImpl implements _SearchState {
+  const _$SearchStateImpl({final List<OneWord> words = const []})
+      : _words = words;
 
   final List<OneWord> _words;
   @override
   @JsonKey()
   List<OneWord> get words {
+    if (_words is EqualUnmodifiableListView) return _words;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_words);
   }
@@ -107,7 +113,7 @@ class _$_SearchState implements _SearchState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SearchState &&
+            other is _$SearchStateImpl &&
             const DeepCollectionEquality().equals(other._words, _words));
   }
 
@@ -117,17 +123,18 @@ class _$_SearchState implements _SearchState {
 
   @JsonKey(ignore: true)
   @override
-  _$$_SearchStateCopyWith<_$_SearchState> get copyWith =>
-      __$$_SearchStateCopyWithImpl<_$_SearchState>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$SearchStateImplCopyWith<_$SearchStateImpl> get copyWith =>
+      __$$SearchStateImplCopyWithImpl<_$SearchStateImpl>(this, _$identity);
 }
 
 abstract class _SearchState implements SearchState {
-  const factory _SearchState({final List<OneWord> words}) = _$_SearchState;
+  const factory _SearchState({final List<OneWord> words}) = _$SearchStateImpl;
 
   @override
   List<OneWord> get words;
   @override
   @JsonKey(ignore: true)
-  _$$_SearchStateCopyWith<_$_SearchState> get copyWith =>
+  _$$SearchStateImplCopyWith<_$SearchStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
