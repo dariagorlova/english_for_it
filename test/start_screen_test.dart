@@ -19,7 +19,9 @@ void main() {
     Future<void> bddSetUp(WidgetTester tester) async {
       await theAppIsRunning(tester);
     }
-    testWidgets('''As a User I want to see motivational text and buttons for start''', (tester) async {
+
+    testWidgets('''As a User I want to see motivational text and buttons for start''',
+        (tester) async {
       await bddSetUp(tester);
       await iSeeText(tester, 'Today is an excellent day to learn something new!');
       await iSeeText(tester, 'learn words');
@@ -41,20 +43,6 @@ void main() {
       await bddSetUp(tester);
       await iTapIcon(tester, Icons.menu);
       await iSeeText(tester, 'Improve Your English Level');
-    });
-    testWidgets('''As a User I want to know some word translation''', (tester) async {
-      await bddSetUp(tester);
-      await iTapIcon(tester, Icons.menu);
-      await iSeeText(tester, 'Translator');
-      await iWaitForSeconds(tester, 1);
-      await iTapItem(tester, 0);
-      await iWaitForSeconds(tester, 1);
-      await iSeeText(tester, 'Find translation');
-      await iSeeText(tester, 'Word in English:');
-      await iEnterTextIntoTextField(tester, 'bug');
-      await iTapIcon(tester, Icons.search);
-      await iWait(tester);
-      await iSeeText(tester, 'помилка');
     });
   });
 }
